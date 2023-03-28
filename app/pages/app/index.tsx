@@ -12,7 +12,7 @@ const app = () => {
             </Head>
             <main>
                 <header>
-                    <div className={styles.ribbon}></div>
+                    <div className='text-3xl font-bold underline'>Test</div>
                 </header>
             </main>
         </>
