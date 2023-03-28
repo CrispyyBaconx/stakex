@@ -1,5 +1,5 @@
 import { Head } from "next/document";
-import styles from "@/styles/"
+import styles from "@/styles/App.module.css"
 
 
 const app = () => {

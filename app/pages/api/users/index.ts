@@ -13,4 +13,4 @@ const handler = (_req: NextApiRequest, res: NextApiResponse) => {
 	}
 }
 
-export default handler;s
+export default handler;
