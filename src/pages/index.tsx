@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import '@/styles/globals.css'
+
 const IndexPage = () => (
 	<>
 	    <h1>Hello Next.js 👋</h1>
