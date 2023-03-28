@@ -9,8 +9,7 @@
 		"baseUrl": ".",
 		"paths": {
 			"@/components/*": ["components/*"],
-			"@/interfaces/*": ["interfaces/*"],
-			"@/styles/*": ["styles/*"]
+			"@/interfaces/*": ["interfaces/*"]
 		},
 		"allowJs": true,
 		"skipLibCheck": true,
