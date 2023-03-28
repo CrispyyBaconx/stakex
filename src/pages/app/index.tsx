@@ -1,5 +1,4 @@
-import { Head } from "next/document";
-import styles from "@/styles/App.module.css"
+import Head from "next/head";
 
 const app = () => {
     return (
@@ -12,7 +11,7 @@ const app = () => {
             </Head>
             <main>
                 <header>
-                    <div className='text-3xl font-bold underline'>Test</div>
+                    <h1 className='text-3xl font-bold underline'>Test</h1>
                 </header>
             </main>
         </>
