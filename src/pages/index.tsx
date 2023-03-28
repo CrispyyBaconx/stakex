@@ -1,12 +1,12 @@
 import Link from 'next/link'
 
-const IndexPage = () => (
+const Landing = () => (
 	<>
-	    <h1>Hello Next.js 👋</h1>
+	    <h1>Welcome!</h1>
     	<p>
-  			<Link href="/about">About</Link>
+  			<Link href="/play">Play</Link>
     	</p>
 	</>
 )
 
-export default IndexPage;
+export default Landing;
