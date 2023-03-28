@@ -32,5 +32,6 @@ contract CommitReveal {
         https://eth2book.info/bellatrix/part2/building_blocks/randomness/
         https://soliditydeveloper.com/prevrandao
         https://twitter.com/0x_Beans/status/1570115095212208129
+        https://www.youtube.com/watch?v=W3hgX4wVwoo&ab_channel=Soft.Tomatoes
     */
 }
