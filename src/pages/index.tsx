@@ -2,10 +2,9 @@ import Link from 'next/link'
 
 const Landing = () => (
 	<>
-	    <h1>Welcome!</h1>
-    	<p>
-  			<Link href="/play">Play</Link>
-    	</p>
+	    <div className='p-10 bg-blue flex justify-center items-center'>
+			
+		</div>
 	</>
 )
 
