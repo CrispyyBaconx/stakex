@@ -6,9 +6,10 @@ const Landing = () => (
 		<div className='flex'>
 			<Image src='./' alt='' />
 			<p className='text-lg'>
-				Filler Text hahahahaahhahaa
+				Filler Text
 			</p>
 		</div>
+		<div className='bg-black'>We have the largest selection of stuff</div>
 	</main>
 )
 
