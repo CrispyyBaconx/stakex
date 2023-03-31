@@ -1,11 +1,15 @@
 import Link from 'next/link'
+import Image from 'next/image';
 
 const Landing = () => (
-	<>
-	    <div className='p-10 bg-blue flex justify-center items-center'>
-			
+	<main className='bg-blue flex'>
+		<div className='flex'>
+			<Image src='./' alt='' />
+			<p className='text-lg'>
+				Filler Text hahahahaahhahaa
+			</p>
 		</div>
-	</>
+	</main>
 )
 
 export default Landing;
