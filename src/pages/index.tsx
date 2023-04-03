@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image';
-import bg from './bg.png';
-import logosvg from './logo.svg';
+import bg from './assets/bg.png';
+import logosvg from './assets/logo.svg';
 
 const Landing = () => {
 	const background = {
