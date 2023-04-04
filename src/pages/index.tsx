@@ -1,30 +1,57 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
+import bg from './assets/bg.png';
+import logosvg from './assets/logo.svg';
 
-const Landing = () => (
-	<div className="min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/mainbg.png')" }}>
-		<Head>
-        	<title>Stakex</title>
-        	<link rel="icon" href="/favicon.ico" />
-      	</Head>
+const Landing = () => {
+	const background = {
+		backgroundImage: `url("${bg}")`,
+		backgroundSize: "cover"
+	};
 
-		<header className="p-8">
-        	<Image src="/logo.png" alt="Stakex" className="h-16 w-auto" />
-      	</header>
-
-		<main className='bg-blue flex flex-col items-center justify-center w-full h-full text-white'>
-			<div className='flex'>
-				{/* <Image src='./' alt='' /> */}
-				<p className='text-lg'>
-					Filler Text
-				</p>
+	return (
+		<main className='App'>
+			<div className='text-white' style={background}>
+				<div className='bg-gradient-to-r from-black px-8 py-16'>
+					<div className='max-w-xl grid grid-cols-1 gap-8'>
+						<div className='w-12'>
+							{/* add a logo */}
+						</div>
+						<h2 className='text-xl uppercase font-bold'>
+							{/* text */}
+						</h2>
+						<h1 className='text-6xl font-bold'>
+							{/* text */}
+						</h1>
+						<p className='text-lg'>
+							{/* text */}
+						</p>
+						<Link href='/app' className='bg-blue'>Enter App</Link>
+					</div>
+				</div>
 			</div>
-			<Link href='/app' className=''>Enter App</Link>
-			<button className=''>Read More</button>
-			<div className='bg-black'>We have the largest selection of stuff</div>
+
+			<div className='px-8 py-16'>
+				<div className='max-w-md mb-16'>
+					<h2 className='text-5xl'>
+						{/* text */}
+					</h2>
+				</div>
+
+				<div className='grid grid-cols-2 gap-4 text-slate-600'>
+					<div>
+						<h3 className='text-2xl font-bold mb-2'>
+							{/* text */}
+						</h3>
+						<p className='text-lg'>
+							{/* text */}
+						</p>
+					</div>
+				</div>
+			</div>
 		</main>
-	</div>
-)
+	)
+}
 
 export default Landing;
