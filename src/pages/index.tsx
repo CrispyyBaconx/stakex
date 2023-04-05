@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
-import bg from './assets/bg.png';
+import bg from './assets/bg.jpg';
 import logosvg from './assets/logo.svg';
 
 const Landing = () => {
@@ -23,7 +23,7 @@ const Landing = () => {
 					<div className='bg-gradient-to-r from-black px-8 py-16'>
 						<div className='max-w-xl grid grid-cols-1 gap-8'>
 							<div className='w-12'>
-								{/* add a logo */}
+								<Image src={logosvg} alt='' />
 							</div>
 							<h2 className='text-xl uppercase font-bold'>
 								{/* text */}
