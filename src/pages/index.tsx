@@ -6,7 +6,7 @@ import logosvg from './assets/logo.svg';
 
 const Landing = () => {
 	const background = {
-		backgroundImage: `url("${bg}")`,
+		backgroundImage: `url("${bg.src}")`,
 		backgroundSize: "cover"
 	};
 
@@ -26,15 +26,15 @@ const Landing = () => {
 								<Image src={logosvg} alt='' />
 							</div>
 							<h2 className='text-xl uppercase font-bold'>
-								{/* text */}
+								Filler
 							</h2>
 							<h1 className='text-6xl font-bold'>
-								{/* text */}
+								Filler
 							</h1>
 							<p className='text-lg'>
-								{/* text */}
+								Filler
 							</p>
-							<Link href='/app' className='bg-blue'>Enter App</Link>
+							<Link href='/app' className='bg-gradient-to-r from-pink-600 to-orange-600 py-3 px-6 text-lg rounded-md w-48'>Enter App</Link>
 						</div>
 					</div>
 				</div>
@@ -42,17 +42,17 @@ const Landing = () => {
 				<div className='px-8 py-16'>
 					<div className='max-w-md mb-16'>
 						<h2 className='text-5xl'>
-							{/* text */}
+							Filler
 						</h2>
 					</div>
 
 					<div className='grid grid-cols-2 gap-4 text-slate-600'>
 						<div>
 							<h3 className='text-2xl font-bold mb-2'>
-								{/* text */}
+								Filler
 							</h3>
 							<p className='text-lg'>
-								{/* text */}
+								Filler
 							</p>
 						</div>
 					</div>
