@@ -3,6 +3,9 @@ import Image from 'next/image';
 import Head from 'next/head';
 import bg from './assets/bg.jpg';
 import logosvg from './assets/logo.svg';
+import Footer from '@/components/Footer';
+
+// check this https://flowbite.com/docs/components/footer/
 
 const Landing = () => {
 	const background = {
@@ -25,15 +28,13 @@ const Landing = () => {
 							<div className='w-12'>
 								<Image src={logosvg} alt='' />
 							</div>
-							<h2 className='text-xl uppercase font-bold'>
-								Filler
+							<h2 className='text-m uppercase font-bold'>
+								Initializing...
 							</h2>
 							<h1 className='text-6xl font-bold'>
-								Filler
+								Stakex
 							</h1>
-							<p className='text-lg'>
-								Filler
-							</p>
+							<br />
 							<Link href='/app' className='bg-gradient-to-r from-pink-600 to-orange-600 py-3 px-6 text-lg rounded-md w-48'>Enter App</Link>
 						</div>
 					</div>
@@ -52,10 +53,12 @@ const Landing = () => {
 								Filler
 							</h3>
 							<p className='text-lg'>
-								Filler
+								Written by <code>Filler</code>
 							</p>
 						</div>
 					</div>
+
+					<Footer />
 				</div>
 			</main>
 		</>
