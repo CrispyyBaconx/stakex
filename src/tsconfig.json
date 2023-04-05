@@ -10,7 +10,8 @@
 		"paths": {
 			"@/components/*": ["components/*"],
 			"@/interfaces/*": ["interfaces/*"],
-			"@/styles/*": ["styles/*"]
+			"@/styles/*": ["styles/*"],
+			"@/assets/*": ["assets/*"]
 		},
 		"allowJs": true,
 		"skipLibCheck": true,
