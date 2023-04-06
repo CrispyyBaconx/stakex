@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
-import bg from './assets/bg.jpg';
-import logosvg from './assets/logo.svg';
+import bg from '@/assets/bg.jpg';
+import logosvg from '@/assets/logo.svg';
 import Footer from '@/components/Footer';
 
 // check this https://flowbite.com/docs/components/footer/
