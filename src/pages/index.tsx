@@ -26,7 +26,7 @@ const Landing = () => {
 					<div className='bg-gradient-to-r from-black px-8 py-16'>
 						<div className='max-w-xl grid grid-cols-1 gap-8'>
 							<div className='w-12'>
-								<Image src={logosvg} alt='' />
+								<Image src={logosvg} alt='Stakex Logo' />
 							</div>
 							<h2 className='text-m uppercase font-bold'>
 								Initializing...
@@ -57,12 +57,11 @@ const Landing = () => {
 							</p>
 						</div>
 					</div>
-
-					<Footer />
 				</div>
 			</main>
+			<Footer />
 		</>
 	)
 }
 
-export default Landing;
+export default Landing
