@@ -1,13 +1,16 @@
 import type { AppProps } from 'next/app';
-import { Roboto_Mono } from 'next/font/google'
+import localFont from 'next/font/local';
+
+const blenderPro = localFont({
+    src: '../public/fonts/Blender-Pro-Book.ttf',
+    variable: '--font-blender-pro'
+})
 
 import '@/styles/globals.css';
 
-const robotoMono = Roboto_Mono({ subsets: ['latin'] })
-
 export default function App({ Component, pageProps }: AppProps) {
     return (
-        <main className={robotoMono.className}>
+        <main className={`${blenderPro.variable} font-sans`}>
             <Component {...pageProps} />
         </main>
     )
