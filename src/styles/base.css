@@ -1,3 +1,10 @@
 .btn-blue {
     @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
 }
+
+html {
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--font-blender-pro);
+    font-feature-settings: "zero", "zero";
+    font-variant-numeric: slashed-zero
+}

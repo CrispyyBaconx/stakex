@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "Blender Pro Book";
+        font-feature-settings: "zero", "zero";
+        font-variant-numeric: slashed-zero;
+        font-weight: 700;
+        src: url(/fonts/blender-pro-book.ttf) format("truetype");
+    }
+}
