@@ -33,9 +33,9 @@ const Landing = () => {
 							<br />
 							<p>The best decentralized casino</p>
 							<div className='flex gap-6'>
-								<Link href='/app' className='bg-gradient-to-r from-purple-600 to-blue-600 py-3 px-6 text-lg rounded-md w-48'>Enter App</Link>
-								<Link href='/stake' className='animate-background inline-block bg-white from-pink-500 via-red-500 to-yellow-500 bg-[length:400%_400%] p-0.5 [animation-duration:_6s] hover:bg-gradient-to-r'>
-									<span className="block bg-gray-900 px-5 py-3 text-white">Stake →</span>
+								<Link href='/app' className='text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'>Enter App</Link>
+								<Link href='/stake' className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800'>
+									<span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">Stake →</span>
 								</Link>
 							</div>
 						</div>
