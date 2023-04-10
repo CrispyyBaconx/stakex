@@ -3,6 +3,8 @@ import React from 'react';
 import Link from 'next/link';
 
 const Breadcrumb = () => {
+    // use state and or history to modify this component dynamically
+
     return (        
         <nav className="flex" aria-label="Breadcrumb">
             <ol className="inline-flex items-center space-x-1 md:space-x-3">
