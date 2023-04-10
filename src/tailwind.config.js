@@ -12,6 +12,7 @@ module.exports = {
 		extend: {
 			colors: {
 				inset: '#0d0e11',
+				accent: '#02070c',
 			},
 			fontFamily: {
 				sans: ['var(--font-blender-pro)', ...fontFamily.sans],
