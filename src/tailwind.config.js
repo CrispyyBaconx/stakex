@@ -26,6 +26,15 @@ module.exports = {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'dot': "radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px)",
 			},
+			animation: {
+				border: 'background ease infinite',
+			},
+			keyframes: {
+				background: {
+				  	'0%, 100%': { backgroundPosition: '0% 50%' },
+				  	'50%': { backgroundPosition: '100% 50%' },
+				},
+			},		  
 		},
 	},
 	plugins: [

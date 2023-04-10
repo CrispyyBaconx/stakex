@@ -28,26 +28,27 @@ const Landing = () => {
 							<div className='w-12'>
 								<Image src={logosvg} alt='Stakex Logo' />
 							</div>
-							<h2 className='text-m uppercase font-bold'>
-								Initializing...
-							</h2>
-							<h1 className='text-6xl font-bold'>
-								Stakex
-							</h1>
+							<h2 className='text-m uppercase font-bold'>Initializing...</h2>
+							<h1 className='text-6xl font-bold'>Stakex</h1>
 							<br />
-							<Link href='/app' className='bg-gradient-to-r from-pink-600 to-orange-600 py-3 px-6 text-lg rounded-md w-48'>Enter App</Link>
+							<div className='flex gap-6'>
+								<Link href='/app' className='bg-gradient-to-r from-purple-600 to-blue-600 py-3 px-6 text-lg rounded-md w-48'>Enter App</Link>
+								<Link href='/stake' className='animate-background inline-block bg-white from-pink-500 via-red-500 to-yellow-500 bg-[length:400%_400%] p-0.5 [animation-duration:_6s] hover:bg-gradient-to-r'>
+									<span className="block bg-gray-900 px-5 py-3 text-white">Stake →</span>
+								</Link>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div className='px-8 py-16'>
+				<div className='px-8 py-16 bg-inset text-white'>
 					<div className='max-w-md mb-16'>
 						<h2 className='text-5xl'>
 							Filler
 						</h2>
 					</div>
 
-					<div className='grid grid-cols-2 gap-4 text-slate-600'>
+					<div className='grid grid-cols-2 gap-4 text-white'>
 						<div>
 							<h3 className='text-2xl font-bold mb-2'>
 								Filler
