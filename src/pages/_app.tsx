@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app';
 import localFont from 'next/font/local';
 
 const blenderPro = localFont({
-    src: '../public/fonts/Blender-Pro-Book.ttf',
+    src: '../public/fonts/Blender-Pro-Bold.woff2',
     variable: '--font-blender-pro',
     weight: "700",
 });
