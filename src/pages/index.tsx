@@ -31,6 +31,7 @@ const Landing = () => {
 							<h2 className='text-m uppercase font-bold'>Initializing...</h2>
 							<h1 className='text-6xl font-bold'>Stakex</h1>
 							<br />
+							{/* Maybe add some small info about what the app is about */}
 							<div className='flex gap-6'>
 								<Link href='/app' className='bg-gradient-to-r from-purple-600 to-blue-600 py-3 px-6 text-lg rounded-md w-48'>Enter App</Link>
 								<Link href='/stake' className='animate-background inline-block bg-white from-pink-500 via-red-500 to-yellow-500 bg-[length:400%_400%] p-0.5 [animation-duration:_6s] hover:bg-gradient-to-r'>
