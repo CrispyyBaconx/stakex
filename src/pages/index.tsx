@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
-import bg from '@/assets/bg.jpg';
+import bg from '@/assets/bg.gif';
 import logosvg from '@/assets/logo.svg';
 import Footer from '@/components/Footer';
 
