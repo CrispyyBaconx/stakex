@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
 
-import logo from '@/assets/logo.svg';
+import Logo from '@/assets/logo.svg';
 
 const Stake = () => {
     return (
@@ -17,7 +17,7 @@ const Stake = () => {
             </Head>
             <main>
                 <header className=''>
-                    <Image className='' src={logo} alt='' />
+                    <Image className='' src={Logo} alt='' />
                     <h2 className=''>Stakex</h2>
                 </header>
                 <section>

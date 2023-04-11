@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
 import bg from '@/assets/bg.gif';
-import logosvg from '@/assets/logo.svg';
+import Logo from '@/assets/logo.svg';
 import Footer from '@/components/Footer';
 
 // check this https://flowbite.com/docs/components/footer/
@@ -26,7 +26,7 @@ const Landing = () => {
 					<div className='bg-gradient-to-r from-black px-8 py-16'>
 						<div className='max-w-xl grid grid-cols-1 gap-8'>
 							<div className='w-12'>
-								<Image src={logosvg} alt='Stakex Logo' />
+								<Image src={Logo} alt='Stakex Logo' />
 							</div>
 							<h2 className='text-m uppercase font-bold'>Initializing...</h2>
 							<h1 className='text-6xl font-bold'>Stakex</h1>
