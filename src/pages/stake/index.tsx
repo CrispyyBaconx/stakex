@@ -10,9 +10,10 @@ const Stake = () => {
     return (
         <>
             <Head>
-                <title />
-                <meta />
-                <meta />
+                <title>Stakex</title>
+				<meta name="description" content="Stakex" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
                 <header className=''>
