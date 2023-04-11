@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 
 import Logo from '@/assets/logo.svg';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const Stake = () => {
     return (
@@ -17,11 +18,11 @@ const Stake = () => {
             </Head>
             <main>
                 <header className=''>
-                    <Image className='' src={Logo} alt='' />
+                    <Image className='w-4' src={Logo} alt='' />
                     <h2 className=''>Stakex</h2>
                 </header>
                 <section>
-                    {/* Write later */}
+                    <Breadcrumb />
                 </section>
             </main>
         </>
