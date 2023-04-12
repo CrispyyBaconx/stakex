@@ -7,7 +7,7 @@ import Head from 'next/head';
 import Logo from '@/assets/logo.svg';
 
 const Stake = () => {
-    const apy = 0; // grab this from contract
+    const apy = 4.7; // example // grab this from contract
 
     return (
         <>
