@@ -19,3 +19,8 @@ Vercel [documentation](https://nextjs.org/docs/deployment)
 ## Authors
 
 Bacon#2077 - [Twitter](https://twitter.com/CrispyyBaconx)
+
+### Todo: 
+
+[ ]: Terminal with puzzle
+[ ]: Prediction markets

@@ -62,7 +62,8 @@ const Landing = () => {
 				<section className='px-8 py-16 bg-inset text-white'>
 					<div className='flex items-center'>
 						<h2>Want more Filler updates?</h2>
-						<input className='bg-black' />
+						<br />
+						<input type='text' className='bg-black' />
 					</div>
 				</section>
 			</main>
@@ -71,4 +72,4 @@ const Landing = () => {
 	)
 }
 
-export default Landing
+export default Landing;
