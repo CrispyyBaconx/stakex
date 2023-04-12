@@ -22,7 +22,7 @@ const Landing = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className='App'>
-				<div className='text-white' style={background}>
+				<section className='text-white' style={background}>
 					<div className='bg-gradient-to-r from-black px-8 py-16'>
 						<div className='max-w-xl grid grid-cols-1 gap-8'>
 							<div className='w-12'>
@@ -40,9 +40,9 @@ const Landing = () => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</section>
 
-				<div className='px-8 py-16 bg-inset text-white'>
+				<section className='px-8 py-16 bg-inset text-white'>
 					<div className='max-w-md mb-16'>
 						<h2 className='text-5xl'>
 							Filler
@@ -50,16 +50,21 @@ const Landing = () => {
 					</div>
 
 					<div className='grid grid-cols-2 gap-4 text-white'>
-						<div>
-							<h3 className='text-2xl font-bold mb-2'>
-								Filler
-							</h3>
-							<p className='text-lg'>
-								Written by <code>Filler</code>
-							</p>
-						</div>
+						<h3 className='text-2xl font-bold mb-2'>
+							Filler
+						</h3>
+						<p className='text-lg'>
+							Written by <code>Filler</code>
+						</p>
 					</div>
-				</div>
+				</section>
+
+				<section className='px-8 py-16 bg-inset text-white'>
+					<div className='flex items-center'>
+						<h2>Want more Filler updates?</h2>
+						<input className='bg-black' />
+					</div>
+				</section>
 			</main>
 			<Footer />
 		</>
