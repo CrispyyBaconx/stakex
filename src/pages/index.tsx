@@ -6,6 +6,7 @@ import Logo from '@/assets/logo.svg';
 import Footer from '@/components/Footer';
 
 import Initializing from '@/components/Landing/Initializing';
+import FAQ from '@/components/Landing/FAQ';
 
 const Landing = () => {
 	// TODO: add background animation/render (three.js and react-three-fiber)
@@ -68,6 +69,10 @@ const Landing = () => {
 							A dApp built on arbitrum one. Add more copy here later.
 						</h3>
 					</div>
+				</section>
+
+				<section className='px-22 py-18 bg-gray-800 text-white flex flex-col items-center'>
+					<FAQ />
 				</section>
 
 				<section className='px-8 py-16 bg-[#353945] text-white'>

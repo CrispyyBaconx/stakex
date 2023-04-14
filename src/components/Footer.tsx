@@ -3,8 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import logo from '@/assets/logo.svg';
-import DiscordLogo from '@/assets/DiscordLogo.svg';
-import TelegramLogo from '@/assets/TelegramLogo.svg';
 
 const Footer = () => {
     return (
@@ -23,9 +21,6 @@ const Footer = () => {
                             <ul className="text-gray-600 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
                                     <Link href="/contact" className="hover:underline">Contact</Link>
-                                </li>
-                                <li>
-                                    <Link href="/faq" className="hover:underline">FAQ</Link>
                                 </li>
                             </ul>
                         </div>

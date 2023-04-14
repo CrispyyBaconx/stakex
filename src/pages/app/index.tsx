@@ -1,4 +1,8 @@
+import MinFooter from "@/components/MinFooter";
 import Head from "next/head";
+import Image from "next/image";
+
+import logo from '@/assets/logo.svg';
 
 const app = () => {
     return (
@@ -11,9 +15,14 @@ const app = () => {
             </Head>
             <main>
                 <header>
-                    
+                    <div className="flex">
+                        <Image className="w-5 h-5" src={logo} alt='Stakex Logo' />
+                        <h2 className="text-white">Stakex</h2>
+                    </div>
                 </header>
+                {/* Maybe design a figma mock before I work on this page */}
             </main>
+            <MinFooter />
         </>
     )
 }
