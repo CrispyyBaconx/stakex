@@ -71,10 +71,6 @@ const Landing = () => {
 					</div>
 				</section>
 
-				<section className='px-22 py-18 bg-gray-800 text-white flex flex-col items-center'>
-					<FAQ />
-				</section>
-
 				<section className='px-8 py-16 bg-[#353945] text-white'>
 					<div className='flex flex-col items-center gap-8'>
 						<h2 className='text-3xl'>Want more updates?</h2>
