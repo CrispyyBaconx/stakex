@@ -61,7 +61,7 @@ const Landing = () => {
 					</div>
 				</section>
 
-				<section className='px-8 py-16 bg-gray-700 text-white'>
+				<section className='px-8 py-16 bg-[#353945] text-white'>
 					<div className='flex flex-col items-center gap-8'>
 						<h2 className='text-3xl'>Want more updates?</h2>
 						<form className='flex gap-5 align-middle' onSubmit={(e) => submitEmail(e)}>
