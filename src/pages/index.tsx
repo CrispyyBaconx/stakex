@@ -5,15 +5,24 @@ import bg from '@/assets/bg.gif';
 import Logo from '@/assets/logo.svg';
 import Footer from '@/components/Footer';
 
-// check this https://flowbite.com/docs/components/footer/
+import Initializing from '@/components/Initializing';
 
 const Landing = () => {
+	// TODO: add background animation/render (three.js and react-three-fiber)
+	// TODO: add email submission (convertkit maybe?)
+	// TODO: add footer links
+	// TODO: add copy & gif to the middle of the page
+	// TODO: make app, stake, and misc pages
+
 	const background = {
 		backgroundImage: `url("${bg.src}")`,
 		backgroundSize: "cover"
 	};
 
-	const submitEmail = (e) => {};
+	const submitEmail = (e) => {
+		// TODO: add email submission
+		e.preventDefault();
+	};
 
 	return (
 		<>
@@ -33,7 +42,7 @@ const Landing = () => {
 									I am a cool thing on the other side that could be a button or something
 								</div>
 							</div>
-							<h2 className='text-m uppercase font-bold'>Initializing...</h2> {/* want to make this animated, or maybe just change color */}
+							<Initializing />
 							<h1 className='text-6xl font-bold'>Stakex</h1>
 							<br />
 							<p className='mb-12'>The best decentralized casino - maybe add more text? also maybe swap the buttons</p>
