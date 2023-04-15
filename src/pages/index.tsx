@@ -6,7 +6,6 @@ import Logo from '@/assets/logo.svg';
 import Footer from '@/components/Footer';
 
 import Initializing from '@/components/Landing/Initializing';
-import FAQ from '@/components/Landing/FAQ';
 
 const Landing = () => {
 	// TODO: add background animation/render (three.js and react-three-fiber)
