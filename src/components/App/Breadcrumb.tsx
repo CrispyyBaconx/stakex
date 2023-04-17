@@ -6,9 +6,25 @@ import { NextRouter, useRouter } from 'next/router';
 const Breadcrumb = () => {
     const router = useRouter()
 
+    const cleanRoutes = (routes: string[]): string[] => {
+        routes.forEach((route) => {
+            // replace tacks with spaces
+            route.replaceAll(/-/g, ' ');
+
+            // capitalize each word in string
+            let words = route.split(' ');
+            
+            return words.map((word) => { 
+                return word[0].toUpperCase() + word.substring(1); 
+            });
+        });
+
+        return routes;
+    }
+
     const getBreadcrumbPath = (router: NextRouter): string[] => {
         // we only use breadcrumb in the "app", so we need to get the current path
-        return router.pathname.split("/").slice(2)
+        return cleanRoutes(router.pathname.split("/").slice(2));
     }
 
     return (
