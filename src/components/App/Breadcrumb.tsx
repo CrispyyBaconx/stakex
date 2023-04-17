@@ -7,16 +7,8 @@ const Breadcrumb = () => {
     const router = useRouter()
 
     const getBreadcrumbPath = (router: NextRouter): string[] => {
-        // we only use breadcrumb in the "app", so we need to get the current path, minus the /app
-        let basePath = '/app';
-        let currentPath = router.asPath;
-
-        console.log(currentPath);
-        console.log(currentPath.substring(currentPath.indexOf(basePath)));
-        console.log(currentPath.substring(currentPath.indexOf(basePath)).split('/'));
-
-        return currentPath.substring(currentPath.indexOf(basePath)).split('/');
-        // this returns [ "", "app" ]
+        // we only use breadcrumb in the "app", so we need to get the current path
+        return router.pathname.split("/").slice(2)
     }
 
     return (
@@ -29,9 +21,6 @@ const Breadcrumb = () => {
                     </Link>
                 </li>
                 {getBreadcrumbPath(router).map((path, index) => {
-                    // maybe just do 
-                    // if (path === '/app') return; and skip the parsing
-
                     if(index === getBreadcrumbPath(router).length) {
                         return (
                             <li aria-current="page" key={index}>
