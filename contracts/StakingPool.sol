@@ -37,6 +37,10 @@ contract StakingPool is ReentrancyGuard, Ownable {
     function stake(uint256 _amount) external nonReentrant {
         require(_amount > 0, "Staking amount must be greater than 0");
 
+        // Check if the staking contract has enough allowance to transfer tokens from the user's wallet
+        uint256 allowance = stakingToken.allowance(msg.sender, address(this));
+        require(allowance >= _amount, "Token allowance not sufficient, please approve the tokens first");
+
         // Update the staker's information before staking the new tokens
         _updateStakingInfo(msg.sender);
 
@@ -46,12 +50,6 @@ contract StakingPool is ReentrancyGuard, Ownable {
         // Update the staker's stake amount and the total staked amount
         stakers[msg.sender].amount = stakers[msg.sender].amount.add(_amount);
         totalStaked = totalStaked.add(_amount);
-
-        // Increment totalStakers if the user is staking for the first time
-        if (!hasStaked[msg.sender]) {
-            totalStakers = totalStakers.add(1);
-            hasStaked[msg.sender] = true;
-        }
 
         emit Staked(msg.sender, _amount);
     }

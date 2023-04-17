@@ -1,8 +1,13 @@
 {
-  "name": "hardhat-project",
-  "dependencies": {
-    "@chainlink/contracts": "^0.6.1",
-    "@openzeppelin/contracts": "^4.8.2",
-    "hardhat": "^2.13.0"
-  }
+	"name": "stakex",
+	"dependencies": {
+		"@chainlink/contracts": "^0.6.1",
+		"@nomicfoundation/hardhat-toolbox": "^2.0.2",
+		"@openzeppelin/contracts": "^4.8.2",
+		"hardhat": "^2.13.0"
+	},
+	"devDependencies": {
+		"@nomiclabs/hardhat-ethers": "^2.2.3",
+		"@nomiclabs/hardhat-etherscan": "^3.1.7"
+	}
 }
