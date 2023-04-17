@@ -4,6 +4,8 @@ import Image from "next/image";
 
 import logo from '@/assets/logo.svg';
 
+import { Sidebar, Breadcrumb } from '@/components/App';
+
 const app = () => {
     return (
         <>
@@ -14,12 +16,14 @@ const app = () => {
         		<link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
-                <header>
+                <header className="flex flex-col">
                     <div className="flex">
                         <Image className="w-5 h-5" src={logo} alt='Stakex Logo' />
-                        <h2 className="text-white">Stakex</h2>
+                        <h2 className="text-black">Stakex</h2>
                     </div>
+                    <Breadcrumb />
                 </header>
+                <Sidebar />
                 {/* Maybe design a figma mock before I work on this page */}
             </main>
             <MinFooter />

@@ -11,10 +11,12 @@ const Breadcrumb = () => {
         let basePath = '/app';
         let currentPath = router.asPath;
 
+        console.log(currentPath.substring(currentPath.indexOf(basePath)).split('/'));
+
         return currentPath.substring(currentPath.indexOf(basePath)).split('/');
     }
 
-    return (        
+    return (
         <nav className="flex" aria-label="Breadcrumb">
             <ol className="inline-flex items-center space-x-1 md:space-x-3">
                 <li className="inline-flex items-center">
