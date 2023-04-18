@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
 
+import MinFooter from '@/components/MinFooter';
+
 import Logo from '@/assets/logo.svg';
 
 const Stake = () => {
@@ -23,10 +25,7 @@ const Stake = () => {
                     <h2 className='text-2xl'>Stakex</h2>
                 </header>
                 <section>
-                    {apy
-                      ? 
-                        apy 
-                      : 
+                    {apy ? apy : 
                         <div role="status" className="max-w-sm animate-pulse">
                             <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
                             <span className="sr-only">Loading...</span>
@@ -36,6 +35,7 @@ const Stake = () => {
                     <span>APY</span>
                 </section>
             </main>
+            <MinFooter />
         </>
     )
 }
