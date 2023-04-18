@@ -25,7 +25,6 @@ const Landing = () => {
 	};
 
 	const submitEmail = (e: FormEvent<HTMLFormElement>) => {
-		// TODO: add email submission
 		e.preventDefault();
 	};
 

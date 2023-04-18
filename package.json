@@ -1,5 +1,8 @@
 {
 	"name": "stakex",
+	"scripts": {
+		"dev": "cd src && npm run dev"
+	},
 	"dependencies": {
 		"@chainlink/contracts": "^0.6.1",
 		"@nomicfoundation/hardhat-toolbox": "^2.0.2",
