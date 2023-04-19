@@ -15,12 +15,15 @@ const App = () => {
         		<meta name="viewport" content="width=device-width, initial-scale=1" />
         		<link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className="flex bg-inset">
+            <main className="flex bg-gray-900">
                 <Sidebar />
-                <div className="flex flex-col">
-                    <header>
-                        <h2 className="text-black">Stakex</h2>
-                    </header>
+                <header className="flex flex-col p-8">
+                    <h2 className="text-white text-4xl">Stakex</h2>
+                </header>
+                <div className="flex flex-row">
+                    <div className="card">
+                        
+                    </div>
                 </div>
             </main>
             <MinFooter />
