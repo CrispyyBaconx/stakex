@@ -19,6 +19,8 @@ const Landing = () => {
 	// TODO: add copy & gif to the middle of the page
 	// TODO: make app, stake, and misc pages
 
+	// TODO: replace background with blend i made using this https://www.blendernation.com/2020/07/06/blender-eevee-render-to-animated-gif/
+
 	const background = {
 		backgroundImage: `url("${bg.src}")`,
 		backgroundSize: "cover"
