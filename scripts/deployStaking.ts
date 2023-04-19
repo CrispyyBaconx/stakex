@@ -7,7 +7,7 @@ async function main() {
     console.log("Deploying contract with the account:", deployer.address);
 
   	const Pool = await hre.ethers.getContractFactory("StakingPool");
-  	const pool = await Pool.deploy("0xC1B92cd61e0AcAEb4678AA2757Fc21aC09555910"); //! Token contract (type IERC20)
+  	const pool = await Pool.deploy("0xC1B92cd61e0AcAEb4678AA2757Fc21aC09555910"); //! Token contract (type ERC20)
 
   	console.log("Staking Contract deployed to:", pool.address);
 }
