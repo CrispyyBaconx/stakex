@@ -15,7 +15,7 @@ const Sidebar = () => {
                 </svg>
             </button>
 
-            <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-16 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+            <aside id="logo-sidebar" className="top-0 left-0 z-10 w-16 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
                <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                   <Link href="/" className="flex items-center pl-1 mb-5">
                         <Image src={logo} className="h-6 w-6 mr-3 sm:h-7 sm:w-7" alt="Stakex Logo" />

@@ -15,15 +15,12 @@ const App = () => {
         		<meta name="viewport" content="width=device-width, initial-scale=1" />
         		<link rel="icon" href="/favicon.ico" />
             </Head>
-            <Sidebar />
-            <main className="pl-16">
-                <header className="flex flex-col">
-                    <div className="flex">
+            <main className="flex bg-inset">
+                <Sidebar />
+                <div className="flex flex-col">
+                    <header>
                         <h2 className="text-black">Stakex</h2>
-                    </div>
-                </header>
-                <div>
-                    Mutumbu
+                    </header>
                 </div>
             </main>
             <MinFooter />
