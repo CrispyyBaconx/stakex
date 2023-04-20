@@ -5,6 +5,7 @@ import Image from "next/image";
 import logo from '@/assets/logo.svg';
 
 import { Sidebar } from '@/components/App';
+import Card from "@/components/App/Card";
 
 const App = () => {
     return (
@@ -21,9 +22,7 @@ const App = () => {
                     <h2 className="text-white text-4xl">Stakex</h2>
                 </header>
                 <div className="flex flex-row">
-                    <div className="card">
-                        
-                    </div>
+                    <Card sport="Football" description="Gimme Ur Balls" />
                 </div>
             </main>
             <MinFooter />
