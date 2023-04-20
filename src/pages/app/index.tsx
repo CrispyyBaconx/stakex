@@ -14,6 +14,7 @@ const App = () => {
     // https://www.quackit.com/html/html_editors/scratchpad/?example=/css/flexbox/examples/flexbox_website_layout_4
     // https://tailwindcss.com/blog/tailwindcss-v3-3
     // https://tailwindcss.com/docs/grid-template-columns
+    // https://www.iconpacks.net/free-icon/coin-794.html
 
     return (
         <>
