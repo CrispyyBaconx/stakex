@@ -39,7 +39,7 @@ const Landing = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className='App'>
-				<section className='text-white object-contain w-full h-[50rem]' style={background}>
+				<section className='text-white object-contain w-full h-[50rem]' style={ background }>
 					<div className='bg-gradient-to-r from-black px-28 py-16 h-full'>
 						<div className='grid grid-cols-1 gap-16'>
 							<div className='flex w-full justify-between'>
