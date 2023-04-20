@@ -2,7 +2,7 @@ import MinFooter from "@/components/MinFooter";
 import Head from "next/head";
 import Image from "next/image";
 
-import logo from '@/assets/logo.svg';
+import { FootballCard } from '@/assets/FootballCard.png'; // add this later
 
 import { Sidebar } from '@/components/App';
 import Card from "@/components/App/Card";
@@ -22,7 +22,10 @@ const App = () => {
                     <h2 className="text-white text-4xl">Stakex</h2>
                 </header>
                 <div className="flex flex-row">
-                    <Card sport="Football" description="Gimme Ur Balls" />
+                    <Card sport="Football" description="Lemme catch ur balls" image={FootballCard} />
+                    <Card sport="Soccer" description="Lemme kick ur balls" image={FootballCard} />
+                    <Card sport="Basketball" description="Lemme dribble ur balls" image={FootballCard} />
+                    <Card sport="Baseball" description="Lemme hit ur balls with a bat" image={FootballCard} />
                 </div>
             </main>
             <MinFooter />
