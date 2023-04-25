@@ -26,21 +26,20 @@ const App = () => {
             </Head>
             <main className="flex bg-gray-900">
                 <Sidebar />
-                <header className="flex p-8 w-full justify-center">
-                    <div>
+                <section className="flex flex-col items-stretch w-full">
+                    <header className="flex p-8 w-full justify-left">
                         <h2 className="text-white text-4xl">Stakex</h2>
-                        <h5 className="p-1">Beta</h5>
-                    </div>
-                    <div className="p-4">
-                        <Link href='/stake'>Water</Link>
-                    </div>
-                </header>
-                <div className="flex flex-row gap-4 p-4 bg-inset h-40 w-full items-center">
-                    <Card sport="Football" description="David" image={ FootballCard } />
-                    <Card sport="Soccer" description="David" image={ FootballCard } />
-                    <Card sport="Basketball" description="David" image={ FootballCard } />
-                    <Card sport="Baseball" description="David" image={ FootballCard } />
-                </div>
+                        <h5 className="p-1 text-purple-600 font-bold">Beta</h5>
+                    </header>
+                    <section className="w-auto">
+                        <div className="flex flex-row gap-6 p-4 bg-inset h-40 w-full justify-center">
+                            <Card sport="Football" description="David" image={ FootballCard } />
+                            <Card sport="Soccer" description="David" image={ FootballCard } />
+                            <Card sport="Basketball" description="David" image={ FootballCard } />
+                            <Card sport="Baseball" description="David" image={ FootballCard } />
+                        </div>
+                    </section>
+                </section>
             </main>
             <MinFooter />
         </>
