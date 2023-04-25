@@ -1,11 +1,26 @@
-import React from 'react'
+import React from 'react';
+
+import Head from 'next/head';
 
 const Terminal = () => {
-    // use this page later for a game or some event
-    // check out forrestknight for some good inspiration
+    const help = [
+        'whoami      Displays information about the current user',
+        'socials     View social networks',
+        'puzzle      Start the puzzle'
+    ]
 
     return (
-        <div>index</div>
+        <>
+            <Head>
+                <title>Stakex Terminal</title>
+        		<meta name="description" content="Stakex" />
+        		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        		<link rel="icon" href="/favicon.ico" />
+            </Head>
+            <main>
+                <textarea typeof='text' cols={30} rows={10}></textarea>
+            </main>
+        </>
     )
 }
 
