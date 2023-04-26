@@ -33,11 +33,15 @@ const App = () => {
                     </header>
                     <section className="w-auto">
                         <div className="flex flex-row gap-6 p-4 bg-inset h-40 w-full justify-center">
-                            <Card sport="Football" description="David" image={ FootballCard } />
-                            <Card sport="Soccer" description="David" image={ FootballCard } />
-                            <Card sport="Basketball" description="David" image={ FootballCard } />
-                            <Card sport="Baseball" description="David" image={ FootballCard } />
+                            <Card sport="Football" image={ FootballCard } />
+                            <Card sport="Soccer" image={ FootballCard } />
+                            <Card sport="Basketball" image={ FootballCard } />
+                            <Card sport="Baseball" image={ FootballCard } />
+                            <Card sport="Boxing" image={ FootballCard } />
                         </div>
+                    </section>
+                    <section>
+                        Get Real
                     </section>
                 </section>
             </main>
