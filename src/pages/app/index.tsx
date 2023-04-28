@@ -4,6 +4,10 @@ import Image from "next/image";
 import Link from 'next/link';
 
 import FootballCard from '@/assets/FootballCard.jpg';
+import SoccerCard from '@/assets/SoccerCard.jpg';
+import BasketballCard from '@/assets/BasketballCard.jpg';
+import BaseballCard from '@/assets/BaseballCard.jpg';
+import BoxingCard from '@/assets/BoxingCard.jpg';
 
 import { Sidebar } from '@/components/App';
 import Card from "@/components/App/Card";
@@ -34,10 +38,10 @@ const App = () => {
                     <section className="w-auto">
                         <div className="flex flex-row gap-6 p-4 bg-inset h-40 w-full justify-center">
                             <Card sport="Football" image={ FootballCard } />
-                            <Card sport="Soccer" image={ FootballCard } />
-                            <Card sport="Basketball" image={ FootballCard } />
-                            <Card sport="Baseball" image={ FootballCard } />
-                            <Card sport="Boxing" image={ FootballCard } />
+                            <Card sport="Soccer" image={ SoccerCard } />
+                            <Card sport="Basketball" image={ BasketballCard } />
+                            <Card sport="Baseball" image={ BaseballCard } />
+                            <Card sport="Boxing" image={ BoxingCard } />
                         </div>
                     </section>
                     <section>
