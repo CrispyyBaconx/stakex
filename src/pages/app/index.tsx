@@ -9,7 +9,6 @@ import BasketballCard from '@/assets/BasketballCard.jpg';
 import BaseballCard from '@/assets/BaseballCard.jpg';
 import BoxingCard from '@/assets/BoxingCard.jpg';
 
-import { Sidebar } from '@/components/App';
 import Card from "@/components/App/Card";
 
 const App = () => {
@@ -29,7 +28,6 @@ const App = () => {
         		<link rel="icon" href="/favicon.ico" />
             </Head>
             <main className="flex bg-gray-900">
-                <Sidebar />
                 <section className="flex flex-col items-stretch w-full">
                     <header className="flex p-8 w-full justify-left">
                         <h2 className="text-white text-4xl">Stakex</h2>
