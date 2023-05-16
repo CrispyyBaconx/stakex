@@ -1,8 +1,7 @@
-import { GetStaticProps } from 'next'
-import Link from 'next/link'
+// Read the comment in [id].tsx for more information.
 
-import { User } from '../../interfaces'
-import { sampleUserData } from '../../utils/sample-data'
+import type { GetStaticProps } from 'next'
+import Link from 'next/link'
 
 type Props = {
   	items: User[]

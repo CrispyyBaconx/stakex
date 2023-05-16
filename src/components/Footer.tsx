@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
 
-import logo from '@/assets/logo.svg';
+import Logo from '@/assets/logo.svg';
 
 const Footer = () => {
     return (
@@ -12,7 +12,7 @@ const Footer = () => {
                     <div className="mb-6 md:mb-0">
                         <div className="flex items-center">
                             {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-                            <Image className="h-8 w-8 mr-3" src={logo} alt="Stakex Logo" />
+                            <Image className="h-8 w-8 mr-3" src={Logo} alt="Stakex Logo" />
                             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Stakex</span>
                         </div>
                     </div>

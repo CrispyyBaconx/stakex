@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
 
@@ -21,6 +20,7 @@ const Stake = () => {
             </Head>
             <main>
                 <header className='flex'>
+                    {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
                     <Image className='w-8' src={Logo} alt='Stakex Logo' />
                     <h2 className='text-2xl'>Stakex</h2>
                 </header>

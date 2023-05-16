@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
+import type { SyntheticEvent } from 'react';
 
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { StaticImageData } from 'next/image';
+import type { StaticImageData } from 'next/image';
 
 interface CardProps {
     sport: string,
@@ -18,9 +18,10 @@ const Card = (props: CardProps) => {
 		backgroundSize: "cover"
 	};
 
-    const handleRedirect = (e) => {
+    const handleRedirect = (e: SyntheticEvent) => {
         e.preventDefault();
-        router.push(`/app/${props.sport.toLowerCase()}`);
+        router.push(`/app/${props.sport.toLowerCase()}`).catch(err => console.log(err));
+        return;
     }
 
     return (

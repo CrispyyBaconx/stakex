@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Link from 'next/link';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { NextRouter, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
+import type { NextRouter } from 'next/router';
 
 const Breadcrumb = () => {
     const router = useRouter()
@@ -13,10 +13,11 @@ const Breadcrumb = () => {
             route.replaceAll(/-/g, ' ');
 
             // capitalize each word in string
-            const words = route.split(' ');
+            const words: Array<string> = route.split(' ');
             
-            return words.map((word) => { 
-                return word[0].toUpperCase() + word.substring(1); 
+            return words.map((word: string) => {
+                // @ts-expect-error: This will always be a string of at least 1 character
+                return word[0].toUpperCase() + word.substring(1); // ex: "home" => "H ome" => "Home"
             });
         });
 

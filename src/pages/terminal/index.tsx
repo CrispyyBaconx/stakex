@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Head from 'next/head';
 
 const Terminal = () => { 
-    const help = [
+    const help: Array<string> = [
         'whoami      Displays information about the current user.',
         'socials     View social networks.',
         'puzzle      Start the puzzle.',

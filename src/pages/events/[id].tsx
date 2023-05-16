@@ -1,7 +1,6 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
+// This file is unused, and riddled with errors. I'm keeping it here for reference, but it should be deleted.
 
-import { User } from '../../interfaces'
-import { sampleUserData } from '../../utils/sample-data'
+import type { GetStaticProps, GetStaticPaths } from 'next'
 
 type Props = {
   	item?: User
