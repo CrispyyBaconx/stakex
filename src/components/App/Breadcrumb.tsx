@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Link from 'next/link';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { NextRouter, useRouter } from 'next/router';
 
 const Breadcrumb = () => {
@@ -12,7 +13,7 @@ const Breadcrumb = () => {
             route.replaceAll(/-/g, ' ');
 
             // capitalize each word in string
-            let words = route.split(' ');
+            const words = route.split(' ');
             
             return words.map((word) => { 
                 return word[0].toUpperCase() + word.substring(1); 
