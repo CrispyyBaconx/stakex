@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import logo from '@/assets/logo.svg';
+import Logo from '@/assets/logo.svg';
 
 const Sidebar = () => {
     return (
@@ -11,7 +11,8 @@ const Sidebar = () => {
             <aside className="top-0 left-0 z-10 w-16 h-screen transition-transform -translate-x-full sm:translate-x-0">
                	<div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 no-scrollbar">
                   	<Link href="/" className="flex items-center pl-1 mb-5">
-                        <Image src={logo} className="h-6 w-6 mr-3 sm:h-7 sm:w-7" alt="Stakex Logo" />
+                        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+                        <Image src={Logo} className="h-6 w-6 mr-3 sm:h-7 sm:w-7" alt="Stakex Logo" />
                   	</Link>
                   	<ul className="space-y-2 font-medium">
                      	<li>

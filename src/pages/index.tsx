@@ -1,5 +1,5 @@
 // React
-import { FormEvent } from 'react';
+import type { FormEvent } from 'react';
 
 // Next
 import Link from 'next/link';
@@ -43,6 +43,7 @@ const Landing = () => {
 					<div className='bg-gradient-to-r from-black px-28 py-16 h-full'>
 						<div className='grid grid-cols-1 gap-16'>
 							<div className='flex w-full justify-between'>
+								{/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
 								<Image className='w-12' src={Logo} alt='Stakex Logo' />
 								<div className='flex gap-6'>
 									I am a thing on the other side that could be a button or something
@@ -51,7 +52,7 @@ const Landing = () => {
 							<Initializing />
 							<h1 className='text-6xl font-bold'>Stakex</h1>
 							<br />
-							<p className='mb-12'>The best decentralized betting app - add more text? also maybe swap the buttons. Also don't forget to change the background to something not copyrighted</p>
+							<p className='mb-12'>The best decentralized betting app - add more text? also maybe swap the buttons. Also don&apos;t forget to change the background to something not copyrighted</p>
 							<div className='flex gap-6'>
 								<Link href='/app' className='text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-10 py-5 text-center mr-2 mb-4'>Enter App</Link>
 								<Link href='/stake' className='relative inline-flex items-center justify-center p-0.5 mb-4 mr-4 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800'>
