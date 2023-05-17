@@ -1,2 +1,2 @@
 export { default as Footer } from './Footer';
-export { default as MinFooter } from './MinFooter';
+export { default as MinFooter } from './App/MinFooter';

@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
 
-import MinFooter from '@/components/MinFooter';
+import MinFooter from '@/components/App/MinFooter';
 
 import Logo from '@/assets/logo.svg';
 

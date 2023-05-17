@@ -22,6 +22,7 @@ const Landing = () => {
 	// TODO: replace background with blend i made using this https://www.blendernation.com/2020/07/06/blender-eevee-render-to-animated-gif/
 
 	const background = {
+		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-member-access
 		backgroundImage: `url("${bg.src}")`,
 		backgroundSize: "cover"
 	};
