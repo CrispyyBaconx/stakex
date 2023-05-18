@@ -65,3 +65,36 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model Sport {
+  	id    Int     @id @default(autoincrement())
+  	name  String  @unique
+  	games Game[]
+}
+
+model Game {
+  	id      Int      @id @default(autoincrement())
+  	sportId Int
+  	sport   Sport    @relation(fields: [sportId], references: [id])
+  	date    DateTime
+  	teamA   String
+  	teamB   String
+  	markets Market[]
+}
+
+model Market {
+  	id      Int      @id @default(autoincrement())
+  	gameId  Int
+  	game    Game     @relation(fields: [gameId], references: [id])
+  	name    String
+  	odds    Odds[]
+}
+
+model Odds {
+  	id        Int      @id @default(autoincrement())
+  	marketId  Int
+  	market    Market   @relation(fields: [marketId], references: [id])
+  	team      String
+  	odds      Decimal  @db.Decimal(65, 30)
+  	createdAt DateTime @default(now())
+}

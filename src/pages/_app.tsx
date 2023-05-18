@@ -1,5 +1,9 @@
-import type { AppProps } from 'next/app';
+import type { AppType } from 'next/app';
+import type { Session } from 'next-auth';
 import localFont from 'next/font/local';
+import { SessionProvider } from 'next-auth/react';
+
+import { api } from '@/utils/api';
 
 const blenderPro = localFont({
     src: '../../public/fonts/Blender-Pro-Bold.woff2',
@@ -9,10 +13,14 @@ const blenderPro = localFont({
 
 import '@/styles/globals.css';
 
-export default function App({ Component, pageProps }: AppProps) {
+const App: AppType<{ session: Session | null }> = ({ Component, pageProps: { session, ...pageProps } }) => {
     return (
-        <main className={`${blenderPro.variable} font-sans`}>
-            <Component {...pageProps} />
-        </main>
-    )
-}
+        <SessionProvider session={session}>
+            <main className={`${blenderPro.variable} font-sans`}>
+                <Component {...pageProps} />
+            </main>
+        </SessionProvider>
+    );
+};
+
+export default api.withTRPC(App);

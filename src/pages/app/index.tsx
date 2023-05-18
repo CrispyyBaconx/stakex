@@ -1,4 +1,4 @@
-import { Header, MinFooter } from "@/components/App";
+import { Header, MinFooter, Sidebar } from "@/components/App";
 import Head from "next/head";
 
 const App = () => {
@@ -11,10 +11,13 @@ const App = () => {
         		<link rel="icon" href="/favicon.ico" />
             </Head>
             <main className="flex bg-gray-900">
-                <div className="container m-auto grid grid-cols-3 grid-rows-5 md:grid-cols-5 lg:grid-cols-8 gap-4">
-                    <div className="tile bg-teal-500 col-span-full">
-                        <Header />
-                    </div>
+                <div className="flex flex-col w-full sticky">
+                    <Header />
+                </div>
+                <aside>
+                    <Sidebar />
+                </aside>
+                <div className="container m-auto grid grid-cols-3 grid-rows-5 md:grid-cols-5 lg:grid-cols-8 gap-4"> {/* main content */}
                     <div className="tile bg-amber-500 row-start-2 row-end-5 col-span-1 md:col-span-2 lg:col-span-3">
                         <h1 className="tile-marker">TWO</h1>
                     </div>
