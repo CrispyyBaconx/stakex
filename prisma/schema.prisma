@@ -38,6 +38,7 @@ model Account {
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
     @@unique([provider, providerAccountId])
+    @@index([userId])
 }
 
 model Session {
@@ -46,6 +47,8 @@ model Session {
     userId       String
     expires      DateTime
     user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@index([userId])
 }
 
 model User {
@@ -80,6 +83,8 @@ model Game {
   	teamA   String
   	teamB   String
   	markets Market[]
+
+	@@index([sportId])
 }
 
 model Market {
@@ -88,6 +93,8 @@ model Market {
   	game    Game     @relation(fields: [gameId], references: [id])
   	name    String
   	odds    Odds[]
+
+	@@index([gameId])
 }
 
 model Odds {
@@ -97,4 +104,6 @@ model Odds {
   	team      String
   	odds      Decimal  @db.Decimal(65, 30)
   	createdAt DateTime @default(now())
+
+	@@index([marketId])
 }
