@@ -13,3 +13,7 @@
         scrollbar-width: none; /* Firefox */
     }
 }
+
+body {
+    @apply bg-black text-slate-100;
+}
