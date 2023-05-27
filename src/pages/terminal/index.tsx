@@ -34,3 +34,4 @@ const Terminal = () => {
 export default Terminal;
 
 //https://medium.com/coinmonks/terminal-co-next-js-a44cae8350f8
+// satnacks terminal
