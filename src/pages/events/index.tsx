@@ -1,5 +1,6 @@
 // Read the comment in [id].tsx for more information.
 
+/*
 import type { GetStaticProps } from 'next'
 import Link from 'next/link'
 
@@ -29,3 +30,4 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default WithStaticProps;
+*/
