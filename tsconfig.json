@@ -28,7 +28,9 @@
 		"**/*.tsx",
 		"**/*.cjs",
 		"**/*.mjs", 
-		"src/pages/indexOld.tsx.example",
+		"src/pages/indexOld.tsx.example", 
+		"src/pages/events/index.tsx.example", 
+		"src/pages/events/[id].tsx.example",
 	],
 	"exclude": ["node_modules"]
 }
