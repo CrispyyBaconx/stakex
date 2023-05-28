@@ -9,6 +9,8 @@ export const env = createEnv({
 	server: {
 		DATABASE_URL: z.string().url(),
 		NODE_ENV: z.enum(["development", "test", "production"]),
+		CLERK_SECRET_KEY: z.string().min(1),
+		BETTING_CONTRACT_ADDRESS: z.string().length(42), // 0x + 40 hex chars
 	},
 	/**
 	* Specify your client-side environment variables schema here. This way you can ensure the app
@@ -16,7 +18,7 @@ export const env = createEnv({
 	* `NEXT_PUBLIC_`.
 	*/
 	client: {
-		//NEXT_PUBLIC_TEST: z.string().min(1),
+		NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string().min(1),
 	},
 		
 	/**
@@ -26,6 +28,8 @@ export const env = createEnv({
 	runtimeEnv: {
 		DATABASE_URL: process.env.DATABASE_URL,
 		NODE_ENV: process.env.NODE_ENV,
-		//NEXT_PUBLIC_TEST: process.env.NEXT_PUBLIC_TEST,
+		CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
+		BETTING_CONTRACT_ADDRESS: process.env.BETTING_CONTRACT_ADDRESS,
+		NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
 	},
 });
