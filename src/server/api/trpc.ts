@@ -25,13 +25,9 @@ import { prisma } from "@/server/db";
  * @see https://trpc.io/docs/context
  */
 export const createTRPCContext = (opts: CreateNextContextOptions) => {
-  const session = getAuth(opts.req);
-
-  const user = session.user;
 
   return {
     prisma,
-    currentUser: user,
   }
 };
 
@@ -45,7 +41,6 @@ export const createTRPCContext = (opts: CreateNextContextOptions) => {
 import { TRPCError, initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
-import { getAuth } from "@clerk/nextjs/dist/server-helpers.server";
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
@@ -83,20 +78,3 @@ export const createTRPCRouter = t.router;
  * are logged in.
  */
 export const publicProcedure = t.procedure;
-
-const enforceUserIsAuthenticated = t.middleware(async ({ ctx, next }) => {
-  if (!ctx.currentUser) {
-    throw new TRPCError({
-      code: "UNAUTHORIZED",
-      message: "You must be logged in to perform this action.",
-    });
-  }
-
-  return next({
-    ctx: {
-      session: ctx.currentUser,
-    }
-  });
-});
-
-export const privateProcedure = t.procedure.use(enforceUserIsAuthenticated);

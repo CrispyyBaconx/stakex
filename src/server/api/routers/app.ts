@@ -1,17 +1,7 @@
 import { z } from "zod";
 
-import { createTRPCRouter, privateProcedure, publicProcedure } from "@/server/api/trpc";
-import { clerkClient } from "@clerk/nextjs";
-import { type User } from "@clerk/nextjs/dist/server";
+import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import { TRPCError } from "@trpc/server";
-
-const waterDownUser = (user: User) => {
-  return {
-    id: user.id, 
-    username: user.username,
-    profileImageUrl: user.profileImageUrl,
-  }
-};
 
 export const mainRouter = createTRPCRouter({
 	getGames: publicProcedure.query(async ({ ctx }) => {
@@ -27,20 +17,12 @@ export const mainRouter = createTRPCRouter({
 		});
 	}),
 
-	getCurrentUser: privateProcedure.query(async ({ ctx }) => {
-		const user = await clerkClient.users.getUser(ctx.currentUser?.id || "");
-
-		if(!user) {
-			throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "User not found" });
-		}
-
-		return waterDownUser(user);
-	}),
-
+	/*
 	bet: privateProcedure.mutation(async ({ ctx }) => {
 		//! not sure how to do this yet
 		const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 		await sleep(1);
 		return 0;
 	}),
+	*/
 });

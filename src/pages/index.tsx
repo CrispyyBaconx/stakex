@@ -1,7 +1,3 @@
-// React
-import type { FormEvent } from 'react';
-
-// Next
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
@@ -10,12 +6,11 @@ import Logo from '@/assets/logo.svg';
 import Footer from '@/components/Footer';
 
 // Components
-import Initializing from '@/components/Landing/Initializing';
+import { Initializing, Newsletter } from '@/components/Landing';
+import { ConnectButton } from '@/components';
 
 const Landing = () => {
-	// TODO: add background animation/render (three.js and react-three-fiber)
 	// TODO: add email submission (convertkit maybe?)
-	// TODO: add footer links
 	// TODO: add copy & gif to the middle of the page
 	// TODO: make app, stake, and misc pages
 
@@ -25,10 +20,6 @@ const Landing = () => {
 		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-member-access
 		backgroundImage: `url("${bg.src}")`,
 		backgroundSize: "cover"
-	};
-
-	const submitEmail = (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
 	};
 
 	return (
@@ -47,7 +38,7 @@ const Landing = () => {
 								{/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
 								<Image className='w-12' src={Logo} alt='Stakex Logo' />
 								<div className='flex gap-6'>
-									I am a thing on the other side that could be a button or something
+									<ConnectButton />
 								</div>
 							</div>
 							<Initializing />
@@ -79,19 +70,7 @@ const Landing = () => {
 				</section>
 
 				<section className='px-8 py-16 bg-[#353945] text-white'>
-					<div className='flex flex-col items-center gap-8'>
-						<h2 className='text-3xl'>Want more updates?</h2>
-						<form className='flex gap-5 align-middle' onSubmit={(e) => submitEmail(e)}>
-							<div className='relative w-full mr-3 formkit-field'>
-								<label className='hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300' htmlFor="member_email">Email Address</label>
-								<div className='absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none focus:border-blue-500'>
-									<svg className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
-								</div>
-								<input type='email' id='member_email' pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required placeholder='Enter Email' className='bg-black px-4 py-2 rounded-xl pl-10' />
-							</div>
-							<button className='bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center' type='submit'>Subscribe</button>
-						</form>
-					</div>
+					<Newsletter />
 				</section>
 			</main>
 			<Footer />

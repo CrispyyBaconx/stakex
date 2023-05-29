@@ -1,6 +1,6 @@
 import type { AppType } from 'next/app';
 import localFont from 'next/font/local';
-import { ClerkProvider } from '@clerk/nextjs';
+import { DAppProvider } from "@usedapp/core";
 
 import { api } from '@/utils/api';
 
@@ -11,15 +11,14 @@ const blenderPro = localFont({
 });
 
 import '@/styles/globals.css';
-import { dark } from '@clerk/themes';
 
 const App: AppType = ({ Component, pageProps }) => {
     return (
-		<ClerkProvider appearance={{ baseTheme: dark }} {...pageProps}>
+        <DAppProvider config={{}}>
             <main className={`${blenderPro.variable} font-sans`}>
                 <Component {...pageProps} />
             </main>
-        </ClerkProvider>
+        </DAppProvider>
     );
 };
 
