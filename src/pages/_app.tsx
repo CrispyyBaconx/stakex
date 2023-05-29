@@ -11,10 +11,11 @@ const blenderPro = localFont({
 });
 
 import '@/styles/globals.css';
+import { dark } from '@clerk/themes';
 
 const App: AppType = ({ Component, pageProps }) => {
     return (
-		<ClerkProvider {...pageProps}>
+		<ClerkProvider appearance={{ baseTheme: dark }} {...pageProps}>
             <main className={`${blenderPro.variable} font-sans`}>
                 <Component {...pageProps} />
             </main>
