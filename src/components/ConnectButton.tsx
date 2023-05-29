@@ -11,7 +11,7 @@ const ConnectButton = () => {
             <div className="px-3">
                 <p className="text-white text-md">{etherBalance && parseFloat(formatEther(etherBalance)).toFixed(3)} ETH</p>
             </div>
-            <button className="flex align-middle bg-gray-800 border border-transparent hover:border-blue-400 hover:bg-gray-700 rounded-xl m-1 px-3 h-[38px]" onClick={() => deactivate()}>
+            <button className="flex items-center bg-gray-800 border border-transparent hover:border-blue-400 hover:bg-gray-700 rounded-xl m-1 px-3 h-[38px]" onClick={() => deactivate()}>
                 <p className="text-white text-md font-medium mr-2">
                     {account &&
                         `${account.slice(0, 6)}...${account.slice(
