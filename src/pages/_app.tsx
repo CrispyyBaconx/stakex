@@ -1,8 +1,10 @@
 import type { AppType } from 'next/app';
 import localFont from 'next/font/local';
-import { DAppProvider } from "@usedapp/core";
+import { DAppProvider, type Config, Arbitrum, ArbitrumGoerli } from "@usedapp/core";
 
 import { api } from '@/utils/api';
+
+import '@/styles/globals.css';
 
 const blenderPro = localFont({
     src: '../../public/fonts/Blender-Pro-Bold.woff2',
@@ -10,11 +12,16 @@ const blenderPro = localFont({
     weight: "700",
 });
 
-import '@/styles/globals.css';
+export const config: Config = {
+    readOnlyUrls: {
+        [Arbitrum.chainId]: "https://arb1.arbitrum.io/rpc",
+        [ArbitrumGoerli.chainId]: "https://goerli-rollup.arbitrum.io/rpc",
+    }
+}
 
 const App: AppType = ({ Component, pageProps }) => {
     return (
-        <DAppProvider config={{}}>
+        <DAppProvider config={ config }>
             <main className={`${blenderPro.variable} font-sans`}>
                 <Component {...pageProps} />
             </main>

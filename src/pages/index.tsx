@@ -10,7 +10,6 @@ import { Initializing, Newsletter } from '@/components/Landing';
 import { ConnectButton } from '@/components';
 
 const Landing = () => {
-	// TODO: add email submission (convertkit maybe?)
 	// TODO: add copy & gif to the middle of the page
 	// TODO: make app, stake, and misc pages
 
