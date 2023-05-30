@@ -36,6 +36,10 @@ const Landing = () => {
 							<div className='flex w-full justify-between'>
 								{/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
 								<Image className='w-12' src={Logo} alt='Stakex Logo' />
+								<div className='flex bg-slate-700'>
+									<button className='px-4 py-2 text-sm font-medium text-white rounded-md hover:bg-opacity-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75'>App</button>
+									<button className='px-4 py-2 text-sm font-medium text-white rounded-md hover:bg-opacity-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75'>Stake</button>
+								</div>
 								<div className='flex gap-6'>
 									<ConnectButton />
 								</div>
