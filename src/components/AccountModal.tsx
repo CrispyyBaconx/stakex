@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { useEthers } from '@usedapp/core';
 import { WalletJazzicon } from '@/components';
 import Link from 'next/link';
@@ -15,16 +15,29 @@ type Props = {
 export default function AccountModal({ isOpen, onClose }: Props) {
     const { account, deactivate } = useEthers();
 
-    function handleDeactivateAccount() {
+    const handleDeactivateAccount = () => {
         deactivate();
         onClose();
     }
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Clean up function to remove the class in case component unmounts
+        return () => {
+            document.body.classList.remove('overflow-hidden');
+        };
+    }, [isOpen]);
 
     if (!isOpen) return null;
     if (!account) return null;
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-75 bg-black">
             <div className="bg-gray-900 border border-gray-700 rounded-3xl">
                 <div className='flex justify-between items-center px-4 py-3'>
                     <div className="text-white px-4 text-lg font-medium">

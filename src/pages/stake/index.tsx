@@ -1,20 +1,17 @@
-import { useState, useEffect } from 'react';
-
-import { ethers } from 'ethers';
-
 import Image from 'next/image';
 import Head from 'next/head';
 
 import { MinFooter, LoadingSpinner } from '@/components';
+import { useApy } from '@/hooks';
+import { poolABI } from '@/abi';
 
 import Logo from '@/assets/logo.svg';
 
 const Stake = () => {
-    const [apy, setApy] = useState<number | null>(null);
-    
-    useEffect(() => {
-        // look into ethers and typechain
-    }, []);
+    // this is the zero address right now
+    const poolAddress = process.env.NEXT_PUBLIC_STAKING_CONTRACT_ADDRESS;
+
+    const apy = useApy(poolAddress, poolABI); // so this will throw an error
 
     return (
         <>
