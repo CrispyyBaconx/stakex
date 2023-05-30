@@ -12,7 +12,7 @@ const blenderPro = localFont({
     weight: "700",
 });
 
-export const config: Config = {
+export const _config: Config = {
     readOnlyUrls: {
         [Arbitrum.chainId]: "https://arb1.arbitrum.io/rpc",
         [ArbitrumGoerli.chainId]: "https://goerli-rollup.arbitrum.io/rpc",
@@ -21,7 +21,7 @@ export const config: Config = {
 
 const App: AppType = ({ Component, pageProps }) => {
     return (
-        <DAppProvider config={ config }>
+        <DAppProvider config={ _config }>
             <main className={`${blenderPro.variable} font-sans`}>
                 <Component {...pageProps} />
             </main>
