@@ -6,7 +6,7 @@ import Logo from '@/assets/logo.svg';
 import Footer from '@/components/Footer';
 
 // Components
-import { FAQ, Newsletter } from '@/components/Landing';
+import { Info, Newsletter } from '@/components/Landing';
 import { ConnectButton } from '@/components';
 
 const Landing = () => {
@@ -70,14 +70,13 @@ const Landing = () => {
 					</div>
 				</section>
 
+				<section className='flex flex-col items-start'>
+					<Info />
+				</section>
+
 				<section className='px-8 py-16 bg-[#353945] text-white'>
 					<Newsletter />
 				</section>
-
-				<section className='flex'>
-					<FAQ />	
-				</section>
-
 			</main>
 			<Footer />
 		</>
