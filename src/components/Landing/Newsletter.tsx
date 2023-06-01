@@ -1,7 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react';
+
+import { useOnScreen } from '@/hooks';
 
 const Newsletter = () => {
     const [success, setSuccess] = useState(false);
+    const [hasScrambled, setHasScrambled] = useState(false);
+    const ref = useRef<HTMLHeadingElement>(null);
+    const onScreen = useOnScreen(ref);
+
+    useEffect(() => {
+        if (onScreen && ref.current && !hasScrambled) {
+            const originalText = "Want to stay up to date?";
+            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let iteration = 0;
+            const interval = setInterval(() => {
+                if (!ref.current) return;
+                ref.current.innerText = originalText
+                    .split("")
+                    .map((letter, index) => {
+                        if(index < iteration) {
+                            return originalText[index];
+                        }
+                        return letters[Math.floor(Math.random() * 26)];
+                    })
+                    .join("");
+                if(iteration >= originalText.length){ 
+                    clearInterval(interval);
+                    setHasScrambled(true);
+                }
+                iteration += 1 / 3;
+            }, 15);
+        }
+        if (!onScreen) {
+            setHasScrambled(false);
+        }
+    }, [hasScrambled, onScreen]);
 
     const subscribe = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -40,7 +73,7 @@ const Newsletter = () => {
 
     return (
         <div className='flex flex-col items-center gap-8'>
-            <h2 className='text-3xl'>Want to stay up to date?</h2>
+            <h2 className='text-3xl' ref={ref}>Want to stay up to date?</h2>
             <form className='flex gap-5 align-middle' onSubmit={subscribe}>
                 <div className='relative w-full mr-3 formkit-field'>
                     <label className='hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300' htmlFor="member_email">Email Address</label>

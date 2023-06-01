@@ -40,6 +40,7 @@ model Market {
 	@@index([gameId])
 }
 
+// This might be wrong as a market should only be unique for one scenario - also with one odds set
 model Odds {
   	id        Int      @id @default(autoincrement())
   	marketId  Int
