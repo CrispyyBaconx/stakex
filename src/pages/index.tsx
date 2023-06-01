@@ -1,24 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
-import bg from '@/assets/bg.gif';
 import Logo from '@/assets/logo.svg';
 import Footer from '@/components/Footer';
+import bg from '@/public/assets/bg.gif';
 
 // Components
 import { Info, Newsletter } from '@/components/Landing';
 import { ConnectButton } from '@/components';
 
 const Landing = () => {
-	// TODO: add copy & gif to the middle of the page
-	// TODO: make app, stake, and misc pages
-
 	// TODO: replace background with blend i made using this https://www.blendernation.com/2020/07/06/blender-eevee-render-to-animated-gif/
-
-	const background = {
-		backgroundImage: `url("${bg.src}")`,
-		backgroundSize: "cover"
-	};
 
 	return (
 		<>
@@ -29,7 +21,7 @@ const Landing = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className='App'>
-				<section className='text-white object-contain w-full h-[50rem]' style={ background }>
+				<section className='text-white object-contain w-full h-[50rem] bg-[url("/assets/bg.gif")] bg-cover'>
 					<div className='bg-gradient-to-r from-black px-28 py-16 h-full'>
 						<div className='grid grid-cols-1 gap-16'>
 							<div className='flex w-full justify-between'>
@@ -63,14 +55,14 @@ const Landing = () => {
 					</div>
 
 					<div className='grid grid-cols-2 gap-4 text-white'> {/* Maybe make this a flex */}
-						<Image src={bg} alt='Cool Gif' width={120} height={120} />
+						<Image src={bg} alt='Cool Gif' width={120} height={120} className='flex' />
 						<h3 className='text-2xl font-bold mb-2'>
 							Stakex is an innovative decentralized app (dApp) built on the Arbitrum One layer-2 solution, transforming the way you bet on sports.
 						</h3>
 					</div>
 				</section>
 
-				<section className='flex flex-col items-start'>
+				<section className='flex flex-col items-center bg-[#050a18]'>
 					<Info />
 				</section>
 
