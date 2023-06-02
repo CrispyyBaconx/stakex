@@ -1,4 +1,3 @@
-import React from 'react';
 import type { SyntheticEvent } from 'react';
 
 import { useRouter } from 'next/router';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Card } from '@/components/Landing';
 import { BsFillLightningChargeFill } from 'react-icons/bs';
 import { FaRegHandshake } from 'react-icons/fa';

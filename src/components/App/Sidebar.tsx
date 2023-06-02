@@ -1,19 +1,11 @@
-import React from 'react';
-
 import Link from 'next/link';
-import Image from 'next/image';
-
-import Logo from '@/assets/logo.svg';
 
 const Sidebar = () => {
     return (
         <>
             <aside className="top-0 left-0 z-10 w-16 h-screen transition-transform -translate-x-full sm:translate-x-0">
                	<div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 no-scrollbar">
-                  	<Link href="/" className="flex items-center pl-1 mb-5">
-                        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-                        <Image src={Logo} className="h-6 w-6 mr-3 sm:h-7 sm:w-7" alt="Stakex Logo" />
-                  	</Link>
+                  	<Link href="/" className="flex items-center pl-1 mb-5" />
                   	<ul className="space-y-2 font-medium">
                      	<li>
                         	<Link href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">

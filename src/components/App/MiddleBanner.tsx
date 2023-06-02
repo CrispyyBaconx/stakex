@@ -1,5 +1,3 @@
-import React from 'react';
-
 // maybe randomly select a banner from a list of banner elements
 
 const MiddleBanner = () => {

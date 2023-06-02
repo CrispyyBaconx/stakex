@@ -1,11 +1,7 @@
-import React from 'react';
-
-import { useBlockNumber } from "@usedapp/core";
 import { ConnectButton } from '@/components';
 import { Search, ToggleStyleButton } from '@/components/App';
 
 const Header = () => {
-    const blockNumber = useBlockNumber();
 
     return (
         <header className="flex flex-row items-stretch w-full">
@@ -13,11 +9,12 @@ const Header = () => {
                 <h2 className="text-white text-4xl">Stakex</h2>
                 <h5 className="p-1 text-purple-600 font-bold">Beta</h5>
             </section>
-            {blockNumber && blockNumber}
-            <section>
+            <section className='flex flex-row'>
                 <Search />
                 <ToggleStyleButton />
-                <ConnectButton />
+                <div className='flex flex-row items-center justify-center p-4'>
+                    <ConnectButton />
+                </div>
             </section>
         </header>
     )

@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Betslip = () => {
     return (
         <div className="flex flex-col flex-grow w-full max-w-7xl mx-auto md:px-8 xl:px-0">

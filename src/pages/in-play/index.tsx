@@ -1,3 +1,4 @@
+import { ListLoadingSkeleton } from "@/components";
 import { api } from "@/utils/api";
 import { type Game } from '@prisma/client';
 
@@ -38,7 +39,7 @@ const InPlay = () => {
                 <section className='flex flex-col items-center justify-center w-full'>
                     <h2 className='text-4xl font-bold text-white'>Games In Play</h2>
                     {isLoading ? (
-                        <p>Loading...</p> // Replace this with your loading component or state
+                        <ListLoadingSkeleton />
                     ) : gamesInPlay && gamesInPlay.length > 0 ? (
                         gamesInPlay.map((game: Game) => (
                             <div key={game.id}>
@@ -47,7 +48,7 @@ const InPlay = () => {
                             </div>
                         ))
                     ) : (
-                        <p>No games in play</p> // Replace this with your empty state component or message
+                        <p>No Games Are Currently In Play.</p>
                     )}
                 </section>
             </main>
