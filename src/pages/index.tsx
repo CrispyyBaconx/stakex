@@ -54,7 +54,7 @@ const Landing = () => {
 						</h2>
 					</div>
 
-					<div className='grid grid-cols-2 gap-4 text-white'> {/* Maybe make this a flex */}
+					<div className='flex flex-row text-white'>
 						<Image src={bg} alt='Cool Gif' width={120} height={120} className='flex' />
 						<h3 className='text-2xl font-bold mb-2'>
 							Stakex is an innovative decentralized app (dApp) built on the Arbitrum One layer-2 solution, transforming the way you bet on sports.

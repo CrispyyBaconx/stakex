@@ -41,12 +41,8 @@ const Newsletter = () => {
 
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         const email: string = e.currentTarget['member_email'].value as string;
-        console.log(email);
-
         const formID = process.env.NEXT_PUBLIC_CONVERTKIT_FORM_ID || '';
         const apiKey = process.env.NEXT_PUBLIC_CONVERTKIT_API_KEY || '';
-
-        console.log(`https://api.convertkit.com/v3/forms/${formID}/subscribe`);
         
         try {
             fetch(`https://api.convertkit.com/v3/forms/${formID}/subscribe`, {
