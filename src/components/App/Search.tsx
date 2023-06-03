@@ -40,4 +40,6 @@ const Search = () => {
 }
 // ! Add a loading state for when the search is loading
 
+// Don't forget to ask if the db architecture is feasible (timestamped history of values)
+
 export default Search;

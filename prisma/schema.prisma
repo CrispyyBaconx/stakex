@@ -22,7 +22,8 @@ model Game {
   	sportId Int
   	sport   Sport    @relation(fields: [sportId], references: [id])
   	date    DateTime
-	inPlay  Boolean	
+	inPlay  Boolean
+	name    String	
   	teamA   String
   	teamB   String
   	markets Market[]

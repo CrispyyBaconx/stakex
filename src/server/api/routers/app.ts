@@ -30,26 +30,44 @@ export const mainRouter = createTRPCRouter({
 		});
 	}),
 	searchGames: publicProcedure
-		.input(z.object({
-				searchString: z.string().min(2), // at least 2 characters before searching
-	  		})
-		)
-		.query(async ({ ctx, input }) => { // I could return the games I found with the query, and then use the string current and compare it to make a highlight effect in the frontend
-		const games = await ctx.prisma.game.findMany({
-			where: {
-				OR: [
-					{ name: { contains: input.searchString }}, // need to fix schema in db, and also fix this since time won't work without some sort of mutation
-					{ team: { contains: input.searchString }}, // also can be team a or team b
-					{ time: { contains: input.searchString }}, // after that need to implement args in the frontend to pass in the search string
-				],
-			},
-			take: 100,
-		});
+    .input(z.object({
+      	searchString: z.string().min(2), // at least 2 characters before searching
+    }))
+    .query(async ({ ctx, input }) => { 
+      	let timeFilter = {};
 
-		return games.map((game: Game) => {
-			return {
-				...game,
-			}
-		});
-	}),
+      	// Check if the input string can be converted to a time
+      	const timeInput = new Date("1970-01-01T" + input.searchString);
+      		if (!isNaN(timeInput.getTime())) {
+        	// Create time range for the search
+        	const start = timeInput;
+        	const end = new Date(start.getTime());
+        	end.setMinutes(end.getMinutes() + 1);
+
+        	timeFilter = {
+        	  	time: {
+        	    	gte: start,
+        	    	lt: end,
+        	  	},
+        	};
+    	}
+
+      	const games = await ctx.prisma.game.findMany({
+        	where: {
+          		OR: [
+            		{ name: { contains: input.searchString }},
+            		{ teamA: { contains: input.searchString }},
+            		{ teamB: { contains: input.searchString }},
+            		timeFilter,
+          		],
+        	},
+        	take: 100,
+      	});
+
+      	return games.map((game: Game) => {
+        	return {
+        		...game,
+        	}
+      	});
+    }),
 });
