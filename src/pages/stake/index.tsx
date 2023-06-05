@@ -27,16 +27,19 @@ const Stake = () => {
                     <Image className='w-8' src={Logo} alt='Stakex Logo' />
                     <h2 className='text-2xl'>Stakex</h2>
                 </header>
-                <section>
-                    {apy ? apy : 
-                        <div role="status" className="max-w-sm animate-pulse">
-                            <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                            <span className="sr-only"><LoadingSpinner size={16} /></span>
-                        </div>
-                    }
-                    <span>% </span>
-                    <span>APY</span>
-                </section>
+                    {/* https://polygon.lido.fi/ - maybe model it after this */}
+                    <section>
+                        {apy ? (
+                            <div className='flex flex-col items-center'>
+                                {apy} <span>% APY</span>
+                            </div>
+                        ) : 
+                            <div role="status" className="max-w-sm animate-pulse">
+                                <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-8 mb-4" />
+                                <span className="sr-only"><LoadingSpinner size={16} /></span>
+                            </div>
+                        }
+                    </section>
             </main>
             <MinFooter />
         </>
