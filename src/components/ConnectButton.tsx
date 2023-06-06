@@ -1,5 +1,6 @@
 import { useEthers, useEtherBalance } from "@usedapp/core";
 import { formatEther } from "ethers/lib/utils";
+import { AiOutlineWarning } from "react-icons/ai";
 import { WalletJazzicon, AccountModal } from '@/components';
 import { useState } from 'react';
 
@@ -8,10 +9,33 @@ type ConnectButtonProps = {
 };
 
 const ConnectButton = (props: ConnectButtonProps) => {
-    const { activateBrowserWallet, account } = useEthers();
+    const { activateBrowserWallet, account, switchNetwork } = useEthers();
     const etherBalance = useEtherBalance(account);
 
     const [isModalOpen, setModalOpen] = useState(false);
+
+    const switchToArbitrum = () => {
+        const v = async () => {
+            await switchNetwork(42161);
+        }
+
+        v().then(() => {
+            return;
+        }).catch((e) => {
+            console.log(e);
+        });
+    };
+
+    const renderWrongNetwork = () => {
+        return (
+            <>
+                <button className="bg-gray-800 border-1 border-transparent hover:border-blue-400 hover:bg-gray-700 rounded-xl m-1 px-3 h-[38px] text-rose-500 flex items-center" onClick={switchToArbitrum}>
+                    <AiOutlineWarning className="text-rose-500 mr-2" />
+                    Wrong Network
+                </button>
+            </>
+        );
+    };
 
     const renderConnectButton = () => {
         return (
@@ -48,14 +72,21 @@ const ConnectButton = (props: ConnectButtonProps) => {
 
     const renderCompactDisplay = () => {
         return (
-            <button className="flex items-center bg-gray-800 border-1 border-transparent hover:border-blue-400 hover:bg-gray-700 rounded-xl m-1 px-3 h-[38px]" onClick={() => { setModalOpen(true) }}>
-                <WalletJazzicon />
-            </button>
+            <>
+                <button className="flex items-center bg-gray-800 border-1 border-transparent hover:border-blue-400 hover:bg-gray-700 rounded-xl m-1 px-3 h-[38px]" onClick={() => { setModalOpen(true) }}>
+                    <p className="text-white text-md pr-3">
+                        {etherBalance && parseFloat(formatEther(etherBalance)).toFixed(3)} ETH
+                    </p>
+                    <WalletJazzicon />
+                </button>
+                <AccountModal isOpen={isModalOpen} onClose={() => { setModalOpen(false) }} />
+            </>
         );
     };
 
     const render = () => {
         if (!account) return renderConnectButton();
+        if (account && !etherBalance) return renderWrongNetwork();
 
         switch (props.display) {
             case 'compact':
