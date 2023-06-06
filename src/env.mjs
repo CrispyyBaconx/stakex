@@ -22,7 +22,7 @@ export const env = createEnv({
 		NEXT_PUBLIC_CONVERTKIT_API_KEY: z.string(),
 		NEXT_PUBLIC_CONVERTKIT_FORM_ID: z.string(),
 	},
-		
+
 	/**
 	* You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
 	* middlewares) or client-side so we need to destruct manually.

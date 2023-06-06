@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Head from 'next/head';
 
-import { MinFooter, LoadingSpinner } from '@/components';
+import { MinFooter, LoadingSpinner, ConnectButton } from '@/components';
 import { useApy } from '@/hooks';
 import { poolABI } from '@/abi';
 
@@ -16,17 +16,26 @@ const Stake = () => {
     return (
         <>
             <Head>
-                <title>Stakex</title>
+                <title>Stakex - Staking</title>
 				<meta name="description" content="Stakex" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
-                <header className='flex'>
-                    {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-                    <Image className='w-8' src={Logo} alt='Stakex Logo' />
-                    <h2 className='text-2xl'>Stakex</h2>
+                <header className='flex p-4'>
+                    <div className='flex'>
+                        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+                        <Image className='w-8' src={Logo} alt='Stakex Logo' />
+                        <h2 className='text-2xl'>Stakex</h2>
+                        <p className='text-purple-600 flex'>
+                            &nbsp;Beta
+                        </p>
+                    </div>
+                    <div className='flex flex-grow justify-end'>
+                        <ConnectButton display='compact' />
+                    </div>
                 </header>
+
                     {/* https://polygon.lido.fi/ - maybe model it after this */}
                     <section>
                         {apy ? (

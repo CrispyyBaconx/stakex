@@ -1,6 +1,7 @@
 import { ListLoadingSkeleton } from "@/components";
 import { api } from "@/utils/api";
 import { type Game } from '@prisma/client';
+import Head from "next/head";
 
 const InPlay = () => {
     const { isLoading, data: gamesInPlay } = api.main.getGamesInPlay.useQuery();
@@ -31,28 +32,36 @@ const InPlay = () => {
     };
 
     return (
-        <div className='flex bg-[#050a18]'>
-            <header className='flex flex-col items-center justify-center w-full'>
-                <h1 className='text-6xl font-bold text-white'>In Play</h1>
-            </header>
-            <main>
-                <section className='flex flex-col items-center justify-center w-full'>
-                    <h2 className='text-4xl font-bold text-white'>Games In Play</h2>
-                    {isLoading ? (
-                        <ListLoadingSkeleton />
-                    ) : gamesInPlay && gamesInPlay.length > 0 ? (
-                        gamesInPlay.map((game: Game) => (
-                            <div key={game.id}>
-                                <h3 className='text-2xl font-bold text-white'>{getNameFromSportId(game.sportId)}</h3>
-                                <p className='text-white'>{game.date.toLocaleDateString()}</p>
-                            </div>
-                        ))
-                    ) : (
-                        <p>No Games Are Currently In Play.</p>
-                    )}
-                </section>
-            </main>
-        </div>
+        <>
+            <Head>
+                <title>In Play |&gt;</title>
+                <meta name="description" content="Stakex" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<link rel="icon" href="/favicon.ico" />
+            </Head>
+            <div className='flex bg-[#050a18]'>
+                <header className='flex flex-col items-center justify-center w-full'>
+                    <h1 className='text-6xl font-bold text-white'>In Play</h1>
+                </header>
+                <main>
+                    <section className='flex flex-col items-center justify-center w-full'>
+                        <h2 className='text-4xl font-bold text-white'>Games In Play</h2>
+                        {isLoading ? (
+                            <ListLoadingSkeleton />
+                        ) : gamesInPlay && gamesInPlay.length > 0 ? (
+                            gamesInPlay.map((game: Game) => (
+                                <div key={game.id}>
+                                    <h3 className='text-2xl font-bold text-white'>{getNameFromSportId(game.sportId)}</h3>
+                                    <p className='text-white'>{game.date.toLocaleDateString()}</p>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No Games Are Currently In Play.</p>
+                        )}
+                    </section>
+                </main>
+            </div>
+        </>
     )
 }
 
