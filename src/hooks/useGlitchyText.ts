@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useOnScreen } from '@/hooks';
 
-export default function useGlitchyText(ref: React.RefObject<HTMLElement>, originalText: string) { // haven't tested this
+export default function useGlitchyText(ref: React.RefObject<HTMLElement>, originalText: string) {
     const [hasScrambled, setHasScrambled] = useState(false);
     const onScreen = useOnScreen(ref);
 

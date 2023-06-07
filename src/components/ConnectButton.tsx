@@ -16,7 +16,7 @@ const ConnectButton = (props: ConnectButtonProps) => {
 
     const switchToArbitrum = () => {
         const v = async () => {
-            await switchNetwork(42161);
+            await switchNetwork(42161); // Arbitrum One
         }
 
         v().then(() => {

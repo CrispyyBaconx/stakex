@@ -11,7 +11,7 @@ import { ConnectButton } from '@/components';
 
 const Landing = () => {
 	// TODO: replace background with blend i made using this https://www.blendernation.com/2020/07/06/blender-eevee-render-to-animated-gif/
-
+	// model components after vercel.com's css
 	return (
 		<>
 			<Head>
@@ -48,13 +48,13 @@ const Landing = () => {
 				</section>
 
 				<section className='px-24 py-16 bg-inset text-white'>
-					<div className='max-w-xl mb-16'>
+					<div className='max-w-xl mb-16 flex'>
 						<h2 className='text-5xl whitespace-nowrap'>
 							Experience the Power of <span className='bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-400 text-transparent bg-clip-text'>On-Chain</span> Betting.
 						</h2>
 					</div>
 
-					<div className='flex flex-row text-white'>
+					<div className='flex flex-row justify-around items-center text-white'>
 						<Image src={bg} alt='Cool Gif' width={120} height={120} className='flex' />
 						<h3 className='text-2xl font-bold mb-2'>
 							Stakex is an innovative decentralized app (dApp) built on the Arbitrum One layer-2 solution, transforming the way you bet on sports.

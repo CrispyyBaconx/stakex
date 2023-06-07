@@ -61,7 +61,7 @@ export default function AccountModal({ isOpen, onClose }: Props) {
                             <p className="text-white text-xl font-semibold ml-2">{account && `${account.slice(0, 6)}...${account.slice(account.length - 4, account.length)}`}</p>
                         </div>
                         <div className="flex items-center m-3">
-                            <button className="text-gray-400 text-sm hover:text-white hover:opacity-80">
+                            <button className="text-gray-400 text-sm hover:text-white hover:opacity-80" onClick={() => { navigator.clipboard.writeText(account).catch(e => console.log(e)) }}>
                                 <RiFileCopyLine className="inline-block mr-1" />
                                 Copy Address
                             </button>
