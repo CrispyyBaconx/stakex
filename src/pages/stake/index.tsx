@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Head from 'next/head';
 
+import { useState } from 'react';
 import { MinFooter, LoadingSpinner, ConnectButton } from '@/components';
 import { useApy } from '@/hooks';
 import { poolABI } from '@/abi';
@@ -8,6 +9,9 @@ import { poolABI } from '@/abi';
 import Logo from '@/assets/logo.svg';
 
 const Stake = () => {
+    const [stake, setStake] = useState(true); // true = staking menu, false = rewards menu  
+    // {/* https://polygon.lido.fi/ - maybe model it after this */}
+
     // this is the zero address right now
     const poolAddress = process.env.NEXT_PUBLIC_STAKING_CONTRACT_ADDRESS;
 
@@ -21,7 +25,7 @@ const Stake = () => {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
             </Head>
-            <main>
+            <main className="bg-slate-900">
                 <header className='flex p-4'>
                     <div className='flex'>
                         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
@@ -35,20 +39,51 @@ const Stake = () => {
                         <ConnectButton display='compact' />
                     </div>
                 </header>
-
-                    {/* https://polygon.lido.fi/ - maybe model it after this */}
-                    <section>
-                        {apy ? (
-                            <div className='flex flex-col items-center'>
-                                {apy} <span>% APY</span>
+                <div className='flex flex-col items-center'>
+                    <div className='flex flex-col items-center'>
+                        <h1 className='text-4xl'>Staking</h1>
+                        <p className='text-gray-400'>Earn a percent of platform revenue</p>
+                    </div>
+                    <div className='flex flex-row items-center'>
+                        <button className='text-white rounded-md p-2 m-2' onClick={() => setStake(true)}>Stake</button>
+                        <p>·</p>
+                        <button className= 'text-white rounded-md p-2 m-2' onClick={() => setStake(false)}>Rewards</button>
+                    </div>
+                    {stake ? (
+                        <div className='flex flex-col items-center'>
+                            <div className='flex flex-row items-center mt-12'>
+                                <div className='flex flex-col mx-8 p-2 bg-gray-800 border-8 rounded-lg border-gray-800'>
+                                    <p className='text-gray-400'>APY over Time</p>
+                                    {apy ? (
+                                        <div className='flex flex-col items-center'>
+                                            {apy} <span>% APY</span>
+                                        </div>
+                                    ) : 
+                                        <div role="status" className="max-w-sm animate-pulse">
+                                            <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-8 mb-4" />
+                                            <span className="sr-only"><LoadingSpinner size={16} /></span>
+                                        </div>
+                                    }
+                                </div>
+                                <div className='flex flex-col mx-8 p-2 bg-gray-800 border-8 rounded-lg border-gray-800'>
+                                    <p className='text-gray-400'>Rewards Available</p>
+                                    <p className='text-white'>0.00</p>
+                                </div>
                             </div>
-                        ) : 
-                            <div role="status" className="max-w-sm animate-pulse">
-                                <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-8 mb-4" />
-                                <span className="sr-only"><LoadingSpinner size={16} /></span>
+                        </div>
+                    ) : (
+                        <div className='flex flex-row items-center mt-12'> {/* maybe change to a my-12 - still dont know how to get the footer sorted */}
+                            <div className='flex flex-col mx-8 p-2 bg-gray-800 border-8 rounded-lg border-gray-800'>
+                                <p className='text-gray-400'>APY over Time</p>
+                                <p className='text-white'>100%</p>
                             </div>
-                        }
-                    </section>
+                            <div className='flex flex-col mx-8 p-2 bg-gray-800 border-8 rounded-lg border-gray-800'>
+                                <p className='text-gray-400'>Rewards Available</p>
+                                <p className='text-white'>0.00</p>
+                            </div>
+                        </div>
+                    )}
+                </div>
             </main>
             <MinFooter />
         </>
