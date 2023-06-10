@@ -25,7 +25,7 @@ const Stake = () => {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className="bg-slate-900">
+            <main className="bg-slate-900 h-[96vh]"> {/* should probably fix this */}
                 <header className='flex p-4'>
                     <div className='flex'>
                         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
@@ -52,7 +52,7 @@ const Stake = () => {
                     {stake ? (
                         <div className='flex flex-col items-center'>
                             <div className='flex flex-row items-center mt-12'>
-                                <div className='flex flex-col mx-8 p-2 bg-gray-800 border-8 rounded-lg border-gray-800'>
+                                <div className='flex flex-col p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800'>
                                     <p className='text-gray-400'>APY over Time</p>
                                     {apy ? (
                                         <div className='flex flex-col items-center'>
@@ -65,14 +65,14 @@ const Stake = () => {
                                         </div>
                                     }
                                 </div>
-                                <div className='flex flex-col mx-8 p-2 bg-gray-800 border-8 rounded-lg border-gray-800'>
+                                <div className='flex flex-col p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800'>
                                     <p className='text-gray-400'>Rewards Available</p>
                                     <p className='text-white'>0.00</p>
                                 </div>
                             </div>
                         </div>
                     ) : (
-                        <div className='flex flex-row items-center mt-12'> {/* maybe change to a my-12 - still dont know how to get the footer sorted */}
+                        <div className='flex flex-row items-center mt-12'>
                             <div className='flex flex-col mx-8 p-2 bg-gray-800 border-8 rounded-lg border-gray-800'>
                                 <p className='text-gray-400'>APY over Time</p>
                                 <p className='text-white'>100%</p>
