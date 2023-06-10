@@ -1,40 +1,12 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
-import { useOnScreen } from '@/hooks';
+import { useGlitchyText } from '@/hooks';
 
 const Newsletter = () => {
     const [success, setSuccess] = useState(false);
-    const [hasScrambled, setHasScrambled] = useState(false);
     const ref = useRef<HTMLHeadingElement>(null);
-    const onScreen = useOnScreen(ref);
 
-    useEffect(() => {
-        if (onScreen && ref.current && !hasScrambled) {
-            const originalText = "Want to stay up to date?";
-            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            let iteration = 0;
-            const interval = setInterval(() => {
-                if (!ref.current) return;
-                ref.current.innerText = originalText
-                    .split("")
-                    .map((letter, index) => {
-                        if(index < iteration) {
-                            return originalText[index];
-                        }
-                        return letters[Math.floor(Math.random() * 26)];
-                    })
-                    .join("");
-                if(iteration >= originalText.length){ 
-                    clearInterval(interval);
-                    setHasScrambled(true);
-                }
-                iteration += 1 / 3;
-            }, 15);
-        }
-        if (!onScreen) {
-            setHasScrambled(false);
-        }
-    }, [hasScrambled, onScreen]);
+    useGlitchyText(ref, "Want to stay up to date?");
 
     const subscribe = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

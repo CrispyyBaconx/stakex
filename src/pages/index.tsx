@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
@@ -12,8 +13,12 @@ import { Card } from '@/components/Landing';
 import { BsFillLightningChargeFill, BsShieldFill } from 'react-icons/bs';
 import { FaRegHandshake, FaRegClock } from 'react-icons/fa';
 import { GiMoneyStack } from 'react-icons/gi';
+import { useGlitchyText } from '@/hooks';
 
 const Landing = () => {
+	const titleRef = useRef<HTMLHeadingElement>(null);
+	useGlitchyText(titleRef, "Stakex");
+
 	return (
 		<>
 			<Head>
@@ -32,7 +37,7 @@ const Landing = () => {
 									<ConnectButton />
 								</div>
 							</div>
-							<h1 className='text-6xl font-bold'>Stakex</h1>
+							<h1 className='text-6xl font-bold' ref={titleRef}>Stakex</h1>
 							<br />
 							<div className='flex flex-col gap-4'>
 								<p className='text-xl'>Welcome to the future of sports betting.</p>
@@ -48,17 +53,17 @@ const Landing = () => {
 					</div>
 				</section>
 
-				<section className='px-24 py-16 bg-inset text-white'>
-					<div className='max-w-xl mb-16 flex'>
-						<h2 className='text-5xl whitespace-nowrap'>
-							Experience the Power of <span className='bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-400 text-transparent bg-clip-text'>On-Chain</span> Betting.
+				<section className='px-24 py-16 bg-inset text-white flex flex-col items-center'>
+					<div className='mb-16 flex'>
+						<h2 className='text-5xl flex flex-row'>
+							Experience the Power of <span className='bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-400 text-transparent bg-clip-text block'>&nbsp;On-Chain&nbsp;</span> Betting.
 						</h2>
 					</div>
 
-					<div className='flex flex-row justify-around items-center text-white'>
+					<div className='flex flex-row justify-around items-center text-white w-[70rem]'>
 						<Image src={bg} alt='Cool Gif' width={120} height={120} className='flex' />
-						<h3 className='text-2xl font-bold mb-2'>
-							Stakex is an innovative decentralized app (dApp) built on the Arbitrum One layer-2 solution, transforming the way you bet on sports.
+						<h3 className='text-2xl font-bold mb-2 bg-slate-800 p-4 border-8 rounded-lg border-slate-800 w-72'>
+							Stakex is an innovative decentralized app (dApp) built on the Arbitrum One layer-2 solution, transforming the way you bet on sports. Add more copy later.
 						</h3>
 					</div>
 				</section>
