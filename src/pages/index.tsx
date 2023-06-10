@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
 import Footer from '@/components/Footer';
-import bg from '@/public/assets/bg.gif';
 import blank from '@/assets/blank.png';
 
 // Components
@@ -28,7 +27,10 @@ const Landing = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className='App'>
-				<section className='text-white object-contain w-full h-[50rem] bg-[url("/assets/bg.gif")] bg-cover'>
+				<section className='text-white object-contain w-full h-[50rem] bg-cover'>
+					<video autoPlay muted loop className='-z-[100] w-auto min-w-full min-h-full absolute'>
+						<source src='/assets/bg.mp4' type='video/mp4' />
+					</video>
 					<div className='bg-gradient-to-r from-black px-28 py-16 h-full'>
 						<div className='grid grid-cols-1 gap-16'>
 							<div className='flex w-full justify-between'>
@@ -52,7 +54,6 @@ const Landing = () => {
 						</div>
 					</div>
 				</section>
-
 				<section className='px-24 py-16 bg-inset text-white flex flex-col items-center'>
 					<div className='mb-16 flex'>
 						<h2 className='text-5xl flex flex-row'>
@@ -61,9 +62,10 @@ const Landing = () => {
 					</div>
 
 					<div className='flex flex-row justify-around items-center text-white w-[70rem]'>
-						<Image src={bg} alt='Cool Gif' width={120} height={120} className='flex' />
+						{/*<Image src={bg} alt='Cool Gif' width={120} height={120} className='flex' />*/}
+						hi
 						<h3 className='text-2xl font-bold mb-2 bg-slate-800 p-4 border-8 rounded-lg border-slate-800 w-72'>
-							Stakex is an innovative decentralized app (dApp) built on the Arbitrum One layer-2 solution, transforming the way you bet on sports. Add more copy later.
+							Stakex is an innovative decentralized app (dApp) built on the Arbitrum One layer-2 solution, transforming the way you bet on sports.
 						</h3>
 					</div>
 				</section>

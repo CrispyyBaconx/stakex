@@ -76,15 +76,9 @@ const Stake = () => {
                             </div>
                         </div>
                     ) : (
-                        <div className='flex flex-row items-center mt-12'> {/* rewards */}
-                            <div className='flex flex-col mx-8 p-2 bg-gray-800 border-8 rounded-lg border-gray-800'>
-                                <p className='text-gray-400'>APY over Time</p>
-                                <p className='text-white'>100%</p>
-                            </div>
-                            <div className='flex flex-col mx-8 p-2 bg-gray-800 border-8 rounded-lg border-gray-800'>
-                                <p className='text-gray-400'>Rewards Available</p>
-                                <p className='text-white'>0.00</p>
-                            </div>
+                        <div className='flex flex-col items-center mt-12 p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800'> {/* rewards */}
+                            <p className='text-gray-400'>Rewards Available</p>
+                            <p className='text-white'>0.00</p>
                         </div>
                     )}
                 </div>
