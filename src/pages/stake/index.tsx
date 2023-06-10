@@ -12,6 +12,10 @@ const Stake = () => {
     const [stake, setStake] = useState(true); // true = staking menu, false = rewards menu  
     // {/* https://polygon.lido.fi/ - maybe model it after this */}
 
+    // make header a flex and stuff justified around
+    // figure out what to do for stake, unstake, and rewards
+    // copy the rewards ig
+
     // this is the zero address right now
     const poolAddress = process.env.NEXT_PUBLIC_STAKING_CONTRACT_ADDRESS;
 
