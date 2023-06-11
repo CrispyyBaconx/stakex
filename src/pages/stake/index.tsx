@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import { useState } from 'react';
 import { MinFooter, LoadingSpinner, ConnectButton } from '@/components';
@@ -9,6 +10,7 @@ import { poolABI } from '@/abi';
 import Logo from '@/assets/logo.svg';
 
 const Stake = () => {
+    const router = useRouter();
     const [stake, setStake] = useState(true); // true = staking menu, false = rewards menu  
     // {/* https://polygon.lido.fi/ - maybe model it after this */}
 
@@ -29,17 +31,17 @@ const Stake = () => {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className="bg-slate-900 h-[96vh]"> {/* should probably fix this */}
-                <header className='flex p-4'>
-                    <div className='flex'>
+            <main className="bg-slate-900">
+                <header className='flex p-8 w-full justify-around'>
+                    <div className='flex cursor-pointer' onClick={() => { router.push('/').then().catch(console.error) }}>
                         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-                        <Image className='w-8' src={Logo} alt='Stakex Logo' />
-                        <h2 className='text-2xl'>Stakex</h2>
-                        <p className='text-purple-600 flex'>
+                        <Image className='w-10 mr-2' src={Logo} alt='Stakex Logo' />
+                        <h2 className='text-2xl flex flex-col justify-center'>Stakex</h2>
+                        <p className='text-purple-600 flex pt-2'>
                             &nbsp;Beta
                         </p>
                     </div>
-                    <div className='flex flex-grow justify-end'>
+                    <div className='flex'>
                         <ConnectButton display='compact' />
                     </div>
                 </header>
@@ -86,8 +88,10 @@ const Stake = () => {
                         </div>
                     )}
                 </div>
+                <div className=''>
+                    <MinFooter />
+                </div>
             </main>
-            <MinFooter />
         </>
     )
 }

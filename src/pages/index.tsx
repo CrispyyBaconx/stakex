@@ -28,7 +28,7 @@ const Landing = () => {
 			</Head>
 			<main className='App'>
 				<section className='text-white object-contain w-full h-[50rem] bg-cover'>
-					<video autoPlay muted loop className='-z-[100] w-auto min-w-full min-h-full absolute'>
+					<video autoPlay muted loop className='-z-[100] w-auto min-w-full absolute'>
 						<source src='/assets/bg.mp4' type='video/mp4' />
 					</video>
 					<div className='bg-gradient-to-r from-black px-28 py-16 h-full'>
