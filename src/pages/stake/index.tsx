@@ -31,7 +31,7 @@ const Stake = () => {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className="bg-slate-900">
+            <main className="flex flex-col min-h-screen bg-slate-900">
                 <header className='flex p-8 w-full justify-around'>
                     <div className='flex cursor-pointer' onClick={() => { router.push('/').then().catch(console.error) }}>
                         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
@@ -45,7 +45,7 @@ const Stake = () => {
                         <ConnectButton display='compact' />
                     </div>
                 </header>
-                <div className='flex flex-col items-center'>
+                <div className='flex flex-col flex-grow items-center'>
                     <div className='flex flex-col items-center'>
                         <h1 className='text-4xl'>Staking</h1>
                         <p className='text-gray-400'>Earn a percent of platform revenue</p>
@@ -88,7 +88,7 @@ const Stake = () => {
                         </div>
                     )}
                 </div>
-                <div className=''>
+                <div className='flex flex-col mt-auto w-full'>
                     <MinFooter />
                 </div>
             </main>
