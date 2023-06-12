@@ -27,6 +27,7 @@ module.exports = {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'dot': "radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px)",
+				'solid': 'linear-gradient(var(--tw-gradient-stops))',
 			},
 			animation: {
 				border: 'background ease infinite',

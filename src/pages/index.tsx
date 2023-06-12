@@ -70,7 +70,7 @@ const Landing = () => {
 					</div>
 				</section>
 
-				<section className='flex flex-col items-center bg-[#212534]'>
+				<section className='flex flex-col items-center bg-[#212534]'> {/* implement slanted bg, parallax*/}
 					<div className='flex flex-row'>
                 		<div className="flex flex-col">
                 		    <div className="flex flex-row items-center justify-center p-4">
