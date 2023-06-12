@@ -30,12 +30,17 @@ module.exports = {
 			},
 			animation: {
 				border: 'background ease infinite',
+				spin: 'spin 2.5s linear infinite',
 			},
 			keyframes: {
 				background: {
 				  	'0%, 100%': { backgroundPosition: '0% 50%' },
 				  	'50%': { backgroundPosition: '100% 50%' },
 				},
+				spin: {
+					'0%': { '--rotate': '0deg' },
+					'100%': { '--rotate': '360deg' }
+				}
 			},
 			gridTemplateColumns: {
 				'16': 'repeat(16, minmax(0, 1fr))',
@@ -53,7 +58,7 @@ module.exports = {
 				'15': '15',
 				'16': '16',
 				'17': '17',
-			},			  
+			},
 		},
 	},
 	plugins: [

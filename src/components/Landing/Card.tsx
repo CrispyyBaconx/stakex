@@ -8,7 +8,7 @@ type CardProps = {
 
 const Card = (props: CardProps) => {
     return (
-        <div className='flex w-[300px] aspect-[10/16] rounded-2xl overflow-hidden py-8'>
+        <div className='flex w-[300px] aspect-[10/16] rounded-2xl overflow-hidden py-8 hover:scale-105 ease-in-out transition'>
             <div className='flex flex-col justify-between w-full p-5 bg-slate-600 border-slate-700 border-8 rounded-2xl'>
                 <div className='flex flex-col gap-2'>
                     <div className='flex items-center justify-center w-12 h-12 bg-white rounded-full'>

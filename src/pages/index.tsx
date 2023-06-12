@@ -39,7 +39,7 @@ const Landing = () => {
 									<ConnectButton />
 								</div>
 							</div>
-							<h1 className='text-6xl font-bold' ref={titleRef}>Stakex</h1>
+							<h1 className='text-6xl font-bold text-shadow shadow-slate-100' ref={titleRef}>Stakex</h1>
 							<br />
 							<div className='flex flex-col gap-4'>
 								<p className='text-xl'>Welcome to the future of sports betting.</p>
@@ -70,7 +70,7 @@ const Landing = () => {
 					</div>
 				</section>
 
-				<section className='flex flex-col items-center bg-[#050a18]'>
+				<section className='flex flex-col items-center bg-[#212534]'>
 					<div className='flex flex-row'>
                 		<div className="flex flex-col">
                 		    <div className="flex flex-row items-center justify-center p-4">
@@ -99,9 +99,9 @@ const Landing = () => {
             		</div>
 				</section>
 
-				<section className='px-24 py-16 bg-[#130030] text-white flex flex-col items-center'>
+				<section className='px-24 py-16 bg-inset text-white flex flex-col items-center'>
 					<div className='mb-16 flex'>
-						<h2 className='text-5xl flex flex-row'>
+						<h2 className='text-5xl flex flex-row text-shadow shadow-slate-200'>
 							How it Works
 						</h2>
 					</div>
