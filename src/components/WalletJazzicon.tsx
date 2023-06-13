@@ -1,20 +1,16 @@
-import Jazzicon from "@metamask/jazzicon";
-import { useEffect, useRef } from "react";
+import Jazzicon from "react-jazzicon";
 import { useEthers } from "@usedapp/core";
 
 const WalletJazzicon = () => {
-    const ref = useRef<HTMLDivElement>(null);
     const { account } = useEthers();
-  
-    useEffect(() => {
-        if (account && ref.current) {
-            ref.current.innerHTML = "";
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-            ref.current.appendChild(Jazzicon(16, parseInt(account.slice(2, 10), 16)));
-        }
-    }, [account]);
-        
-    return <div className="h-4 w-4 rounded-full bg-black" ref={ref} />;
-}  
+    
+    if (!account) return null;
+    
+    return (
+        <div className="h-4 w-4 rounded-full bg-black">
+            <Jazzicon seed={parseInt(account.slice(2, 10), 16)} diameter={16} />
+        </div>
+    );
+}
 
 export default WalletJazzicon;
