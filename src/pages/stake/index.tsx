@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { useEthers, useSendTransaction } from '@usedapp/core';
 
 import { useState } from 'react';
 import { MinFooter, LoadingSpinner, ConnectButton } from '@/components';
@@ -11,6 +12,8 @@ import Logo from '@/assets/logo.svg';
 
 const Stake = () => {
     const router = useRouter();
+    const { account } = useEthers(); // using this for checking connection state
+    const { sendTransaction } = useSendTransaction(); // using this for write to stake, unstake, and claim - useCustomCall for read only stuff
     const [stake, setStake] = useState(true); // true = staking menu, false = rewards menu  
     // {/* https://polygon.lido.fi/ - maybe model it after this */}
 
@@ -21,7 +24,7 @@ const Stake = () => {
     // this is the zero address right now
     const poolAddress = process.env.NEXT_PUBLIC_STAKING_CONTRACT_ADDRESS;
 
-    const apy = useApy(poolAddress, poolABI); // so this will throw an error
+    const apy = useApy(poolAddress, poolABI); // so this will throw an error // replace with useCustomCall (remove useApy)
 
     return (
         <>
@@ -52,39 +55,66 @@ const Stake = () => {
                     </div>
                     <div className='flex flex-row items-center'>
                         <a className="group transition-all duration-300 ease-in-out">
-                            <button className='text-white bg-left-bottom bg-gradient-to-r from-blue-500 to-violet-600 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out m-4' onClick={() => setStake(true)}>Stake</button>
+                            <button className='text-white bg-left-bottom bg-gradient-to-r from-blue-500 to-violet-600 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out m-4' onClick={() => setStake(true)}>
+                                Stake
+                            </button>
                         </a>
                         <p>·</p>
                         <a className="group transition-all duration-300 ease-in-out">
-                            <button className= 'text-white bg-left-bottom bg-gradient-to-r from-blue-500 to-violet-600 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out m-4' onClick={() => setStake(false)}>Rewards</button>
+                            <button className='text-white bg-left-bottom bg-gradient-to-r from-blue-500 to-violet-600 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out m-4' onClick={() => setStake(false)}>
+                                Rewards
+                            </button>
                         </a>
                     </div>
                     {stake ? (
                         <div className='flex flex-col items-center'> {/* staking */}
-                            <div className='flex flex-row items-center mt-12'>
-                                <div className='flex flex-col p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800'>
-                                    <p className='text-gray-400'>APY over Time</p>
-                                    {apy ? (
-                                        <div className='flex flex-col items-center'>
-                                            {apy} <span>% APY</span>
-                                        </div>
-                                    ) : 
-                                        <div role="status" className="max-w-sm animate-pulse">
-                                            <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-8 mb-4" />
-                                            <span className="sr-only"><LoadingSpinner size={16} /></span>
-                                        </div>
-                                    }
+                            <div className='flex flex-row items-center mt-12 w-[70em] justify-around'>
+                                <div className='flex flex-col p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800 gap-2'>
+                                    <p className='text-gray-400 text-2xl'>Stake</p>
+                                    <input className='text-white bg-gray-800 border-2 rounded-[20px] border-gray-800' type='number' placeholder='0.00' /> {/* make this look cooler */}
+                                    Maybe add more stuff here?
                                 </div>
-                                <div className='flex flex-col p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800'>
-                                    <p className='text-gray-400'>Rewards Available</p>
+                                <div className='flex flex-col p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800 gap-2'>
+                                    <p className='text-gray-400 text-2xl'>Unstake</p>
+                                    <input className='text-white bg-gray-800 border-2 rounded-[20px] border-gray-800' type='number' placeholder='0.00' /> {/* make this look cooler */}
+                                    Also add more stuff here
+                                </div>
+                                <div className='flex flex-col p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800 gap-2'>
+                                    <p className='text-gray-400 text-2xl'>Claim</p>
                                     <p className='text-white'>0.00</p>
+                                    {account ? (
+                                        <div>
+                                            hi
+                                        </div>
+                                    ) : (
+                                        <div>
+                                            hi
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     ) : (
-                        <div className='flex flex-col items-center mt-12 p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800'> {/* rewards */}
-                            <p className='text-gray-400'>Rewards Available</p>
-                            <p className='text-white'>0.00</p>
+                        <div className='flex flex-row items-center mt-12 w-[40em] justify-around'>
+                            <div className='flex flex-col p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800'> {/* rewards */}
+                                <p className='text-gray-400'>Rewards Available</p>
+                                <p className='text-white'>0.00</p>
+                            </div>
+                            <div className='flex flex-col p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800'>
+                                <p className='text-gray-400'>APY over Time</p>
+                                {apy ? (
+                                    <div className='flex flex-col items-center'>
+                                        {apy} <span>% APY</span>
+                                    </div>
+                                ) : 
+                                    <div role="status" className="max-w-sm animate-pulse">
+                                        <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-8 mb-4" />
+                                        <span className="sr-only">
+                                            <LoadingSpinner size={16} /> {/* Change name to skeleton */}
+                                        </span>
+                                    </div>
+                                }
+                            </div>
                         </div>
                     )}
                 </div>
