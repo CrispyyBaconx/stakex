@@ -83,12 +83,14 @@ const Stake = () => {
                                     <p className='text-gray-400 text-2xl'>Claim</p>
                                     <p className='text-white'>0.00</p>
                                     {account ? (
-                                        <div>
-                                            hi
+                                        <div className='flex'>
+                                            <button className='text-white bg-blue-500 p-4 rounded-xl' onClick={() => { sendTransaction({ to: poolAddress, data: '0x' }).then().catch(console.error) }}>
+                                                Claim
+                                            </button>
                                         </div>
                                     ) : (
-                                        <div>
-                                            hi
+                                        <div className='flex opacity-70 bg-slate-500 border-[1px] border-slate-600 rounded-xl p-4'> {/* this doesn't look that great */}
+                                            <p className='text-white'>Please Connect</p>
                                         </div>
                                     )}
                                 </div>
