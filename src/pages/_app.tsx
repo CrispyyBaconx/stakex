@@ -5,6 +5,7 @@ import { DAppProvider, type Config, Arbitrum, ArbitrumGoerli } from "@usedapp/co
 import { api } from '@/utils/api';
 
 import '@/styles/globals.css';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 const blenderPro = localFont({
     src: '../../public/fonts/Blender-Pro-Bold.woff2',
@@ -21,11 +22,13 @@ export const _config: Config = {
 
 const App: AppType = ({ Component, pageProps }) => {
     return (
-        <DAppProvider config={ _config }>
-            <main className={`${blenderPro.variable} font-sans`}>
-                <Component {...pageProps} />
-            </main>
-        </DAppProvider>
+        <ParallaxProvider>
+            <DAppProvider config={ _config }>
+                <main className={`${blenderPro.variable} font-sans`}>
+                    <Component {...pageProps} />
+                </main>
+            </DAppProvider>
+        </ParallaxProvider>
     );
 };
 
