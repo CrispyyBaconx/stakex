@@ -34,4 +34,4 @@ export default function useGlitchyText(ref: React.RefObject<HTMLElement>, origin
     }, [hasScrambled, onScreen, originalText, ref]);       
 
     return hasScrambled;
-}
+} // use chatgpt to change this so it effects random characters in the text (maybe like a third of them) and then have it change the text to the original text progressively
