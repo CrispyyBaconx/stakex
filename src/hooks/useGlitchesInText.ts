@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { useOnScreen } from '@/hooks';
 
 export default function useGlitchyText(ref: React.RefObject<HTMLElement>, originalText: string): boolean {
@@ -12,26 +12,31 @@ export default function useGlitchyText(ref: React.RefObject<HTMLElement>, origin
             let iteration = 0;
             const interval = setInterval(() => {
                 if (!ref.current) return;
-                ref.current.innerText = _originalText
-                    .split("")
+                const scrambledText = _originalText
+                    .split('')
                     .map((letter, index) => {
-                        if(index < iteration) {
+                        if (Math.random() < (1 / 3) || index < iteration) {
                             return _originalText[index];
                         }
-                        return letters[Math.floor(Math.random() * 26)];
+                        return letters[Math.floor(Math.random() * letters.length)];
                     })
-                    .join("");
-                if(iteration >= _originalText.length){ 
+                    .join('');
+
+                ref.current.innerText = scrambledText;
+                if (iteration >= _originalText.length) {
                     clearInterval(interval);
                     setHasScrambled(true);
                 }
                 iteration += 1 / 3;
             }, 15);
+
+            return () => clearInterval(interval);
         }
+
         if (!onScreen) {
             setHasScrambled(false);
         }
-    }, [hasScrambled, onScreen, originalText, ref]);       
+    }, [hasScrambled, onScreen, originalText, ref]);
 
     return hasScrambled;
-} // use chatgpt to change this so it effects random characters in the text (maybe like a third of them) and then have it change the text to the original text progressively
+}

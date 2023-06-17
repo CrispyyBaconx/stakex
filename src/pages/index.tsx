@@ -11,6 +11,8 @@ import { Newsletter, CardsSection } from '@/components/Landing';
 import { ConnectButton } from '@/components';
 import { useGlitchyText } from '@/hooks';
 
+// https://stackoverflow.com/questions/59335731/how-to-create-own-embed-site-for-discord - use this to customize the link in discord
+
 const Landing = () => {
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	useGlitchyText(titleRef, "Stakex");

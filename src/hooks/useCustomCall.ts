@@ -5,7 +5,7 @@ function useCustomCall(
     address: string | Falsy,
     contractInterface: ContractInterface,
     methodName: string,
-    args: never[]
+    args: unknown[]
 ) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const { value, error } = useCall(
@@ -17,7 +17,7 @@ function useCustomCall(
     ) ?? { value: undefined, error: undefined };
 
     if(error) {
-        console.error(error);
+        console.error(error); // !
         return undefined;
     }
 
