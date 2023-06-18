@@ -9,6 +9,7 @@ import { useCustomCall } from '@/hooks';
 import { poolABI, tokenABI } from '@/abis';
 
 import Logo from '@/assets/logo.svg';
+import { BsChevronDown } from 'react-icons/bs';
 
 // useful links
 // https://goerli.etherscan.io/address/0x6535a4e977885cba7fa99b00ee64d4e7c83fd847#readContract
@@ -77,17 +78,29 @@ const Stake = () => {
                     </div>
                     {stake ? (
                         <div className='flex flex-col items-center'>
-                            <div className='flex flex-row items-center mt-12 w-[70em] justify-around'>
+                            <div className='flex flex-col items-center mt-12 w-[70em] justify-around'>
                                 <div className='flex flex-row p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800 gap-2'>
                                     <div className='flex flex-col gap-4 mr-8 w-48'> {/* staking */}
                                         <p className='text-gray-400 text-2xl self-center'>Stake</p>
                                         
-                                        <label className='text-gray-400 text-sm self-center'>
-                                            <span className='text-gray-400'>Amount</span>
-                                            <input className='text-white bg-slate-700 border-2 rounded-[20px] border-slate-500 p-2' type='number' placeholder='0.00' min={0} />
-                                            <button className='flex text-white bg-blue-500 p-4 rounded-xl justify-center'>
-                                                <p className='text-l self-center'>MAX</p>
-                                            </button>
+                                        <label className='relative inline-flex border border-solid border-gray-400 rounded-2xl items-stretch box-border px-3 cursor-text transition-colors duration-100 ease-in-out w-full self-center'>
+                                            <span className='flex items-center flex-shrink-0 cursor-inherit pr-4'>
+                                                {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+                                                <Image src={Logo} alt='Stakex Logo' width={24} height={24} />
+                                            </span>
+
+                                            <span className='font-normal text-base flex flex-grow relative py-4'>
+                                                <input className='bg-transparent shadow-none border-transparent outline-none w-full font-normal text-base leading-normal p-0 rounded-none relative top-2' disabled={false} placeholder='0.00' min={0} />
+                                                <span className='absolute left-0 top-1/2 text-base leading-tight whitespace-nowrap overflow-hidden text-ellipsis max-w-full transform origin-top translate-y-[-14px] scale-75 opacity-100 -mt-4 duration-100 ease-in-out'>Amount</span>
+                                            </span>
+
+                                            <span className='flex items-center flex-shrink-0 cursor-inherit pl-4'>
+                                                <div className='flex items-center'>
+                                                    <button className='border border-transparent outline-none bg-transparent'>
+                                                        MAX
+                                                    </button>
+                                                </div>
+                                            </span>
                                         </label>
 
                                         <button className='flex text-white bg-blue-500 p-4 rounded-xl w-full h-16 justify-center' onClick={() => { sendTransaction({ to: poolAddress, data: '0x' }).then().catch(console.error) }}>
@@ -100,8 +113,22 @@ const Stake = () => {
 
                                     <div className='flex flex-col gap-4 mx-8 w-48'> {/* unstaking */}
                                         <p className='text-gray-400 text-2xl self-center'>Unstake</p>
-                                        <input className='text-white bg-slate-700 border-2 rounded-[20px] border-slate-500 p-2' type='number' placeholder='0.00' min={0} />
-                                        <button className='flex text-white bg-blue-500 p-4 rounded-xl w-full h-16 justify-center'>
+                                        <label className='relative inline-flex border border-solid border-gray-400 rounded-2xl items-stretch box-border px-3 cursor-text transition-colors duration-100 ease-in-out w-full self-center'>
+                                            <span className='font-normal text-base flex flex-grow relative py-4'>
+                                                <input className='bg-transparent shadow-none border-transparent outline-none w-full font-normal text-base leading-normal p-0 rounded-none relative top-2' disabled={false} placeholder='0.00' min={0} />
+                                                <span className='absolute left-0 top-1/2 text-base leading-tight whitespace-nowrap overflow-hidden text-ellipsis max-w-full transform origin-top translate-y-[-14px] scale-75 opacity-100 -mt-4 duration-100 ease-in-out'>Amount</span>
+                                            </span>
+
+                                            <span className='flex items-center flex-shrink-0 cursor-inherit pl-4'>
+                                                <div className='flex items-center'>
+                                                    <button className='border border-transparent outline-none bg-transparent'>
+                                                        MAX
+                                                    </button>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <button className='flex text-white bg-blue-500 p-4 rounded-xl w-full h-16 justify-center' onClick={() => { sendTransaction({ to: poolAddress, data: '0x' }).then().catch(console.error) }}>
                                             <p className='text-l self-center'>Unstake</p>
                                         </button>
                                     </div>
@@ -109,9 +136,9 @@ const Stake = () => {
                                     {/* separator */}
                                     <div className='border-r-2 border-gray-600 h-auto' />
 
-                                    <div className='flex flex-col gap-4 ml-8 w-48'> {/* claim */}
+                                    <div className='flex flex-col gap-4 ml-8 w-48 justify-between'> {/* claim */}
                                         <p className='text-gray-400 text-2xl self-center'>Claim</p>
-                                        <br />
+                                        <p className='text-white text-sm self-center'>Claimable Amount: {balanceClaimable ?? 0}</p>
                                         {account && etherBalance ? (
                                             <div className='flex'>
                                                 <button className='flex text-white bg-blue-500 p-4 rounded-xl w-full h-16 justify-center mt-1' onClick={() => { sendTransaction({ to: poolAddress, data: '0x' }).then().catch(console.error) }}>
@@ -128,6 +155,14 @@ const Stake = () => {
                                             </div>
                                         )}
                                     </div>
+                                </div>
+
+                                <div className='flex flex-row gap-4 p-4 mt-12 rounded-xl w-full bg-slate-700 justify-between'>
+                                    <p className='text-slate-400'>FAQ</p>
+                                    {/* going to be a drop down into an accordian is what im thinkin */}
+                                    <button className='flex'>
+                                        <BsChevronDown size={24} />
+                                    </button>
                                 </div>
                             </div>
                         </div>
