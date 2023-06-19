@@ -63,14 +63,14 @@ const Stake = () => {
                         <h1 className='text-4xl'>Staking</h1>
                         <p className='text-gray-400'>Earn a percent of platform revenue</p>
                     </div>
-                    <div className='flex flex-row items-center'>
-                        <a className="group transition-all duration-300 ease-in-out">
+                    <div className='flex flex-row items-center bg-gray-900 border-slate-800 border-2 rounded-3xl mt-4'>
+                        <a className="flex flex-1 group transition-all duration-300 ease-in-out m-1">
                             <button className='text-white bg-left-bottom bg-gradient-to-r from-blue-500 to-violet-600 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out m-4' onClick={() => setStake(true)}>
                                 Stake
                             </button>
                         </a>
-                        <p>·</p>
-                        <a className="group transition-all duration-300 ease-in-out">
+                        <p className='m-1'>·</p>
+                        <a className="flex flex-1 group transition-all duration-300 ease-in-out m-1 justify-end">
                             <button className='text-white bg-left-bottom bg-gradient-to-r from-blue-500 to-violet-600 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out m-4' onClick={() => setStake(false)}>
                                 Rewards
                             </button>
@@ -91,13 +91,13 @@ const Stake = () => {
 
                                             <span className='font-normal text-base flex flex-grow relative py-4'>
                                                 <input className='bg-transparent shadow-none border-transparent outline-none w-full font-normal text-base leading-normal p-0 rounded-none relative top-2' disabled={false} placeholder='0.00' min={0} />
-                                                <span className='absolute left-0 top-1/2 text-base leading-tight whitespace-nowrap overflow-hidden text-ellipsis max-w-full transform origin-top translate-y-[-14px] scale-75 opacity-100 -mt-4 duration-100 ease-in-out'>Amount</span>
+                                                <span className='absolute left-0 top-1/2 text-base leading-tight whitespace-nowrap overflow-hidden text-ellipsis max-w-full transform origin-top translate-y-[-4px] translate-x-[-6px] scale-75 opacity-100 -mt-4 duration-100 ease-in-out'>Amount</span>
                                             </span>
 
                                             <span className='flex items-center flex-shrink-0 cursor-inherit pl-4'>
                                                 <div className='flex items-center'>
-                                                    <button className='border border-transparent outline-none bg-transparent'>
-                                                        MAX
+                                                    <button className='border-2 border-purple-800 outline-none bg-transparent px-1 bg-purple-800 text-purple-300 opacity-70 rounded-lg'>
+                                                        <p className='font-bold text-xs p-1'>MAX</p> {/* make this actually functional */}
                                                     </button>
                                                 </div>
                                             </span>
@@ -116,13 +116,13 @@ const Stake = () => {
                                         <label className='relative inline-flex border border-solid border-gray-400 rounded-2xl items-stretch box-border px-3 cursor-text transition-colors duration-100 ease-in-out w-full self-center'>
                                             <span className='font-normal text-base flex flex-grow relative py-4'>
                                                 <input className='bg-transparent shadow-none border-transparent outline-none w-full font-normal text-base leading-normal p-0 rounded-none relative top-2' disabled={false} placeholder='0.00' min={0} />
-                                                <span className='absolute left-0 top-1/2 text-base leading-tight whitespace-nowrap overflow-hidden text-ellipsis max-w-full transform origin-top translate-y-[-14px] scale-75 opacity-100 -mt-4 duration-100 ease-in-out'>Amount</span>
+                                                <span className='absolute left-0 top-1/2 text-base leading-tight whitespace-nowrap overflow-hidden text-ellipsis max-w-full transform origin-top translate-y-[-4px] translate-x-[-6px] scale-75 opacity-100 -mt-4 duration-100 ease-in-out'>Amount</span>
                                             </span>
 
                                             <span className='flex items-center flex-shrink-0 cursor-inherit pl-4'>
                                                 <div className='flex items-center'>
-                                                    <button className='border border-transparent outline-none bg-transparent'>
-                                                        MAX
+                                                    <button className='border-2 border-purple-800 outline-none bg-transparent px-1 bg-purple-800 text-purple-300 opacity-70 rounded-lg'>
+                                                        <p className='font-bold text-xs p-1'>MAX</p> {/* make this actually functional */}
                                                     </button>
                                                 </div>
                                             </span>
@@ -138,8 +138,8 @@ const Stake = () => {
 
                                     <div className='flex flex-col gap-4 ml-8 w-48 justify-between'> {/* claim */}
                                         <p className='text-gray-400 text-2xl self-center'>Claim</p>
-                                        <p className='text-white text-sm self-center'>Claimable Amount: {balanceClaimable ?? 0}</p>
-                                        {account && etherBalance ? (
+                                        <p className='text-white text-sm self-center'>Total Claimable: {balanceClaimable ?? 0.0}</p>
+                                        {account && etherBalance ? ( // make this apply to the whole panel instead of just the claim button (maybe blur the background too?)
                                             <div className='flex'>
                                                 <button className='flex text-white bg-blue-500 p-4 rounded-xl w-full h-16 justify-center mt-1' onClick={() => { sendTransaction({ to: poolAddress, data: '0x' }).then().catch(console.error) }}>
                                                     <p className='text-l self-center'>Claim</p>
@@ -160,7 +160,7 @@ const Stake = () => {
                                 <div className='flex flex-row gap-4 p-4 mt-12 rounded-xl w-full bg-slate-700 justify-between'>
                                     <p className='text-slate-400'>FAQ</p>
                                     {/* going to be a drop down into an accordian is what im thinkin */}
-                                    <button className='flex'>
+                                    <button className='flex' onClick={() => {console.log("cream")}}>
                                         <BsChevronDown size={24} />
                                     </button>
                                 </div>
