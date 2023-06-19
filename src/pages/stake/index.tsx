@@ -23,6 +23,9 @@ const Stake = () => {
     const { sendTransaction } = useSendTransaction(); // using this for write to stake, unstake, and claim - useCustomCall for read only stuff
     const [stake, setStake] = useState(true); // true = staking menu, false = rewards menu      
 
+    const [stakeAmount, setStakeAmount] = useState(0);
+    const [unstakeAmount, setUnstakeAmount] = useState(0);
+
     // {/* https://polygon.lido.fi/ - maybe model it after this */}
 
     const poolAddress = process.env.NEXT_PUBLIC_STAKING_CONTRACT_ADDRESS;
@@ -83,20 +86,20 @@ const Stake = () => {
                                     <div className='flex flex-col gap-4 mr-8 w-48'> {/* staking */}
                                         <p className='text-gray-400 text-2xl self-center'>Stake</p>
                                         
-                                        <label className='relative inline-flex border border-solid border-gray-400 rounded-2xl items-stretch box-border px-3 cursor-text transition-colors duration-100 ease-in-out w-full self-center'>
+                                        <label className='relative inline-flex border border-solid border-slate-500 rounded-2xl items-stretch box-border px-3 cursor-text transition-colors duration-100 ease-in-out w-full self-center'>
                                             <span className='flex items-center flex-shrink-0 cursor-inherit pr-4'>
                                                 {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
                                                 <Image src={Logo} alt='Stakex Logo' width={24} height={24} />
                                             </span>
 
                                             <span className='font-normal text-base flex flex-grow relative py-4'>
-                                                <input className='bg-transparent shadow-none border-transparent outline-none w-full font-normal text-base leading-normal p-0 rounded-none relative top-2' disabled={false} placeholder='0.00' min={0} />
+                                                <input className='bg-transparent shadow-none border-transparent outline-none w-full font-normal text-base leading-normal p-0 rounded-none relative top-2' disabled={false} placeholder='0.00' min={0} value={stakeAmount} onChange={e => setStakeAmount(e.target.value)} />
                                                 <span className='absolute left-0 top-1/2 text-base leading-tight whitespace-nowrap overflow-hidden text-ellipsis max-w-full transform origin-top translate-y-[-4px] translate-x-[-6px] scale-75 opacity-100 -mt-4 duration-100 ease-in-out'>Amount</span>
                                             </span>
 
                                             <span className='flex items-center flex-shrink-0 cursor-inherit pl-4'>
                                                 <div className='flex items-center'>
-                                                    <button className='border-2 border-purple-800 outline-none bg-transparent px-1 bg-purple-800 text-purple-300 opacity-70 rounded-lg'>
+                                                    <button className='border-2 border-purple-800 outline-none bg-transparent px-1 bg-purple-800 text-purple-300 opacity-70 rounded-lg' onClick={() => { setStakeAmount(balanceHeld ?? 0) }}>
                                                         <p className='font-bold text-xs p-1'>MAX</p> {/* make this actually functional */}
                                                     </button>
                                                 </div>
@@ -113,15 +116,15 @@ const Stake = () => {
 
                                     <div className='flex flex-col gap-4 mx-8 w-48'> {/* unstaking */}
                                         <p className='text-gray-400 text-2xl self-center'>Unstake</p>
-                                        <label className='relative inline-flex border border-solid border-gray-400 rounded-2xl items-stretch box-border px-3 cursor-text transition-colors duration-100 ease-in-out w-full self-center'>
+                                        <label className='relative inline-flex border border-solid border-slate-500 rounded-2xl items-stretch box-border px-3 cursor-text transition-colors duration-100 ease-in-out w-full self-center'>
                                             <span className='font-normal text-base flex flex-grow relative py-4'>
-                                                <input className='bg-transparent shadow-none border-transparent outline-none w-full font-normal text-base leading-normal p-0 rounded-none relative top-2' disabled={false} placeholder='0.00' min={0} />
+                                                <input className='bg-transparent shadow-none border-transparent outline-none w-full font-normal text-base leading-normal p-0 rounded-none relative top-2' disabled={false} placeholder='0.00' min={0} value={unstakeAmount} onChange={e => setUnstakeAmount(e.target.value)} />
                                                 <span className='absolute left-0 top-1/2 text-base leading-tight whitespace-nowrap overflow-hidden text-ellipsis max-w-full transform origin-top translate-y-[-4px] translate-x-[-6px] scale-75 opacity-100 -mt-4 duration-100 ease-in-out'>Amount</span>
                                             </span>
 
                                             <span className='flex items-center flex-shrink-0 cursor-inherit pl-4'>
                                                 <div className='flex items-center'>
-                                                    <button className='border-2 border-purple-800 outline-none bg-transparent px-1 bg-purple-800 text-purple-300 opacity-70 rounded-lg'>
+                                                    <button className='border-2 border-purple-800 outline-none bg-transparent px-1 bg-purple-800 text-purple-300 opacity-70 rounded-lg' onClick={() => { setUnstakeAmount(balanceStaked ?? 0) }}>
                                                         <p className='font-bold text-xs p-1'>MAX</p> {/* make this actually functional */}
                                                     </button>
                                                 </div>
