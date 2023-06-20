@@ -21,10 +21,10 @@ const Stake = () => {
     const { account } = useEthers(); // using this for checking connection state
     const etherBalance = useEtherBalance(account); // using this for checking connection state
     const { sendTransaction } = useSendTransaction(); // using this for write to stake, unstake, and claim - useCustomCall for read only stuff
-    const [stake, setStake] = useState(true); // true = staking menu, false = rewards menu      
+    const [stake, setStake] = useState(true); // true = staking menu, false = rewards menu
 
-    const [stakeAmount, setStakeAmount] = useState(0);
-    const [unstakeAmount, setUnstakeAmount] = useState(0);
+    const [stakeAmount, setStakeAmount] = useState<number | string>("");
+    const [unstakeAmount, setUnstakeAmount] = useState<number | string>("");
 
     // {/* https://polygon.lido.fi/ - maybe model it after this */}
 
