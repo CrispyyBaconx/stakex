@@ -13,7 +13,7 @@ const Header = () => {
                 <Search />
                 <ToggleStyleButton />
                 <div className='flex flex-row items-center justify-center p-4'>
-                    <ConnectButton />
+                    <ConnectButton display='compact' />
                 </div>
             </section>
         </header>
