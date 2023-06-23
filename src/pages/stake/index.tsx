@@ -205,7 +205,7 @@ const Stake = () => {
                                     <div role="status" className="max-w-sm animate-pulse">
                                         <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-8 mb-4" />
                                         <span className="sr-only">
-                                            <LoadingSpinner size={16} /> {/* Change name to skeleton */}
+                                            <LoadingSpinner size={16} />
                                         </span>
                                     </div>
                                 )}

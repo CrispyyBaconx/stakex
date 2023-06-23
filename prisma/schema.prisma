@@ -36,19 +36,12 @@ model Market {
   	gameId  Int
   	game    Game     @relation(fields: [gameId], references: [id])
   	name    String
-  	odds    Odds[]
+  	odds    Decimal
 
 	@@index([gameId])
 }
 
-// This might be wrong as a market should only be unique for one scenario - also with one odds set
-model Odds {
-  	id        Int      @id @default(autoincrement())
-  	marketId  Int
-  	market    Market   @relation(fields: [marketId], references: [id])
-  	team      String
-  	odds      Decimal  @db.Decimal(65, 30)
-  	createdAt DateTime @default(now())
-
-	@@index([marketId])
+model apyHistory {
+	date   DateTime @id
+	apy    Decimal
 }
