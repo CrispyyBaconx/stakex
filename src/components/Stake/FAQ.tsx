@@ -5,13 +5,16 @@ type FAQProps = {
 const FAQ = (props: FAQProps) => {
     return (
         <>
-            {props.isOpen ? (
+            {!props.isOpen ? (
                 <div className="faq">
                     bus
                 </div>
             ) : (
                 <div className="faq">
-                    <h1>FAQ</h1>
+                    <ul>
+                        <li>What is the minimum amount of BUSD I can stake?</li>
+                        <p>0</p>
+                    </ul>
                 </div>
             )}
         </>

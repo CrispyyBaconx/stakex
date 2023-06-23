@@ -53,10 +53,6 @@ const Stake = () => {
         setStakeAmount(event.target.value);
     };
 
-    const handleFAQOpen = () => {
-        setIsOpen(isOpen => !isOpen);
-    }
-
     return (
         <>
             <Head>
@@ -174,7 +170,7 @@ const Stake = () => {
                                 <div className='flex flex-row gap-4 p-4 mt-12 rounded-xl w-full bg-slate-700 justify-between'>
                                     <p className='text-slate-400'>FAQ</p>
                                     {/* going to be a drop down into an accordian is what im thinkin */}
-                                    <button className='flex' onClick={() => {handleFAQOpen}}>
+                                    <button className='flex' onClick={() => setIsOpen(isOpen => !isOpen)}>
                                         <BsChevronDown size={24} />
                                     </button>
                                     <FAQ isOpen={isOpen} />
