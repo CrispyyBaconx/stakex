@@ -9,8 +9,8 @@ import { useCustomCall } from '@/hooks';
 import { poolABI, tokenABI } from '@/abis';
 
 import Logo from '@/assets/logo.svg';
-import { BsChevronDown } from 'react-icons/bs';
-import { FAQ } from '@/components/Stake'; // figure out why this isnt rendering
+import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
+import { FAQLi } from '@/components/Stake'; // figure out why this isnt rendering
 
 // useful links
 // https://goerli.etherscan.io/address/0x6535a4e977885cba7fa99b00ee64d4e7c83fd847#readContract
@@ -171,10 +171,21 @@ const Stake = () => {
                                     <p className='text-slate-400'>FAQ</p>
                                     {/* going to be a drop down into an accordian is what im thinkin */}
                                     <button className='flex' onClick={() => setIsOpen(isOpen => !isOpen)}>
-                                        <BsChevronDown size={24} />
+                                        {isOpen ? (
+                                            <BsChevronUp size={24} />
+                                        ) : (
+                                            <BsChevronDown size={24} />
+                                        )}
                                     </button>
-                                    <FAQ isOpen={isOpen} />
                                 </div>
+                                {isOpen && (
+                                    <ul className="flex flex-col m-8 gap-4">
+                                        <FAQLi question="What is the purpose of this project?" answer="To woble." />
+                                        <FAQLi question="Why is the purpose of this project?" answer="To woble." />
+                                        <FAQLi question="Who is the purpose of this project?" answer="To woble." />
+                                        <FAQLi question="When is the purpose of this project?" answer="To woble." />
+                                    </ul>
+                                )}
                             </div>
                         </div>
                     ) : (
