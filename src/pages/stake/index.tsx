@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEtherBalance, useEthers, useSendTransaction } from '@usedapp/core';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import { type apyHistory } from '@prisma/client';
 import { useState } from 'react';
 import { MinFooter, LoadingSpinner, ConnectButton } from '@/components';
@@ -59,10 +59,24 @@ const Stake = () => {
         setStakeAmount(event.target.value);
     };
 
-    const processAPYData = (data: Array<apyHistory>) => {
+    const processAPYData = (data: Array<apyHistory> | undefined) => {
+        // test data
+        const testData = [
+            { date: new Date("1/1/2021"), apy: 4.1 },
+            { date: new Date("1/2/2021"), apy: 4.2 },
+            { date: new Date("1/3/2021"), apy: 4.3 },
+            { date: new Date("1/4/2021"), apy: 4.4 },
+            { date: new Date("1/5/2021"), apy: 4.5 },
+            { date: new Date("1/6/2021"), apy: 4.6 },
+            { date: new Date("1/7/2021"), apy: 4.7 },
+        ]
+
+        if(!data) return testData;
+        if(data.length < 7) return testData;
+
         const processedData = data.map((entry) => {
             return {
-                date: new Date(entry.date).toLocaleDateString(),
+                date: new Date(entry.date),
                 apy: entry.apy
             };
         });
@@ -220,46 +234,72 @@ const Stake = () => {
                     ) : (
                         /* need to find a good graphing lib and maybe write a microservice to get the apy at a specific time everyday and stick it in the db */
                         <div className='flex flex-row items-center mt-12 w-[40em] justify-around'>
-                            <div className='flex flex-col p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800'> {/* rewards */}
-                                <p className='text-gray-400'>Query Rewards</p>
-                                <p className='text-white'>Address: </p>
-                                <div>
+                            <div className='flex flex-row p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800'> {/* rewards */}
+                                <div className='flex flex-col'>
                                     <p className='text-gray-400'>APY over Last 7 Days</p>
-                                </div>
-                                {isLoading ? ( // chart section
-                                    <div className='flex w-72 h-48'>
-                                        <div role="status" className="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700">
-                                            <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2.5"></div>
-                                            <div className="w-48 h-2 mb-10 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-                                            <div className="flex items-baseline mt-4 space-x-6">
-                                                <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
-                                                <div className="w-full h-56 bg-gray-200 rounded-t-lg dark:bg-gray-700"></div>
-                                                <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
-                                                <div className="w-full h-64 bg-gray-200 rounded-t-lg dark:bg-gray-700"></div>
-                                                <div className="w-full bg-gray-200 rounded-t-lg h-80 dark:bg-gray-700"></div>
-                                                <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
-                                                <div className="w-full bg-gray-200 rounded-t-lg h-80 dark:bg-gray-700"></div>
+                                    {isLoading ? ( // chart section
+                                        <div className='flex w-[40rem] h-[24rem]'>
+                                            <div role="status" className="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700">
+                                                <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2.5"></div>
+                                                <div className="w-48 h-2 mb-10 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                                                <div className="flex items-baseline mt-4 space-x-6">
+                                                    <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
+                                                    <div className="w-full h-56 bg-gray-200 rounded-t-lg dark:bg-gray-700"></div>
+                                                    <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
+                                                    <div className="w-full h-64 bg-gray-200 rounded-t-lg dark:bg-gray-700"></div>
+                                                    <div className="w-full bg-gray-200 rounded-t-lg h-80 dark:bg-gray-700"></div>
+                                                    <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
+                                                    <div className="w-full bg-gray-200 rounded-t-lg h-80 dark:bg-gray-700"></div>
+                                                </div>
+                                                <span className="sr-only">Loading...</span>
                                             </div>
-                                            <span className="sr-only">Loading...</span>
+                                        </div>
+                                    ) : (
+                                        <div className='flex w-[40rem] h-[24rem]'>
+                                            <ResponsiveContainer width="100%" height={400}>
+                                                <AreaChart data={processAPYData(apyHistory)}>
+                                                    <defs>
+                                                        <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+                                                            <stop offset="0%" stopColor="#8884d8" stopOpacity={0.4} />
+                                                            <stop offset="75%" stopColor="#8884d8" stopOpacity={0.05} />
+                                                        </linearGradient>
+                                                    </defs>
+
+                                                    <Area type="monotone" dataKey="apy" stroke="#8884d8" fill='url(#color)' />
+                                                    <CartesianGrid stroke="#1e1b4b" scale={1.5}/>
+                                                    <XAxis dataKey={"date"} stroke='#9333ea' tickLine={false} tickCount={7} tickFormatter={(date: Date) => { return format(date) }} />
+                                                    <YAxis dataKey={"apy"} stroke='#9333ea' axisLine={true} tickLine={false} tickCount={6} />
+                                                    {/* @ts-expect-error eslint-disable-next-line */}
+                                                    <Tooltip content={<CustomTooltip />} />
+                                                </AreaChart>
+                                            </ResponsiveContainer>
+                                        </div>
+                                    )}
+                                    <div className='flex flex-col'>
+                                        <p className='text-gray-400'>Query Rewards</p>
+                                    <div className='flex-row'>
+                                            <input className='bg-slate-900 p-2 rounded-xl text-white' placeholder='Address:' />
+                                            <button className='text-lg text-white'>Check</button>
                                         </div>
                                     </div>
-                                ) : (
-                                    <div className='flex w-72 h-48'>
-
-                                    </div>
-                                )}
-                                {apy ? (
-                                    <div className='flex flex-col items-center'>
-                                        {apy} <span>% APY</span>
-                                    </div>
-                                ) : (
-                                    <div role="status" className="max-w-sm animate-pulse">
-                                        <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-8 mb-4" />
-                                        <span className="sr-only">
-                                            <LoadingSpinner size={16} />
-                                        </span>
-                                    </div>
-                                )}
+                                </div>
+                                <div className='flex'>
+                                    <p>Staking Info</p>
+                                    <p>
+                                        {apy ? (
+                                            <div className='flex flex-col items-center'>
+                                                {apy} <span>% APY</span>
+                                            </div>
+                                        ) : (
+                                            <div role="status" className="max-w-sm animate-pulse">
+                                                <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-8 mb-4" />
+                                                <span className="sr-only">
+                                                    <LoadingSpinner size={16} />
+                                                </span>
+                                            </div>
+                                        )}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     )}
@@ -270,6 +310,42 @@ const Stake = () => {
             </main>
         </>
     )
+}
+
+type Payload = {
+    value: number,
+    [x: string | number | symbol]: unknown;
+}
+
+type CustomTooltipProps = {
+    active: boolean;
+    payload: Array<Payload>;
+    label: Date;
+}
+
+const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
+    const loading = (
+        <div className='bg-gray-800 p-4 rounded-xl'>
+            <h4 className='text-gray-400'>Loading...</h4>
+        </div>
+    );
+
+    if (!label || (payload.length === 0)) return loading;
+
+    return (
+        <>
+            {active ? (
+                <div className="bg-gray-800 p-4 rounded-xl">
+                    <h4 className="text-gray-400">{format(label)}</h4>
+                    <p className="text-gray-400">{payload[0]?.value.toFixed(2)}% APY</p>
+                </div>            
+            ) : loading}
+        </>
+    )
+};
+
+const format = (date: Date) => {
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear().toString().slice(2, 4)}`
 }
 
 export default Stake;
