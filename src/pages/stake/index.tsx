@@ -2,11 +2,13 @@ import Image from 'next/image';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEtherBalance, useEthers, useSendTransaction } from '@usedapp/core';
-
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { type apyHistory } from '@prisma/client';
 import { useState } from 'react';
 import { MinFooter, LoadingSpinner, ConnectButton } from '@/components';
 import { useCustomCall } from '@/hooks';
 import { poolABI, tokenABI } from '@/abis';
+import { api } from '@/utils/api';
 
 import Logo from '@/assets/logo.svg';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
@@ -23,6 +25,10 @@ const Stake = () => {
     const { sendTransaction } = useSendTransaction();
     const [stake, setStake] = useState(true);
     const [isOpen, setIsOpen] = useState(false);
+    const { isLoading, data: apyHistory } = api.main.getAPYHistory.useQuery(
+        { limit: 10, offset: 0 },
+        { enabled: !stake }
+    );
 
     const [stakeAmount, setStakeAmount] = useState<number | string>("");
     const [unstakeAmount, setUnstakeAmount] = useState<number | string>("");
@@ -38,7 +44,7 @@ const Stake = () => {
     const balanceClaimable = useCustomCall(poolAddress, poolABI, "getUserClaimableRewards", [account ?? "0x0"]);
 
     const handleUnstakeAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if(event.target.value.includes(".") || 
+        if(event.target.value.includes(".") ||
            event.target.value.includes(" ") ||
            Number.isNaN(+event.target.value)) return;
 
@@ -53,6 +59,17 @@ const Stake = () => {
         setStakeAmount(event.target.value);
     };
 
+    const processAPYData = (data: Array<apyHistory>) => {
+        const processedData = data.map((entry) => {
+            return {
+                date: new Date(entry.date).toLocaleDateString(),
+                apy: entry.apy
+            };
+        });
+
+        return processedData;
+    };
+
     return (
         <>
             <Head>
@@ -61,7 +78,7 @@ const Stake = () => {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className="flex flex-col min-h-screen bg-slate-900">
+            <main className="flex flex-col min-h-screen bg-slate-950">
                 <header className='flex p-8 w-full justify-around'>
                     <div className='flex cursor-pointer' onClick={() => { router.push('/').then().catch(console.error) }}>
                         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
@@ -96,11 +113,11 @@ const Stake = () => {
                     {stake ? (
                         <div className='flex flex-col items-center'>
                             <div className='flex flex-col items-center mt-12 w-[70em] justify-around'>
-                                <div className='flex flex-row p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800 gap-2 relative'>
+                                <div className='flex flex-row p-10 mx-8 leading-7 bg-gray-900 border-2 rounded-[20px] border-gray-800 gap-2 relative'>
                                     {account && etherBalance ? null : (
                                         <div className='z-50'>
                                             <div className="absolute h-full w-full rounded-xl inset-0 backdrop-blur-lg" />
-                                            <div className="text-overlay absolute inset-0 flex flex-col justify-center items-center text-white text-center">
+                                            <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center">
                                                 <h1 className="text-2xl font-bold text-slate-400"><span className='text-slate-500'>&lt;</span> Please Connect Your Wallet <span className='text-slate-500'>&gt;</span></h1>
                                             </div>
                                         </div>
@@ -119,7 +136,7 @@ const Stake = () => {
                                             <span className='flex items-center flex-shrink-0 cursor-inherit pl-4'>
                                                 <div className='flex items-center'>
                                                     <button className='border-2 border-blue-800 outline-none bg-transparent px-1 text-blue-300 opacity-70 rounded-lg' onClick={() => { setStakeAmount(balanceHeld ?? 0) }}>
-                                                        <p className='font-bold text-xs p-1'>MAX</p> {/* make this actually functional */}
+                                                        <p className='font-bold text-xs p-1'>MAX</p>
                                                     </button>
                                                 </div>
                                             </span>
@@ -142,7 +159,7 @@ const Stake = () => {
                                             <span className='flex items-center flex-shrink-0 cursor-inherit pl-4'>
                                                 <div className='flex items-center'>
                                                     <button className='border-2 border-blue-800 outline-none bg-transparent px-1 text-blue-300 opacity-70 rounded-lg' onClick={() => { setUnstakeAmount(balanceStaked ?? 0) }}>
-                                                        <p className='font-bold text-xs p-1'>MAX</p> {/* make this actually functional */}
+                                                        <p className='font-bold text-xs p-1'>MAX</p>
                                                     </button>
                                                 </div>
                                             </span>
@@ -180,23 +197,57 @@ const Stake = () => {
                                 </div>
                                 {isOpen && (
                                     <ul className="flex flex-col m-8 gap-4">
-                                        <FAQLi question="What is the purpose of this project?" answer="To woble." />
-                                        <FAQLi question="Why is the purpose of this project?" answer="To woble." />
-                                        <FAQLi question="Who is the purpose of this project?" answer="To woble." />
-                                        <FAQLi question="When is the purpose of this project?" answer="To woble." />
+                                        <FAQLi
+                                            question="What is the purpose of this project?"
+                                            answer="To woble."
+                                        />
+                                        <FAQLi
+                                            question="Why is the purpose of this project?"
+                                            answer="To woble."
+                                        />
+                                        <FAQLi
+                                            question="Who is the purpose of this project?"
+                                            answer="To woble."
+                                        />
+                                        <FAQLi
+                                            question="When is the purpose of this project?"
+                                            answer="To woble."
+                                        />
                                     </ul>
                                 )}
                             </div>
                         </div>
                     ) : (
-                        /* need to find a good graphing lib and maybe write a microservice to get the apy at a specific time everyday. */
+                        /* need to find a good graphing lib and maybe write a microservice to get the apy at a specific time everyday and stick it in the db */
                         <div className='flex flex-row items-center mt-12 w-[40em] justify-around'>
                             <div className='flex flex-col p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800'> {/* rewards */}
-                                <p className='text-gray-400'>Rewards Available</p>
-                                <p className='text-white'>0.00</p>
-                            </div>
-                            <div className='flex flex-col p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800'>
-                                <p className='text-gray-400'>APY over Time</p>
+                                <p className='text-gray-400'>Query Rewards</p>
+                                <p className='text-white'>Address: </p>
+                                <div>
+                                    <p className='text-gray-400'>APY over Last 7 Days</p>
+                                </div>
+                                {isLoading ? ( // chart section
+                                    <div className='flex w-72 h-48'>
+                                        <div role="status" className="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700">
+                                            <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2.5"></div>
+                                            <div className="w-48 h-2 mb-10 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                                            <div className="flex items-baseline mt-4 space-x-6">
+                                                <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
+                                                <div className="w-full h-56 bg-gray-200 rounded-t-lg dark:bg-gray-700"></div>
+                                                <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
+                                                <div className="w-full h-64 bg-gray-200 rounded-t-lg dark:bg-gray-700"></div>
+                                                <div className="w-full bg-gray-200 rounded-t-lg h-80 dark:bg-gray-700"></div>
+                                                <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
+                                                <div className="w-full bg-gray-200 rounded-t-lg h-80 dark:bg-gray-700"></div>
+                                            </div>
+                                            <span className="sr-only">Loading...</span>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className='flex w-72 h-48'>
+
+                                    </div>
+                                )}
                                 {apy ? (
                                     <div className='flex flex-col items-center'>
                                         {apy} <span>% APY</span>

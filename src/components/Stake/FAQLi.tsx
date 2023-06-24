@@ -11,7 +11,7 @@ const FAQLi = (props: FAQLiProps) => {
 
     return (
         <>
-            <li className="flex flex-row p-4 bg-gray-800 rounded-xl border-2 border-black">
+            <li className="flex flex-row w-96 justify-between p-4 bg-gray-800 rounded-xl border-2 border-black">
                 <p>{props.question}</p>
                 <button className="flex items-center transition" onClick={() => {setIsOpen(!isOpen)}}>
                     {isOpen ? <AiOutlineMinus size={24} /> : <AiOutlinePlus size={24} />}
