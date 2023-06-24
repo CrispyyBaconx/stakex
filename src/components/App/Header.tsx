@@ -1,5 +1,5 @@
 import { ConnectButton } from '@/components';
-import { Search, ToggleStyleButton } from '@/components/App';
+import { Search } from '@/components/App';
 
 const Header = () => {
 
@@ -11,7 +11,6 @@ const Header = () => {
             </section>
             <section className='flex flex-row'>
                 <Search />
-                <ToggleStyleButton />
                 <div className='flex flex-row items-center justify-center p-4'>
                     <ConnectButton display='compact' />
                 </div>
