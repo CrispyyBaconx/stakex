@@ -20,7 +20,7 @@ const Footer = () => {
                             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
                             <ul className="text-gray-600 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
-                                    <Link href="/contact" className="hover:underline">Contact</Link>
+                                    <Link href="/docs" className="hover:underline">Docs</Link>
                                 </li>
                             </ul>
                         </div>
@@ -30,8 +30,11 @@ const Footer = () => {
                                 <li className="mb-4">
                                     <Link href="https://twitter.com/stakexofficial" className="hover:underline">Twitter</Link>
                                 </li>
-                                <li>
+                                <li className="mb-4">
                                     <Link href="https://discord.gg/" className="hover:underline">Discord</Link>
+                                </li>
+                                <li className="">
+                                    <Link href="https://telegram.org/" className="hover:underline">Telegram</Link>
                                 </li>
                             </ul>
                         </div>
@@ -39,10 +42,10 @@ const Footer = () => {
                             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                             <ul className="text-gray-600 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Privacy Policy</Link>
+                                    <Link href="/privacy-and-tos" className="hover:underline">Privacy Policy</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="hover:underline">Terms &amp; Conditions</Link>
+                                    <Link href="/privacy-and-tos" className="hover:underline">Terms &amp; Conditions</Link>
                                 </li>
                             </ul>
                         </div>
