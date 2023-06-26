@@ -314,7 +314,7 @@ const Stake = () => {
 
 type Payload = {
     value: number,
-    [x: string | number | symbol]: unknown;
+    [x: string | number | symbol]: unknown; // this apparently adds everything else to the type (we only expect value)
 }
 
 type CustomTooltipProps = {
