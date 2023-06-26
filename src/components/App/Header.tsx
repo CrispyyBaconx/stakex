@@ -11,7 +11,7 @@ const Header = () => {
             </section>
             <section className='flex flex-row'>
                 <Search />
-                <div className='flex flex-row items-center justify-center p-4'>
+                <div className='flex flex-row items-center justify-center p-4 w-40'>
                     <ConnectButton display='compact' />
                 </div>
             </section>

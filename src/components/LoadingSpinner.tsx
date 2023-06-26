@@ -12,7 +12,7 @@ const Loading = (props: { size?: number }) => {
 
 const LoadingSpinner = (props: { size?: number }) => {
     return (
-        <div className="absolute top-0 right-0 flex h-screen w-screen justify-center items-center">
+        <div className="flex justify-center items-center">
             <Loading size={props?.size}/>
         </div>
     )
