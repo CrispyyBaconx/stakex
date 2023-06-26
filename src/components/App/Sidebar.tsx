@@ -37,9 +37,9 @@ const SidebarItem = ({ href, title }: SidebarItemProps) => {
 
     return (
         <li className="mb-2 flex flex-row text-gray-400 hover:text-gray-200">
-            <Link href={href} className="flex items-center">
+            <Link href={href} className="flex items-center w-full">
                 <motion.div 
-                    className='flex items-center'
+                    className='flex items-center w-full'
                     onMouseEnter={() => { handleHover(true) }}
                     onMouseLeave={() => { handleHover(false) }}
                     initial={{ scale: 1 }}
@@ -47,14 +47,14 @@ const SidebarItem = ({ href, title }: SidebarItemProps) => {
                     whileTap={{ scale: 0.9 }}
                 >
                     <motion.div
-                        initial={{ rotate: 0 }}
-                        animate={isHovered ? { rotate: 90 } : { rotate: 0 }}
+                        initial={{ rotate: 180 }}
+                        animate={isHovered ? { rotate: 270 } : { rotate: 0 }}
                         transition={{ duration: 0.3 }}
                         style={{ marginRight: '0.5rem' }}
                     >
                         {isHovered ? <FiChevronDown size={20} /> : <FiMinus size={20} />}
                     </motion.div>
-                    <span className="mx-4 text-lg font-normal">{title}</span>
+                    <span className="px-4 text-lg font-normal">{title}</span>
                 </motion.div>
             </Link>
         </li>
