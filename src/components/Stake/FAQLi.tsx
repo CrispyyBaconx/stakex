@@ -18,9 +18,9 @@ const FAQLi = (props: FAQLiProps) => {
                 </button>
             </li>
             {isOpen && (
-                <p>{props.answer}</p>
+                <p className="pl-3">{props.answer}</p>
             )}
-        </>        
+        </>
     )
 }
 

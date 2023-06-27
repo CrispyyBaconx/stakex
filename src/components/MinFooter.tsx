@@ -10,7 +10,7 @@ const MinFooter = () => {
                         <Link href="/about" className="mr-4 hover:underline md:mr-6">About</Link>
                     </li>
                     <li>
-                        <Link href="/privacy" className="mr-4 hover:underline md:mr-6">Privacy Policy</Link>
+                        <Link href="/privacy-and-tos" className="mr-4 hover:underline md:mr-6">Privacy Policy</Link>
                     </li>
                     <li>
                         <Link href="/terminal" className="mr-4 hover:underline md:mr-6">Terminal</Link>

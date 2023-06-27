@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const Sidebar = () => {
     return (
         <>
-            <aside className="h-screen transition-transform -translate-x-full sm:translate-x-0">
+            <aside className="h-full transition-transform -translate-x-full sm:translate-x-0">
                	<div className="h-full w-48 px-6 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-950 no-scrollbar">
 					{/* Implement backend? or just a static list of games / inplay*/}
 					<ul className='flex flex-col h-full'>
@@ -18,7 +18,7 @@ const Sidebar = () => {
                         <SidebarItem href="/soccer" title="Soccer" />
 
                         <li className="mt-[auto]">
-                            wAt
+                            Bottom
                         </li>
                     </ul>
                	</div>

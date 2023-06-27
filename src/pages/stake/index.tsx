@@ -238,24 +238,25 @@ const Stake = () => {
                                 <div className='flex flex-col'>
                                     <p className='text-gray-400'>APY over Last 7 Days</p>
                                     {isLoading ? ( // chart section
-                                        <div className='flex w-[40rem] h-[24rem]'>
-                                            <div role="status" className="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700">
-                                                <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2.5"></div>
-                                                <div className="w-48 h-2 mb-10 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-                                                <div className="flex items-baseline mt-4 space-x-6">
-                                                    <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
-                                                    <div className="w-full h-56 bg-gray-200 rounded-t-lg dark:bg-gray-700"></div>
-                                                    <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
-                                                    <div className="w-full h-64 bg-gray-200 rounded-t-lg dark:bg-gray-700"></div>
-                                                    <div className="w-full bg-gray-200 rounded-t-lg h-80 dark:bg-gray-700"></div>
-                                                    <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
-                                                    <div className="w-full bg-gray-200 rounded-t-lg h-80 dark:bg-gray-700"></div>
+                                        <div className='flex w-[40rem] h-[24rem] m-8 ml-0'>
+                                            <div className="flex flex-col p-4 justify-between w-full h-full border border-gray-700 rounded shadow animate-pulse">
+                                                <div className="w-full px-40 h-2 mb-2.5 bg-gray-700 rounded-full" />
+                                                <div className="flex items-baseline gap-8 justify-center">
+                                                    <div className="w-full bg-gray-700 rounded-t-lg h-60" />
+                                                    <div className="w-full bg-gray-700 rounded-t-lg h-56" />
+                                                    <div className="w-full bg-gray-700 rounded-t-lg h-72" />
+                                                    <div className="w-full bg-gray-700 rounded-t-lg h-64" />
+                                                    <div className="w-full bg-gray-700 rounded-t-lg h-60" />
+                                                    <div className="w-full bg-gray-700 rounded-t-lg h-[17rem]" />
+                                                    <div className="w-full bg-gray-700 rounded-t-lg h-60" />
+                                                    <div className="w-full bg-gray-700 rounded-t-lg h-64" />
                                                 </div>
+                                                <div className="h-2.5 bg-gray-700 rounded-full w-full pr-80" />
                                                 <span className="sr-only">Loading...</span>
                                             </div>
                                         </div>
                                     ) : (
-                                        <div className='flex w-[40rem] h-[24rem]'>
+                                        <div className='flex w-[40rem] h-[24rem] m-8 ml-0'>
                                             <ResponsiveContainer width="100%" height={400}>
                                                 <AreaChart data={processAPYData(apyHistory)}>
                                                     <defs>
@@ -291,7 +292,7 @@ const Stake = () => {
                                                 {apy} <span>% APY</span>
                                             </div>
                                         ) : (
-                                            <div role="status" className="max-w-sm animate-pulse">
+                                            <div className="max-w-sm animate-pulse">
                                                 <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-8 mb-4" />
                                                 <span className="sr-only">
                                                     <LoadingSpinner size={16} />
