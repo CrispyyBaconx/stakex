@@ -1,5 +1,5 @@
-import { MinFooter, Sidebar, Featured } from "@/components/App";
-import { ConnectButton } from '@/components';
+import { Sidebar, Main } from "@/components/App";
+import { ConnectButton, MinFooter } from '@/components';
 import { Search } from '@/components/App';
 import Head from "next/head";
 import Link from 'next/link';
@@ -23,14 +23,19 @@ const App = () => {
                         <Sidebar />
                     </div>
                     <div className="flex flex-col w-full">
-                        <section className='flex flex-row py-5 justify-end pr-6'>
-                            <Search />
-                            <div className='flex flex-row items-center justify-center p-4 w-50'>
-                                <ConnectButton display='compact' />
+                        <section className='flex flex-row py-5 pr-6 justify-between'>
+                            <div className="flex flex-row">
+                                {/* ! placeholder for future buttons? */}
+                            </div>
+                            <div className="flex flex-row">
+                                <Search />
+                                <div className='flex flex-row items-center justify-center p-4 w-50'>
+                                    <ConnectButton display='compact' />
+                                </div>
                             </div>
                         </section>
                         <main className="flex w-full">
-                            <Featured />
+                            <Main />
                         </main>
                     </div>
                 </div>

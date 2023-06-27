@@ -3,6 +3,5 @@ export { default as Breadcrumb } from './Breadcrumb';
 export { default as MiddleBanner } from './MiddleBanner';
 export { default as Betslip } from './Betslip';
 export { default as Card } from './Card';
-export { default as MinFooter } from '../MinFooter';
-export { default as Featured } from './Featured';
+export { default as Main } from './Main';
 export { default as Search } from './Search';

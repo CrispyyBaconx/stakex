@@ -1,7 +1,7 @@
-const Featured = () => {
+const Main = () => {
     return (
         <div>Main content</div>
     )
 }
 
-export default Featured;
+export default Main;
