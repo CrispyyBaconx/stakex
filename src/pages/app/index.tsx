@@ -26,13 +26,15 @@ const App = () => {
                         </div>
                     </section>
                 </header>
-                <div className="flex flex-row w-full h-full">
-                    <Sidebar />
+                <div className="flex flex-row w-full h-full flex-1">
+                    <div className="flex items-stretch">
+                        <Sidebar />
+                    </div>
                     <main className="flex w-full">
                         <Featured />
                     </main>
                 </div>
-                <div className='flex flex-col mt-auto w-full'>
+                <div className='flex flex-col w-full'>
                     <MinFooter />
                 </div>
             </main>

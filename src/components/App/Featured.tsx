@@ -1,6 +1,6 @@
 const Featured = () => {
     return (
-        <div>Featured</div>
+        <div>Main content</div>
     )
 }
 

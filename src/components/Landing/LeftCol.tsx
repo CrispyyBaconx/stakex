@@ -37,7 +37,7 @@ const LeftCol = () => {
                 <Card title='Instant Betting' description='Place bets on your favorite teams and players without any unnecessary steps - no deposits, no registrations.' icon={ BsFillLightningChargeFill } />
             </div>
             <div className="flex flex-row items-center justify-center p-4 my-4" ref={card2.ref}>
-                <Card title='Low Fees' description='Thanks to the scalability solutions provided by Arbitrum One, you can enjoy incredibly low fees, making your betting experience even more rewarding.' icon={ GiMoneyStack } />
+                <Card title='Low Fees' description='Thanks to the scalability provided by Arbitrum One, you can enjoy incredibly low fees, making your betting experience even more rewarding.' icon={ GiMoneyStack } />
             </div>
             <div className="flex flex-row items-center justify-center p-4 my-4" ref={card3.ref}>
                 <Card title='Secure' description=' Your funds are yours alone. We leverage the power of smart contracts to ensure your winnings are transferred directly to your wallet - no middleman, no waiting.' icon={ BsShieldFill } />
