@@ -14,25 +14,25 @@ const App = () => {
         		<link rel="icon" href="/favicon.ico" />
             </Head>
             <main className="flex flex-col min-h-screen bg-gray-900">
-                <header className="flex flex-row justify-between w-full">
-                    <Link href="/" className="flex px-6 w-48 justify-left items-center bg-gray-950">
-                        <h2 className="text-white text-4xl">Stakex</h2>
-                        <h5 className="p-1 text-purple-600 font-bold">Beta</h5>
-                    </Link>
-                    <section className='flex flex-row py-5'>
-                        <Search />
-                        <div className='flex flex-row items-center justify-center p-4 w-50'>
-                            <ConnectButton display='compact' />
-                        </div>
-                    </section>
-                </header>
-                <div className="flex flex-row w-full h-full flex-1">
-                    <div className="flex items-stretch">
+                <div className="flex flex-row flex-1">
+                    <div className="flex flex-col">
+                        <Link href="/" className="flex p-6 pt-8 w-48 justify-left items-center bg-gray-950">
+                            <h2 className="text-white text-4xl">Stakex</h2>
+                            <h5 className="p-1 text-purple-600 font-bold">Beta</h5>
+                        </Link>
                         <Sidebar />
                     </div>
-                    <main className="flex w-full">
-                        <Featured />
-                    </main>
+                    <div className="flex flex-col w-full">
+                        <section className='flex flex-row py-5 justify-end pr-6'>
+                            <Search />
+                            <div className='flex flex-row items-center justify-center p-4 w-50'>
+                                <ConnectButton display='compact' />
+                            </div>
+                        </section>
+                        <main className="flex w-full">
+                            <Featured />
+                        </main>
+                    </div>
                 </div>
                 <div className='flex flex-col w-full'>
                     <MinFooter />

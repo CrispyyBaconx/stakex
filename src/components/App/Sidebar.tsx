@@ -6,18 +6,18 @@ import { motion } from 'framer-motion';
 const Sidebar = () => {
     return (
         <aside className="h-full transition-transform -translate-x-full sm:translate-x-0">
-          	<div className="w-48 px-6 py-4 bg-gray-50 dark:bg-gray-950 no-scrollbar">
-			<ul className='flex flex-col'>
-                   <SidebarItem href="/in-play" title="In Play" />
-                   <SidebarItem href="/football" title="Football" />
-                   <SidebarItem href="/tennis" title="Tennis" />
-                   <SidebarItem href="/basketball" title="Basketball" />
-                   <SidebarItem href="/esports" title="Esports" />
-                   <SidebarItem href="/soccer" title="Soccer" />
-
-                   <li className="mt-[auto]">
-                       Bottom
-                   </li>
+          	<div className="h-full w-48 px-6 py-4 bg-gray-50 dark:bg-gray-950 no-scrollbar">
+			    <ul className='h-full flex flex-col'>
+                    <SidebarItem href="/in-play" title="In Play" />
+                    <SidebarItem href="/football" title="Football" />
+                    <SidebarItem href="/tennis" title="Tennis" />
+                    <SidebarItem href="/basketball" title="Basketball" />
+                    <SidebarItem href="/esports" title="Esports" />
+                    <SidebarItem href="/soccer" title="Soccer" />
+        
+                    <li className="mt-[auto]">
+                        Bottom
+                    </li>
                </ul>
           	</div>
         </aside>
