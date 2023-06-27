@@ -130,7 +130,7 @@ const Stake = () => {
                                 <div className='flex flex-row p-10 mx-8 leading-7 bg-gray-900 border-2 rounded-[20px] border-gray-800 gap-2 relative'>
                                     {account && etherBalance ? null : (
                                         <div className='z-50'>
-                                            <div className="absolute h-full w-full rounded-xl inset-0 backdrop-blur-lg" />
+                                            <div className="absolute h-full w-full inset-0 backdrop-blur-lg rounded-[20px]" />
                                             <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center">
                                                 <h1 className="text-2xl font-bold text-slate-400"><span className='text-slate-500'>&lt;</span> Please Connect Your Wallet <span className='text-slate-500'>&gt;</span></h1>
                                             </div>
@@ -138,7 +138,7 @@ const Stake = () => {
                                     )}
                                     <div className='flex flex-col gap-4 mr-8 w-48'> {/* staking */}
                                         <p className='text-gray-400 text-2xl self-center'>Stake</p>
-                                        <label className='relative inline-flex border border-solid border-slate-500 rounded-2xl items-stretch box-border px-3 cursor-text transition-colors duration-100 ease-in-out w-full self-center'>
+                                        <label className='relative inline-flex border border-solid border-slate-500 rounded-[20px] items-stretch box-border px-3 cursor-text transition-colors duration-100 ease-in-out w-full self-center'>
                                             <span className='flex items-center flex-shrink-0 cursor-inherit pr-4'>
                                                 {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
                                                 <Image src={Logo} alt='Stakex Logo' width={24} height={24} />
@@ -210,7 +210,7 @@ const Stake = () => {
                                     </button>
                                 </div>
                                 {isOpen && (
-                                    <ul className="flex flex-col m-8 gap-4">
+                                    <ul className="flex flex-col m-8 gap-4 w-full">
                                         <FAQLi
                                             question="What is the purpose of this project?"
                                             answer="To woble."
