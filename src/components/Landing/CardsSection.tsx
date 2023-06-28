@@ -17,7 +17,7 @@ const CardsSection = () => {
                     <LeftCol />
 
                     <div className='flex flex-col items-center justify-center w-1/6 mx-56'>
-                        <div className='flex flex-col items-center justify-center w-1 h-full bg-slate-800 rounded-full'></div>
+                        <div className='flex flex-col items-center justify-center w-1 h-full bg-slate-800 rounded-full' />
                     </div>
 
                     <RightCol />

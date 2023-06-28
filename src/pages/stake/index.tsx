@@ -12,7 +12,8 @@ import { api } from '@/utils/api';
 
 import Logo from '@/assets/logo.svg';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
-import { FAQLi } from '@/components/Stake'; // figure out why this isnt rendering
+import { FAQLi } from '@/components/Stake';
+import { ethers } from 'ethers';
 
 // useful links
 // https://goerli.etherscan.io/address/0x6535a4e977885cba7fa99b00ee64d4e7c83fd847#readContract
@@ -25,6 +26,7 @@ const Stake = () => {
     const { sendTransaction } = useSendTransaction();
     const [stake, setStake] = useState(true);
     const [isOpen, setIsOpen] = useState(false);
+    const [queryAddress, setQueryAddress] = useState<string>(""); // ! maybe use a useEffect to query the address asynchonously and set a state variable to the result, using a result turnary to display the result or the default (Nothing to show.)
     const { isLoading, data: apyHistory } = api.main.getAPYHistory.useQuery(
         { limit: 10, offset: 0 },
         { enabled: !stake }
@@ -32,8 +34,6 @@ const Stake = () => {
 
     const [stakeAmount, setStakeAmount] = useState<number | string>("");
     const [unstakeAmount, setUnstakeAmount] = useState<number | string>("");
-
-    // {/* https://polygon.lido.fi/ - maybe model it after this */}
 
     const poolAddress = process.env.NEXT_PUBLIC_STAKING_CONTRACT_ADDRESS;
     const tokenAddress = process.env.NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS;
@@ -57,6 +57,14 @@ const Stake = () => {
            Number.isNaN(+event.target.value)) return;
 
         setStakeAmount(event.target.value);
+    };
+
+    const handleQueryAddress = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const inputElement = event.currentTarget.elements[0] as HTMLInputElement; // standard typescript bs
+        const inputValue: string = inputElement.value;
+        if (ethers.utils.isAddress(inputValue) === false && inputValue !== '') return;
+        setQueryAddress(inputValue);
     };
 
     const processAPYData = (data: Array<apyHistory> | undefined) => {
@@ -200,7 +208,6 @@ const Stake = () => {
                                 </div>
                                 <div className='flex flex-row gap-4 p-4 mt-12 rounded-xl w-full bg-slate-700 justify-between'>
                                     <p className='text-slate-400'>FAQ</p>
-                                    {/* going to be a drop down into an accordian is what im thinkin */}
                                     <button className='flex' onClick={() => setIsOpen(isOpen => !isOpen)}>
                                         {isOpen ? (
                                             <BsChevronUp size={24} />
@@ -234,9 +241,9 @@ const Stake = () => {
                     ) : (
                         /* need to find a good graphing lib and maybe write a microservice to get the apy at a specific time everyday and stick it in the db */
                         <div className='flex flex-row items-center mt-12 w-[40em] justify-around'>
-                            <div className='flex flex-row p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-800'> {/* rewards */}
+                            <div className='flex flex-row p-10 mx-8 leading-7 bg-gray-800 border-2 rounded-[20px] border-gray-700'> {/* rewards */}
                                 <div className='flex flex-col'>
-                                    <p className='text-gray-400'>APY over Last 7 Days</p>
+                                    <p className='text-gray-300 text-2xl'>APY over Last 7 Days</p>
                                     {isLoading ? ( // chart section
                                         <div className='flex w-[40rem] h-[24rem] m-8 ml-0'>
                                             <div className="flex flex-col p-4 justify-between w-full h-full border border-gray-700 rounded shadow animate-pulse">
@@ -261,45 +268,72 @@ const Stake = () => {
                                                 <AreaChart data={processAPYData(apyHistory)}>
                                                     <defs>
                                                         <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
-                                                            <stop offset="0%" stopColor="#8884d8" stopOpacity={0.4} />
-                                                            <stop offset="75%" stopColor="#8884d8" stopOpacity={0.05} />
+                                                            <stop offset="25%" stopColor="#290680" stopOpacity={0.4} />
+                                                            <stop offset="75%" stopColor="#32025e" stopOpacity={0.2} />
+                                                            <stop offset="95%" stopColor="#32025e" stopOpacity={0.3} />
                                                         </linearGradient>
                                                     </defs>
 
-                                                    <Area type="monotone" dataKey="apy" stroke="#8884d8" fill='url(#color)' />
-                                                    <CartesianGrid stroke="#1e1b4b" scale={1.5}/>
-                                                    <XAxis dataKey={"date"} stroke='#9333ea' tickLine={false} tickCount={7} tickFormatter={(date: Date) => { return format(date) }} />
-                                                    <YAxis dataKey={"apy"} stroke='#9333ea' axisLine={true} tickLine={false} tickCount={6} />
+                                                    <Area type="monotone" dataKey="apy" stroke="#32025e" fill='url(#color)' />
+                                                    <CartesianGrid stroke="#1e1a3b" scale={1.5}/>
+                                                    <XAxis dataKey={"date"} stroke='#660fd1' tickLine={false} tickCount={7} tickFormatter={(date: Date) => { return format(date) }} tickMargin={10} />
+                                                    <YAxis dataKey={"apy"} stroke='#660fd1' axisLine={true} tickLine={false} tickCount={6} tickMargin={3} />
                                                     {/* @ts-expect-error eslint-disable-next-line */}
-                                                    <Tooltip content={<CustomTooltip />} />
+                                                    <Tooltip content={<CustomTooltip />} cursor={{ stroke: 'navy', strokeWidth: 2 }} />
                                                 </AreaChart>
                                             </ResponsiveContainer>
                                         </div>
                                     )}
-                                    <div className='flex flex-col'>
-                                        <p className='text-gray-400'>Query Rewards</p>
-                                    <div className='flex-row'>
-                                            <input className='bg-slate-900 p-2 rounded-xl text-white' placeholder='Address:' />
-                                            <button className='text-lg text-white'>Check</button>
-                                        </div>
+                                    <div className='flex flex-col bg-gray-800 p-6 pb-7 items-center rounded-xl'>
+                                        <form onSubmit={handleQueryAddress}>
+                                            <p className='text-gray-400 text-lg pl-1'>Query Staking Rewards</p>
+                                            <label className='flex flex-row gap-4'>
+                                                <input className='bg-slate-900 p-2 px-4 rounded-xl text-white w-[25rem]' placeholder='Address:' />
+                                                <button type='submit' className="text-lg text-gray-300 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-800 font-medium rounded-lg p-2 px-4 text-center">Check</button>
+                                            </label>
+                                        </form>
                                     </div>
                                 </div>
-                                <div className='flex'>
-                                    <p>Staking Info</p>
-                                    <p>
-                                        {apy ? (
-                                            <div className='flex flex-col items-center'>
-                                                {apy} <span>% APY</span>
+                                <div className='flex flex-col bg-gray-900 py-6 px-8 ml-4 rounded-xl w-64'>
+                                    <div>
+                                        <p className='text-xl'>Staking</p>
+                                        <p className='flex flex-row gap-2 justify-end'>
+                                            {true ? (
+                                                <div className='flex flex-row'>
+                                                    <span className='text-green-400'>{apy}2.43</span>%
+                                                </div>
+                                            ) : (
+                                                <div className="flex flex-row items-center animate-pulse">
+                                                    <div className="h-4 bg-gray-700 rounded-full w-8" />
+                                                    <span className="sr-only">
+                                                        <LoadingSpinner size={16} />
+                                                    </span>
+                                                </div>
+                                            )}
+                                            <span>APY</span>
+                                        </p>
+                                        <p className='flex flex-row gap-2 justify-end'>
+                                            <div className='flex flex-row'>
+                                                <span className='text-green-400'>$</span>1,345,543 Market Cap
                                             </div>
+                                        </p>
+                                    </div>
+
+                                    {/* separator */}
+                                    <div className='rounded-xl bg-gray-600 w-auto h-[0.1rem] my-8' />
+
+                                    <div className='flex flex-col gap-3'>
+                                        <p className='text-xl'>Rewards</p>
+                                        {/* implement totalClaimed() on the contract, and query it with the address in queryAddress, maybe use a state variable to keep track */}
+                                        {/* ! implement */}
+                                        {false ? (
+                                            <div className='flex flex-col'></div>
                                         ) : (
-                                            <div className="max-w-sm animate-pulse">
-                                                <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-8 mb-4" />
-                                                <span className="sr-only">
-                                                    <LoadingSpinner size={16} />
-                                                </span>
+                                            <div className="flex flex-row items-center">
+                                                <p className="text-gray-400">Nothing to show.</p>
                                             </div>
                                         )}
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -338,7 +372,7 @@ const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
             {active ? (
                 <div className="bg-gray-800 p-4 rounded-xl">
                     <h4 className="text-gray-400">{format(label)}</h4>
-                    <p className="text-gray-400">{payload[0]?.value.toFixed(2)}% APY</p>
+                    <p className="text-gray-300">{payload[0]?.value.toFixed(2)}<span className='text-gray-400'>% APY</span></p>
                 </div>            
             ) : loading}
         </>
