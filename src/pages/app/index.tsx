@@ -1,4 +1,4 @@
-import { Sidebar, Main } from "@/components/App";
+import { Sidebar } from "@/components/App";
 import { ConnectButton, MinFooter } from '@/components';
 import { Search } from '@/components/App';
 import Head from "next/head";
@@ -35,7 +35,9 @@ const App = () => {
                             </div>
                         </section>
                         <main className="flex w-full">
-                            <Main />
+                            <div className="flex flex-col w-full">
+                                
+                            </div>
                         </main>
                     </div>
                 </div>

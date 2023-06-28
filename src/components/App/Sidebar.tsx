@@ -7,18 +7,23 @@ const Sidebar = () => {
     return (
         <aside className="h-full transition-transform -translate-x-full sm:translate-x-0">
           	<div className="h-full w-48 px-6 py-4 bg-gray-50 dark:bg-gray-950 no-scrollbar">
-			    <ul className='h-full flex flex-col'>
+                <p className="text-xl p-4 pl-1">Popular</p>
+			    <ul className='flex flex-col'>
                     <SidebarItem href="/in-play" title="In Play" />
-                    <SidebarItem href="/football" title="Football" />
+                    <SidebarItem href="/upcoming" title="Upcoming" />
+                    <SidebarItem href="/mlb" title="MLB" />
+                    <SidebarItem href="/nba" title="NBA" />
+                    <SidebarItem href="/nfl" title="NFL" />
+                    <SidebarItem href="/pga" title="PGA Tour" />
+                </ul>
+                <p className="text-xl p-4 pl-1">All</p>
+                <ul className='flex flex-col'>
                     <SidebarItem href="/tennis" title="Tennis" />
                     <SidebarItem href="/basketball" title="Basketball" />
                     <SidebarItem href="/esports" title="Esports" />
                     <SidebarItem href="/soccer" title="Soccer" />
-        
-                    <li className="mt-[auto]">
-                        Bottom
-                    </li>
-               </ul>
+                    <SidebarItem href="/mma" title="MMA" />
+                </ul>
           	</div>
         </aside>
     )
