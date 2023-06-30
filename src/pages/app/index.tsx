@@ -35,7 +35,7 @@ const App = () => {
                             </div>
                         </section>
                         <main className="flex w-full">
-                            <div className="flex flex-col w-full items-center bg-slate-950 mx-60 mt-10 rounded-xl border-2 border-gray-800">
+                            <div className="flex flex-col w-full items-center bg-slate-950 mx-56 mt-10 rounded-xl border-2 border-gray-800">
                                 <div>
                                     top
                                 </div>

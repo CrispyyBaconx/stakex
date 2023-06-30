@@ -9,20 +9,20 @@ const Sidebar = () => {
           	<div className="h-full w-48 px-6 py-4 bg-gray-50 dark:bg-gray-950 no-scrollbar">
                 <p className="text-xl p-4 pl-1">Popular</p>
 			    <ul className='flex flex-col'>
-                    <SidebarItem href="/in-play" title="In Play" />
-                    <SidebarItem href="/upcoming" title="Upcoming" />
-                    <SidebarItem href="/mlb" title="MLB" />
-                    <SidebarItem href="/nba" title="NBA" />
-                    <SidebarItem href="/nfl" title="NFL" />
-                    <SidebarItem href="/pga" title="PGA Tour" />
+                    <SidebarItem href="/app/in-play" title="In Play" />
+                    <SidebarItem href="/app/upcoming" title="Upcoming" />
+                    <SidebarItem href="/app/mlb" title="MLB" />
+                    <SidebarItem href="/app/nba" title="NBA" />
+                    <SidebarItem href="/app/nfl" title="NFL" />
+                    <SidebarItem href="/app/pga" title="PGA Tour" />
                 </ul>
                 <p className="text-xl p-4 pl-1">All</p>
                 <ul className='flex flex-col'>
-                    <SidebarItem href="/tennis" title="Tennis" />
-                    <SidebarItem href="/basketball" title="Basketball" />
-                    <SidebarItem href="/esports" title="Esports" />
-                    <SidebarItem href="/soccer" title="Soccer" />
-                    <SidebarItem href="/mma" title="MMA" />
+                    <SidebarItem href="/app/tennis" title="Tennis" />
+                    <SidebarItem href="/app/basketball" title="Basketball" />
+                    <SidebarItem href="/app/esports" title="Esports" />
+                    <SidebarItem href="/app/soccer" title="Soccer" />
+                    <SidebarItem href="/app/mma" title="MMA" />
                 </ul>
           	</div>
         </aside>
