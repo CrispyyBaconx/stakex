@@ -36,11 +36,29 @@ const App = () => {
                         </section>
                         <main className="flex w-full">
                             <div className="flex flex-col w-full items-center bg-slate-950 mx-56 mt-10 rounded-xl border-2 border-gray-800">
-                                <div>
-                                    top
+                                <div className="flex p-4">
+                                    <div className="flex flex-row">
+                                        <h3 className="text-3xl">Boosts</h3>
+                                        <h3 className="text-3xl font-serif font-extrabold text-purple-600">&nbsp;&gt;</h3> {/* ! prob replace this with a graphic */}
+                                        <h3 className="text-3xl font-serif font-extrabold text-purple-600 translate-x-[-18px]">&nbsp;&gt;</h3>
+                                    </div>
+                                    <div className="flex flex-row">
+                                        {/* use backend to get games with an odds boost today? */}
+                                    </div>
                                 </div>
-                                <div>
-                                    bottom
+                                
+                                {/* Separator */}
+                                <div className="flex flex-row w-[85%] border-b-2 border-gray-800" />
+
+                                <div className="flex p-4">
+                                    <div className="flex flex-row">
+                                        <h3 className="text-3xl">Top Upcoming Events</h3>
+                                        <h3 className="text-3xl font-serif font-extrabold text-purple-600">&nbsp;&gt;</h3> {/* ! prob replace this with a graphic */}
+                                        <h3 className="text-3xl font-serif font-extrabold text-purple-600 translate-x-[-18px]">&nbsp;&gt;</h3>
+                                    </div>
+                                    <div className="flex flex-row">
+                                        {/* use backend to get popular games today for each category */}
+                                    </div>
                                 </div>
                             </div>
                         </main>
