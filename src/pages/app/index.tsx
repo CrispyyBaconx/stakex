@@ -24,14 +24,11 @@ const App = () => {
                     </div>
                     <div className="flex flex-col w-full">
                         <section className='flex flex-row py-5 pr-6 justify-between'>
-                            <div className="flex flex-row">
-                                {/* ! placeholder for future buttons? */}
-                            </div>
-                            <div className="flex flex-row">
+                            <div className="pl-8">
                                 <Search />
-                                <div className='flex flex-row items-center justify-center p-4 w-50'>
-                                    <ConnectButton display='compact' />
-                                </div>
+                            </div>
+                            <div className='flex flex-row items-center justify-center p-4 w-50'>
+                                <ConnectButton display='compact' />
                             </div>
                         </section>
                         <main className="flex w-full">
