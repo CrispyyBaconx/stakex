@@ -54,7 +54,7 @@ const App = () => {
                                         <h3 className="text-3xl font-serif font-extrabold text-purple-600 translate-x-[-18px]">&nbsp;&gt;</h3>
                                     </div>
                                     <div className="flex flex-row">
-                                        {/* use backend to get popular games today for each category */}
+                                        {/* use backend to get popular games today for each category? */}
                                     </div>
                                 </div>
                             </div>
