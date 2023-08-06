@@ -31,8 +31,12 @@ const App = () => {
                                 <ConnectButton display='compact' />
                             </div>
                         </section>
-                        <main className="flex w-full">
-                            <div className="flex flex-col w-full items-center bg-slate-950 mx-56 mt-10 rounded-xl border-2 border-gray-800">
+                        <main className="flex flex-col w-full">
+                            <div className="flex w-full items-center bg-slate-950 mt-10 rounded-xl border-2 border-gray-800"> {/* ! find a way to fix the margin */}
+                                carousel here probably
+                            </div>
+
+                            <div className="flex flex-col w-full items-center bg-slate-950 mt-10 rounded-xl border-2 border-gray-800">
                                 <div className="flex p-4">
                                     <div className="flex flex-row">
                                         <h3 className="text-3xl">Boosts</h3>
