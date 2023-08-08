@@ -1,8 +1,11 @@
 import { Sidebar } from "@/components/App";
 import { ConnectButton, MinFooter } from '@/components';
 import { Search } from '@/components/App';
+import tennisImage from '@/assets/CarouselImages/tennis.png';
+import waterImage from '@/assets/CarouselImages/water.jpg';
 import Head from "next/head";
 import Link from 'next/link';
+import Carousel from "@/components/App/Carousel";
 
 const App = () => {
     return (
@@ -32,10 +35,22 @@ const App = () => {
                             </div>
                         </section>
                         <main className="flex flex-col w-full">
-                            <div className="flex w-full items-center bg-slate-950 mt-10 rounded-xl border-2 border-gray-800"> {/* ! find a way to fix the margin */}
-                                carousel here probably
+                            <div className="flex flex-col w-full items-center bg-slate-950 mt-10 rounded-xl border-2 border-gray-800"> {/* ! find a way to fix the margin */}
+                                <Carousel interval={40000} items={[
+                                    {
+                                        image: tennisImage,
+                                        link: '/app/tennis'
+                                    },
+                                    {
+                                        image: waterImage,
+                                        link: '/app/tennis'
+                                    },
+                                    {
+                                        image: tennisImage,
+                                        link: '/app/tennis'
+                                    }
+                                ]} />
                             </div>
-
                             <div className="flex flex-col w-full items-center bg-slate-950 mt-10 rounded-xl border-2 border-gray-800">
                                 <div className="flex p-4">
                                     <div className="flex flex-row">
