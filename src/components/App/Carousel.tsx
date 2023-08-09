@@ -16,7 +16,23 @@ interface CarouselProps {
 const Carousel = (props: CarouselProps) => {
     const [index, setIndex] = useState(0);
     const router = useRouter();
+
+    useEffect(() => {
+        const next = () => {
+            setIndex((previousIndex) => {
+                return previousIndex + 1 === props.items.length ? 0 : previousIndex + 1;
+            });
+        }
+
+        const interval = setInterval(() => {
+            next();
+        }, props.interval);
+
+        return () => clearInterval(interval);
+    }, [props.interval, props.items.length]);
+
     const current = props.items[index];
+    if (!current) return null;
 
     const next = () => {
         setIndex((previousIndex) => {
@@ -34,39 +50,25 @@ const Carousel = (props: CarouselProps) => {
         setIndex(index);
     }
 
-    useEffect(() => {
-        const next = () => {
-            setIndex((previousIndex) => {
-                return previousIndex + 1 === props.items.length ? 0 : previousIndex + 1;
-            });
-        }
-
-        const interval = setInterval(() => {
-            next();
-        }, props.interval);
-
-        return () => clearInterval(interval);
-    }, [props.interval, props.items.length]);
-
-    return ( // still need to add the link functionality
-        <div className="flex relative justify-center items-center">
-            {current && <Image className='w-full h-full rounded-lg border border-red-500' src={current.image} key={index} alt='' height={300} width={500} />}
-            <div className="flex absolute justify-between w-full px-5 top-1/2 transform -translate-y-1/2">
-                <button className="bg-slate-900 border-2 border-gray-400 text-white p-2 rounded-full left-0" onClick={previous}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/> {/* fix this bs */}
+    return (
+        <div className="flex relative justify-center items-center my-8 w-4/5">
+            <div className='flex flex-row'>
+                <button className="bg-slate-900 border-2 border-gray-400 text-white p-2 mr-12 m-3 rounded-full left-0 transition hover:scale-110 my-auto" onClick={previous}>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 pl-1 pt-[3px] text-gray-400" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+                        <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/> {/* fix this bs */}
                     </svg>
                 </button>
-                <button className="bg-slate-900 border-2 border-gray-400 text-white p-2 rounded-full right-0" onClick={next}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="flex h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                <Image className='w-full h-full rounded-lg border-[3px] border-gray-700 hover:cursor-pointer' src={current.image} key={index} alt='' height={350} width={800} onClick={() => { router.push(current.link).then().catch(console.error) }} />
+                <button className="bg-slate-900 border-2 border-gray-400 text-white p-2 ml-12 m-3 rounded-full right-0 transition hover:scale-110 my-auto" onClick={next}>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="flex h-6 w-6 pl-1 pt-[3px] text-gray-400" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+                        <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                     </svg>
                 </button>
             </div>
-            <div className="mt-5 flex justify-center space-x-5 absolute">
+            <div className="flex justify-center absolute bottom-4 p-2">
                 {props.items.map((_, idx) => {
                     return (
-                        <div key={idx} className={`flex ${idx === props.items.length - 1 ? '' : 'mr-2'}`} onClick={() => handleJump(idx)} />
+                        <div key={idx} className={`flex bg-slate-800 border-gray-500 border-[1px] h-[0.6rem] w-[0.6rem] rounded-xl hover:cursor-pointer ${idx === props.items.length - 1 ? '' : 'mr-2'} ${idx === index ? 'scale-150 transition bg-indigo-800 border-purple-600' : ''}`} onClick={() => handleJump(idx)} />
                     )
                 })}
             </div>

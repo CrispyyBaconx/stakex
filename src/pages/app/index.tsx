@@ -35,7 +35,7 @@ const App = () => {
                             </div>
                         </section>
                         <main className="flex flex-col w-full">
-                            <div className="flex flex-col w-full items-center bg-slate-950 mt-10 rounded-xl border-2 border-gray-800"> {/* ! find a way to fix the margin */}
+                            <div className="flex flex-col w-10/12 items-center bg-slate-950 mt-4 rounded-xl border-2 border-gray-800 mx-auto"> {/* ! find a way to fix the margin */}
                                 <Carousel interval={40000} items={[
                                     {
                                         image: tennisImage,
@@ -51,7 +51,7 @@ const App = () => {
                                     }
                                 ]} />
                             </div>
-                            <div className="flex flex-col w-full items-center bg-slate-950 mt-10 rounded-xl border-2 border-gray-800">
+                            <div className="flex flex-col w-10/12 items-center bg-slate-950 mt-10 rounded-xl border-2 border-gray-800 mx-auto">
                                 <div className="flex p-4">
                                     <div className="flex flex-row">
                                         <h3 className="text-3xl">Boosts</h3>
