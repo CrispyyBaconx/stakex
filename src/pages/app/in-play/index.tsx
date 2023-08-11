@@ -46,8 +46,8 @@ const InPlay = () => {
                     <h1 className='text-6xl font-bold text-white'>In Play</h1>
                 </header>
                 <main className="flex h-full justify-center">
-                    <section className='flex flex-col items-center justify-start px-64 border-2 bg-slate-900 border-gray-500 rounded-2xl mb-8'>
-                        <h2 className='text-4xl font-bold text-white mx-auto mt-12 mb-6'>Games In Play</h2>
+                    <section className='flex flex-col items-center justify-start px-auto w-[52rem] border-2 bg-slate-900 border-gray-500 rounded-2xl mb-8'>
+                        <h2 className='text-4xl font-bold text-white mx-auto mt-12 mb-10'>Games In Play</h2>
                         {isLoading ? (
                             <ListLoadingSkeleton />
                         ) : gamesInPlay && gamesInPlay.length > 0 ? (

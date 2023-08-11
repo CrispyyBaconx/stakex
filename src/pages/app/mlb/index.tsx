@@ -1,10 +1,12 @@
 import Head from 'next/head';
+import { GameCategory } from '@/components/App';
+import { type GameCategoryProps } from '@/components/App/GameCategory';
 
-const MLB = () => {
+const MLB = (props: GameCategoryProps) => {
     return (
         <>
             <Head>
-                <title>Stakex</title>
+                <title>Stakex - MLB</title>
                 <meta name="description" content="Welcome to Stakex." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
