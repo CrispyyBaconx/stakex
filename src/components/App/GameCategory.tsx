@@ -7,6 +7,10 @@ export interface GameCategoryProps {
 }
 
 const GameCategory = () => {
+    // get games for the sport
+    // make basic template for the sport
+    // title at the top, list of games below, background image faded in the background
+
     return (
         <div>GameCategory</div>
     )
