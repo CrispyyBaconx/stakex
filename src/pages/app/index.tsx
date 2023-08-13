@@ -1,10 +1,8 @@
-import { Sidebar } from "@/components/App";
+import { Sidebar, Search } from "@/components/App";
 import { ConnectButton, MinFooter } from '@/components';
-import { Search } from '@/components/App';
 import tennisImage from '@/assets/CarouselImages/tennis.png';
 import waterImage from '@/assets/CarouselImages/water.jpg';
 import Head from "next/head";
-import Link from 'next/link';
 import Carousel from "@/components/App/Carousel";
 
 const App = () => {
@@ -18,13 +16,7 @@ const App = () => {
             </Head>
             <main className="flex flex-col min-h-screen bg-gray-900">
                 <div className="flex flex-row flex-1">
-                    <div className="flex flex-col">
-                        <Link href="/" className="flex p-6 pt-8 w-48 justify-left items-center justify-end bg-gray-950">
-                            <h2 className="text-white text-4xl">Stakex</h2>
-                            <h5 className="p-1 text-purple-600 font-bold">Beta</h5>
-                        </Link>
-                        <Sidebar />
-                    </div>
+                    <Sidebar />
                     <div className="flex flex-col w-full">
                         <section className='flex flex-row py-5 pr-6 justify-between'>
                             <div className="pl-8">
