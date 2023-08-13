@@ -9,7 +9,7 @@ export interface GameCategoryProps {
 }
 
 const GameCategory = (props: GameCategoryProps) => {
-    const isLoading = true; // placeholder for the api call
+    const isLoading = false; // placeholder for the api call
     // get games for the sport
     // make basic template for the sport
     // title at the top, list of games below, background image faded in the background
@@ -32,14 +32,19 @@ const GameCategory = (props: GameCategoryProps) => {
                         <LoadingSpinner size={26} />
                     </div>
                 ) : (
-                    <div>
-                        <div className="flex flex-row w-full text-md text-left text-gray-500 bg-gray-200 p-4 rounded-xl">
-                            Thursday, 11th
+                    <div className="flex flex-col w-4/5 mx-auto">
+                        <div>
+                            <div className="flex flex-row">
+                                <h3 className="text-3xl">{props.sport}</h3>
+                            </div>
+                            <div className="flex flex-row text-md text-left text-gray-500 p-4 rounded-xl">
+                                Thursday, 11th
+                            </div>
                         </div>
                     
                         <table className="w-full text-md uppercase">
                             <thead className="w-full text-gray-700">
-                                <tr className="flex gap-6 px-2 bg-slate-600">
+                                <tr className="flex gap-6 px-2 bg-slate-700 text-black">
                                     <th scope="col" className="mr-auto">
                                         Teams
                                     </th>
@@ -55,8 +60,8 @@ const GameCategory = (props: GameCategoryProps) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="flex border-b border-gray-700 hover:bg-gray-50 w-full">
-                                    <th scope="row" className="mr-auto font-medium text-gray-900 whitespace-nowrap">
+                                <tr className="flex border-b border-gray-700 hover:bg-gray-800 w-full">
+                                    <th scope="row" className="mr-auto p-4 font-medium text-slate-600 whitespace-nowrap">
                                         {/** 
                                           Will have team logo/crest & names
                                           */}
