@@ -9,7 +9,7 @@ const Tennis = () => {
     return (
         <>
             <Head>
-                <title>{sport}</title>
+                <title>Stakex - {sport}</title>
                 <meta name="description" content="Tennis" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
