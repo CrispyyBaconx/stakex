@@ -14,6 +14,14 @@ const GameCategory = (props: GameCategoryProps) => {
     // make basic template for the sport
     // title at the top, list of games below, background image faded in the background
 
+    const getWeekday = (): string => {
+        // @ts-expect-error - TS expects this to be possibly undefined even though it will never be
+        return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][new Date().getDay()];
+    }
+
+    // looks complex but it's just a ternary chain adding ordinal suffixes to the date
+    const nth = (n: number) => n > 3 && n < 21 ? "th" : n % 10 == 1 ? "st" : n % 10==2 ? "nd" : n % 10 == 3 ? "rd" : "th";
+
     return (
         <main className="flex flex-col w-full h-full bg-gray-900">
             
@@ -38,7 +46,7 @@ const GameCategory = (props: GameCategoryProps) => {
                                 <h3 className="text-3xl">{props.sport}</h3>
                             </div>
                             <div className="flex flex-row text-md text-left text-gray-500 p-4 rounded-xl">
-                                Thursday, 11th
+                                {`${getWeekday()}, ${new Date().getDate()}${nth(new Date().getDate())}`}
                             </div>
                         </div>
                     
