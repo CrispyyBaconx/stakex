@@ -44,39 +44,39 @@ const GameCategory = (props: GameCategoryProps) => {
                     
                         <table className="w-full text-md uppercase">
                             <thead className="w-full text-gray-700">
-                                <tr className="flex gap-6 px-2 bg-slate-700 text-black">
-                                    <th scope="col" className="mr-auto">
+                                <tr className="grid grid-cols-5 px-2 bg-slate-700 text-black">
+                                    <th scope="col" className="flex items-center justify-center col-span-2 pr-32">
                                         Teams
                                     </th>
-                                    <th scope="col">
+                                    <th scope="col" className="flex items-center justify-center">
                                         Money Line
                                     </th>
-                                    <th scope="col">
+                                    <th scope="col" className="flex items-center justify-center">
                                         Overall
                                     </th>
-                                    <th scope="col">
-                                        Underdawg
+                                    <th scope="col" className="flex items-center justify-center">
+                                        Underdog
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="flex border-b border-gray-700 hover:bg-gray-800 w-full">
-                                    <th scope="row" className="mr-auto p-4 font-medium text-slate-600 whitespace-nowrap">
-                                        {/** 
-                                          Will have team logo/crest & names
-                                          */}
+                                {/* Mapping through game data and creating rows */}
+                                <tr className="grid grid-cols-5 border-b border-gray-700 w-full">
+                                    <td className="flex items-center justify-center col-span-2 p-4 font-medium text-slate-600 whitespace-nowrap pr-32" scope="col">
+                                        {/* Team logo/crest & names */}
                                         Steve vs. David
-                                    </th>
-                                    <td className="px-2 py-4">
+                                    </td>
+                                    <td className="flex items-center justify-center px-2 py-4 hover:bg-gray-800" scope="col">
                                         1.09
                                     </td>
-                                    <td className="px-2 py-4">
+                                    <td className="flex items-center justify-center px-2 py-4 hover:bg-gray-800" scope="col">
                                         1.19
                                     </td>
-                                    <td className="px-2 py-4">
+                                    <td className="flex items-center justify-center px-2 py-4 hover:bg-gray-800" scope="col">
                                         1.29
                                     </td>
                                 </tr>
+                                {/* More rows */}
                             </tbody>
                         </table>
                     </div>
