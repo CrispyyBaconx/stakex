@@ -5,6 +5,9 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 const Upcoming = () => {
+    const isLoading = true;
+    const gamesUpcoming: Game[] = [];
+
     //const { isLoading, data: gamesUpcoming } = api.main.getGamesUpcoming.useQuery();
     const router = useRouter();
 
