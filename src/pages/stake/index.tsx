@@ -300,7 +300,7 @@ const Stake = () => {
                                         <p className='flex flex-row gap-2 justify-end'>
                                             {true ? (
                                                 <div className='flex flex-row'>
-                                                    <span className='text-green-400'>{apy}2.43</span>%
+                                                    <span className='text-green-400'>{apy}2.34</span>%
                                                 </div>
                                             ) : (
                                                 <div className="flex flex-row items-center animate-pulse">
@@ -314,7 +314,7 @@ const Stake = () => {
                                         </p>
                                         <p className='flex flex-row gap-2 justify-end'>
                                             <div className='flex flex-row'>
-                                                <span className='text-green-400'>$</span>1,345,543 Market Cap
+                                                <span className='text-green-400'>$</span>1,234,567 Market Cap
                                             </div>
                                         </p>
                                     </div>

@@ -1,7 +1,9 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Error404 = () => {
+    const router = useRouter();
+
     return (
         <>
             <Head>
@@ -10,7 +12,7 @@ const Error404 = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className="flex flex-col items-center justify-center h-screen bg-black">
-                <Link href="/" className="absolute top-12 left-12 m-4 text-4xl text-white transition ease-in-out hover:-translate-x-2 z-10 hover:drop-shadow-sm" title='Go Home'>&lt;</Link>
+                <button onClick={() => { router.back() }} className="absolute top-12 left-12 m-4 text-4xl text-white transition ease-in-out hover:-translate-x-2 z-10 hover:drop-shadow-sm" title='Go Home'>&lt;</button>
                 <div className="flex flex-col items-center p-10 px-16 rounded-3xl z-10">
                     <h1 className="text-6xl font-bold text-white">Error <span className='text-red-500'>404</span></h1>
                     <h2 className="text-2xl font-bold text-white">Page Not Found</h2>

@@ -19,7 +19,7 @@ const GameCategory = (props: GameCategoryProps) => {
         return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][new Date().getDay()];
     }
 
-    // looks complex but it's just a ternary chain adding ordinal suffixes to the date
+    // looks complex but it's just a ternary chain giving ordinal suffixes for the date
     const nth = (n: number) => n > 3 && n < 21 ? "th" : n % 10 == 1 ? "st" : n % 10==2 ? "nd" : n % 10 == 3 ? "rd" : "th";
 
     return (

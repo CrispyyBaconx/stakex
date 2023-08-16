@@ -60,7 +60,7 @@ const App = () => {
 
                                 <div className="flex p-4">
                                     <div className="flex flex-row">
-                                        <h3 className="text-3xl">Top Upcoming Events</h3>
+                                        <h3 className="text-3xl">Top Upcoming Games</h3>
                                         <h3 className="text-3xl font-serif font-extrabold text-purple-600">&nbsp;&gt;</h3> {/* ! prob replace this with a graphic */}
                                         <h3 className="text-3xl font-serif font-extrabold text-purple-600 translate-x-[-18px]">&nbsp;&gt;</h3>
                                     </div>
