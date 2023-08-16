@@ -5,6 +5,7 @@ interface GamePageProps {
 }
 
 const GamePage = (props: GamePageProps) => {
+    // this one will have to be more generic than the GameCategory component
     const router = useRouter();
     
     return (

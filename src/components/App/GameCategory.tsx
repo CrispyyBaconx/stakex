@@ -53,17 +53,17 @@ const GameCategory = (props: GameCategoryProps) => {
                         <table className="w-full text-md uppercase">
                             <thead className="w-full text-gray-700">
                                 <tr className="grid grid-cols-5 px-2 bg-slate-700 text-black">
-                                    <th scope="col" className="flex items-center justify-center col-span-2 pr-32">
+                                    <th scope="col" className="flex items-center justify-center col-span-2 pr-32"> {/** this might need to be individualized by sport */}
                                         Teams
                                     </th>
                                     <th scope="col" className="flex items-center justify-center">
                                         Money Line
                                     </th>
                                     <th scope="col" className="flex items-center justify-center">
-                                        Overall
+                                        Total
                                     </th>
                                     <th scope="col" className="flex items-center justify-center">
-                                        Underdog
+                                        Run Line
                                     </th>
                                 </tr>
                             </thead>
