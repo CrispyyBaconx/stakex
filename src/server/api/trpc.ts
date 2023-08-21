@@ -25,7 +25,6 @@ import { prisma } from "@/server/db";
  * @see https://trpc.io/docs/context
  */
 export const createTRPCContext = (opts: CreateNextContextOptions) => {
-
   return {
     prisma,
   }

@@ -2,6 +2,7 @@ import { api } from "@/utils/api";
 import { MinFooter } from "@/components";
 import { type StaticImageData } from "next/image";
 import LoadingSpinner from "../LoadingSpinner";
+import { useRouter } from "next/router";
 
 export interface GameCategoryProps {
     sport: string;
@@ -9,6 +10,7 @@ export interface GameCategoryProps {
 }
 
 const GameCategory = (props: GameCategoryProps) => {
+    const router = useRouter();
     const isLoading = false; // placeholder for the api call
     // get games for the sport
     // make basic template for the sport
@@ -21,6 +23,27 @@ const GameCategory = (props: GameCategoryProps) => {
 
     // looks complex but it's just a ternary chain giving ordinal suffixes for the date
     const nth = (n: number) => n > 3 && n < 21 ? "th" : n % 10 == 1 ? "st" : n % 10==2 ? "nd" : n % 10 == 3 ? "rd" : "th";
+
+    // routing to the game page
+    const getRoute = async (teams: string[], date: Date) => {
+        if (teams.length !== 2) throw new Error("Invalid number of teams"); // should never happen but just in case
+        if (teams[0] === teams[1]) throw new Error("Teams cannot be the same");
+
+        teams = teams.map(team => team.toLowerCase().replace(" ", "-")); // lowercase and replace spaces with dashes
+
+        // constructs the route to push to
+        // since routes can clash purely using the team names, we will use the team names and the date to make a unique route
+        // so it will be /sport/team1-team2-sha1(date).substring(0, 10) (10 is arbitrary) This should be unique enough
+        // we will also need to somehow also correctly query the db so it resolves to the correct game
+        // PS: maybe store the date hash substringed of the game in the db? //!todo
+        // maybe make a special api route for this? //!todo
+
+        // prisma has a special type for dates so we will use that but for now we will just use the standard js date
+        const hashedDate = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(date.toISOString()))
+        const result = [...new Uint8Array(hashedDate)].map(b => b.toString(16).padStart(2, '0')).join('');
+        
+        return router.push(`${router.asPath}/${encodeURIComponent(teams.join("-vs-"))}-${encodeURIComponent(result.substring(0, 10))}`);
+    };
 
     return (
         <main className="flex flex-col w-full h-full bg-gray-900">
@@ -70,7 +93,7 @@ const GameCategory = (props: GameCategoryProps) => {
                             <tbody>
                                 {/* Mapping through game data and creating rows */}
                                 <tr className="grid grid-cols-5 border-b border-gray-700 w-full">
-                                    <td className="flex items-center justify-center col-span-2 p-4 font-medium text-slate-600 whitespace-nowrap pr-32" scope="col">
+                                    <td className="flex items-center justify-center col-span-2 p-4 font-medium text-slate-600 whitespace-nowrap pr-32 cursor-pointer" scope="col" onClick={ () => { getRoute(["Steve", "David"], new Date()).then().catch(console.error) }}>
                                         {/* Team logo/crest & names */}
                                         Steve vs. David
                                     </td>

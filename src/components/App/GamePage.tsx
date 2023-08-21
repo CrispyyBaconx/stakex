@@ -9,7 +9,9 @@ const GamePage = (props: GamePageProps) => {
     const router = useRouter();
     
     return (
-        <div>GamePage</div>
+        <div>
+            
+        </div>
     )
 }
 
