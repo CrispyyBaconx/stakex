@@ -9,6 +9,8 @@ const Game = () => {
     // compute assets based on category and pass them to the game component
 
     // if query(game) is not a valid game, redirect to the 404 page
+    // ! todo
+    // im going to sleep but I need to decide whether or not to just load the gamepage and do all the logic there or to do it here and pass it as props
 
     return (
         <div>

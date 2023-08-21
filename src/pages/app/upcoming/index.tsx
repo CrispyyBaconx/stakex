@@ -8,6 +8,7 @@ const Upcoming = () => {
     const isLoading = true;
     const gamesUpcoming: Game[] = [];
 
+    // ! todo, this literally is just a copy of in-play
     //const { isLoading, data: gamesUpcoming } = api.main.getGamesUpcoming.useQuery();
     const router = useRouter();
 
