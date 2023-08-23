@@ -31,9 +31,11 @@ const GameCategory = (props: GameCategoryProps) => {
 
         teams = teams.map(team => team.toLowerCase().replace(" ", "-")); // lowercase and replace spaces with dashes
 
+        // ! maybe instead of all this bs I could just use a selector from the db
+
         // constructs the route to push to
         // since routes can clash purely using the team names, we will use the team names and the date to make a unique route
-        // so it will be /sport/team1-team2-sha1(date).substring(0, 10) (10 is arbitrary) This should be unique enough
+        // so it will be /sport/team1-team2-sha256(date).substring(0, 10) (10 is arbitrary) This should be unique enough
         // we will also need to somehow also correctly query the db so it resolves to the correct game
         // PS: maybe store the date hash substringed of the game in the db? //!todo
         // maybe make a special api route for this? //!todo
@@ -47,8 +49,6 @@ const GameCategory = (props: GameCategoryProps) => {
 
     return (
         <main className="flex flex-col w-full h-full bg-gray-900">
-            
-
             {/** 
                 Get Date
                 API call to get games -> list in asc/desc order 
@@ -57,7 +57,6 @@ const GameCategory = (props: GameCategoryProps) => {
                 px-auto, fixed width
             */}
             <div className="flex flex-col w-full h-full">
-                
                 {isLoading ? (
                     <div className="flex justify-center m-auto w-full h-full">
                         <LoadingSpinner size={26} />
