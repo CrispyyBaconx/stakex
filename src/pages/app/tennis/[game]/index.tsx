@@ -1,5 +1,7 @@
-import { GamePage } from "@/components/App";
+import { GamePage, Sidebar, Topbar } from "@/components/App";
+import Head from "next/head";
 import { useRouter } from "next/router";
+import tennisBackground from "@/assets/FootballCard.jpg";
 
 const Game = () => {
     const router = useRouter();
@@ -13,9 +15,23 @@ const Game = () => {
     // im going to sleep but I need to decide whether or not to just load the gamepage and do all the logic there or to do it here and pass it as props
 
     return (
-        <div>
-            test
-        </div>
+        <>
+            <Head>
+                <title>Stakex - Tennis</title>
+                <meta name="description" content="Tennis" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <main className="flex flex-col min-h-screen bg-gray-900">
+                <div className="flex flex-row flex-1">
+                    <Sidebar />
+                    <div className="flex flex-col w-full">
+                        <Topbar />
+                        <GamePage backgroundImage={tennisBackground} />
+                    </div>
+                </div>
+            </main>
+        </>
     )
 }
 

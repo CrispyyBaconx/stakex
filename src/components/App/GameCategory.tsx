@@ -31,8 +31,6 @@ const GameCategory = (props: GameCategoryProps) => {
 
         teams = teams.map(team => team.toLowerCase().replace(" ", "-")); // lowercase and replace spaces with dashes
 
-        // ! maybe instead of all this bs I could just use a selector from the db
-
         // constructs the route to push to
         // since routes can clash purely using the team names, we will use the team names and the date to make a unique route
         // so it will be /sport/team1-team2-sha256(date).substring(0, 10) (10 is arbitrary) This should be unique enough
