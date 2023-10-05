@@ -1,0 +1,36 @@
+import Head from 'next/head';
+
+interface HeadProps {
+    title?: string;
+    description?: string;
+}
+
+const _Head = (props: HeadProps) => {
+    return (
+        <Head>
+            <title>{props.title ? props.title : "Stakex.net"}</title>
+            <link rel='icon' href='/favicon.ico' />
+            <link rel='preconnect' href='https://fonts.gstatic.com' />
+            <link rel='preconnect' href='https://fonts.googleapis.com' />
+            <meta property='og:title' content={props.title ? props.title : "Stakex.net"} />
+            <meta property='og:description' content={props.description ? props.description : "A decentralized sports betting platform that redistributes revenue to token holders & stakers"} />
+            <meta property='og:image' content='https://stakex.net/assets/brand/banner.png' />
+            <meta property='og:url' content='https://stakex.net' />
+            <meta property='og:type' content='website' />
+            <meta property='og:site_name' content='Stakex' />
+            <meta name='twitter:title' content={props.title ? props.title : "Stakex.net"} />
+            <meta name='twitter:description' content={props.description ? props.description : "A decentralized sports betting platform that redistributes revenue to token holders & stakers"} />
+            <meta name='twitter:image' content='https://stakex.net/assets/brand/banner.png' />
+            <meta name='twitter:image:alt' content='Stakex' />
+            <meta name='twitter:image:width' content='1200' />
+            <meta name='twitter:image:height' content='600' />
+            <meta name='twitter:card' content='summary_large_image' />
+            <meta name='twitter:site' content='Stakex' />
+            <meta name='twitter:creator' content='@StakexOfficial' />
+            <meta name='twitter:domain' content='https://stakex.net' />
+            <meta name='twitter:url' content='https://stakex.net' />
+        </Head>
+    )
+}
+
+export default _Head;

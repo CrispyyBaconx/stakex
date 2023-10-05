@@ -1,7 +1,7 @@
 import { ListLoadingSkeleton } from "@/components";
 import { api } from "@/utils/api";
 import { type Game } from '@prisma/client';
-import Head from "next/head";
+import { Head } from "@/components/App";
 import { useRouter } from "next/router";
 
 const InPlay = () => {
@@ -35,12 +35,7 @@ const InPlay = () => {
 
     return (
         <>
-            <Head>
-                <title>In Play |&gt;</title>
-                <meta name="description" content="Stakex" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
-            </Head>
+            <Head title="Stakex - In Play |>" />
             <div className='flex flex-col h-screen bg-[#050a18]'>
                 <header className='flex flex-col items-center justify-center w-full my-8'>
                     <h1 className='text-6xl font-bold text-white'>In Play</h1>

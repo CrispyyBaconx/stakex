@@ -1,14 +1,9 @@
-import Head from "next/head";
+import { Head } from "@/components/App";
 
 const LegalPage = () => {
     return (
         <>
-            <Head>
-                <title>Stakex</title>
-                <meta name="description" content="Welcome to Stakex." />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <Head title="Stakex - TOS" />
             <div>
                 <h1>Stakex Terms Of Service | Privacy Policy</h1>
                 <p>

@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEtherBalance, useEthers, useSendTransaction } from '@usedapp/core';
 import { CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import { type apyHistory } from '@prisma/client';
 import { useState } from 'react';
 import { MinFooter, LoadingSpinner, ConnectButton } from '@/components';
+import { Head } from '@/components/App';
 import { useCustomCall } from '@/hooks';
 import { poolABI, tokenABI } from '@/abis';
 import { api } from '@/utils/api';
@@ -94,12 +94,7 @@ const Stake = () => {
 
     return (
         <>
-            <Head>
-                <title>Stakex - Staking</title>
-				<meta name="description" content="Stakex" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
-            </Head>
+            <Head title="Stakex - Staking" />
             <main className="flex flex-col min-h-screen bg-slate-950">
                 <header className='flex p-8 w-full justify-around'>
                     <div className='flex cursor-pointer' onClick={() => { router.push('/').then().catch(console.error) }}>

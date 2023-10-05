@@ -28,6 +28,7 @@ module.exports = {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'dot': "radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px)",
 				'solid': 'linear-gradient(var(--tw-gradient-stops))',
+				'stripes': 'repeating-linear-gradient(-45deg, rgb(8, 8, 8), rgb(8, 8, 8) 5px, rgb(17, 19, 19) 0px, rgb(17, 19, 19) 10px)'
 			},
 			animation: {
 				border: 'background ease infinite',

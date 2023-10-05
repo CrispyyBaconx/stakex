@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Head from 'next/head';
 import Footer from '@/components/Footer';
 import blank from '@/assets/blank.png';
 import coins from '@/assets/coins.png';
@@ -9,6 +8,7 @@ import coins from '@/assets/coins.png';
 // Components
 import { Newsletter, CardsSection } from '@/components/Landing';
 import { ConnectButton } from '@/components';
+import { Head } from '@/components/App';
 import { useGlitchyText } from '@/hooks';
 
 // https://stackoverflow.com/questions/59335731/how-to-create-own-embed-site-for-discord - use this to customize the link in discord
@@ -19,17 +19,9 @@ const Landing = () => {
 
 	return (
 		<>
-			<Head>
-				<title>Stakex</title>
-				<meta name="description" content="Stakex" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
-			<main className='App'>
+			<Head title='Stakex.net' />
+			<main className=''> {/* max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 */}
 				<section className='text-white object-contain w-full h-[50rem] bg-cover'>
-					<video autoPlay muted loop className='-z-[100] w-auto min-w-full absolute'>
-						<source src='/assets/bg.mp4' type='video/mp4' />
-					</video>
 					<div className='bg-gradient-to-r from-black px-28 py-16 h-full'>
 						<div className='grid grid-cols-1 gap-16'>
 							<div className='flex w-full justify-between'>

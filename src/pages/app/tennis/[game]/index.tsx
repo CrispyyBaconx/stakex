@@ -1,5 +1,5 @@
 import { GamePage, Sidebar, Topbar } from "@/components/App";
-import Head from "next/head";
+import { Head } from "@/components/App";
 import { useRouter } from "next/router";
 import tennisBackground from "@/assets/FootballCard.jpg";
 
@@ -16,12 +16,7 @@ const Game = () => {
 
     return (
         <>
-            <Head>
-                <title>Stakex - Tennis</title>
-                <meta name="description" content="Tennis" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <Head title={`Stakex - ${typeof game}`} />
             <main className="flex flex-col min-h-screen bg-gray-900">
                 <div className="flex flex-row flex-1">
                     <Sidebar />

@@ -1,19 +1,14 @@
 import { Sidebar, Search } from "@/components/App";
 import { ConnectButton, MinFooter } from '@/components';
+import { Head } from '@/components/App';
 import tennisImage from '@/assets/CarouselImages/tennis.png';
 import waterImage from '@/assets/CarouselImages/water.jpg';
-import Head from "next/head";
 import Carousel from "@/components/App/Carousel";
 
 const App = () => {
     return (
         <>
-            <Head>
-                <title>Stakex</title>
-        		<meta name="description" content="Welcome to Stakex." />
-        		<meta name="viewport" content="width=device-width, initial-scale=1" />
-        		<link rel="icon" href="/favicon.ico" />
-            </Head>
+            <Head title="Stakex - App" />
             <main className="flex flex-col min-h-screen bg-gray-900">
                 <div className="flex flex-row flex-1">
                     <Sidebar />

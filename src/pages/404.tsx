@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { Head } from '@/components/App';
 import { useRouter } from 'next/router';
 
 const Error404 = () => {
@@ -6,13 +6,9 @@ const Error404 = () => {
 
     return (
         <>
-            <Head>
-                <title>404 - Page Not Found</title>
-                <meta name="description" content="404 - Page Not Found" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <Head title="Stakex - 404" />
             <div className="flex flex-col items-center justify-center h-screen bg-black">
-                <button onClick={() => { router.back() }} className="absolute top-12 left-12 m-4 text-4xl text-white transition ease-in-out hover:-translate-x-2 z-10 hover:drop-shadow-sm" title='Go Home'>&lt;</button>
+                <button onClick={() => { router.back() }} className="absolute top-12 left-12 m-4 text-4xl text-white transition ease-in-out hover:-translate-x-2 z-10 hover:drop-shadow-sm" title='Go Back'>&lt;</button>
                 <div className="flex flex-col items-center p-10 px-16 rounded-3xl z-10">
                     <h1 className="text-6xl font-bold text-white">Error <span className='text-red-500'>404</span></h1>
                     <h2 className="text-2xl font-bold text-white">Page Not Found</h2>
