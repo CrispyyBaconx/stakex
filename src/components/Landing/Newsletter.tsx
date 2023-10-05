@@ -1,9 +1,7 @@
-import { useState, useRef } from 'react';
-
+import { useRef } from 'react';
 import { useGlitchyText } from '@/hooks';
 
 const Newsletter = () => {
-    const [success, setSuccess] = useState(false);
     const ref = useRef<HTMLHeadingElement>(null);
 
     useGlitchyText(ref, "Want to stay up to date?");
@@ -28,15 +26,10 @@ const Newsletter = () => {
                     api_key: apiKey,
                     email: email
                 })
-            }).then(() => {
-                console.log('Success');
-                setSuccess(true);
-            }).catch((err) => {
+            }).then().catch((err) => {
                 console.log(err);
             });
-        } catch (error) {
-            setSuccess(false);
-        }
+        } catch (error) {}
     }
 
     return (
@@ -73,7 +66,7 @@ const Newsletter = () => {
                 </button>
             </form>
             <p className='mt-2 text-center text-sm md:text-xs'>
-                {success ? '✅ Thanks for subscribing! Check your email to confirm.' : 'No spam, ever. Unsubscribe at any time.'}
+                No spam, ever. Unsubscribe at any time.
             </p>
         </div>
     )

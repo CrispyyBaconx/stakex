@@ -25,12 +25,14 @@ const Landing = () => {
 					<div className='bg-gradient-to-r from-black px-28 py-16 h-full'>
 						<div className='grid grid-cols-1 gap-16'>
 							<div className='flex w-full justify-between'>
-								<Image className='w-12' src={blank} alt='Stakex Logo' />
-								<div className='flex gap-6'>
-									<ConnectButton />
+								<div className='flex flex-row gap-4'>
+									<Image className='w-12' src={blank} alt='Stakex Logo' />
+									<h1 className='text-4xl font-bold text-shadow shadow-slate-100' ref={titleRef}>Stakex</h1>
 								</div>
+								<Link href="/app" className='tracking-wider text-xl'>
+									App  &gt;
+								</Link>
 							</div>
-							<h1 className='text-6xl font-bold text-shadow shadow-slate-100' ref={titleRef}>Stakex</h1>
 							<br />
 							<div className='flex flex-col gap-4'>
 								<p className='text-xl'>Welcome to the future of sports betting.</p>
@@ -63,6 +65,9 @@ const Landing = () => {
 				</section>
 
 				<CardsSection />
+				<section className="flex flex-col items-center bg-stripes">
+					
+				</section>
 
 				<section className='px-24 py-16 bg-inset text-white flex flex-col items-center'>
 					<div className='mb-16 flex'>
