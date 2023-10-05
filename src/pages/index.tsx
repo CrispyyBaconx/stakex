@@ -54,11 +54,8 @@ const Landing = () => {
 					</div>
 
 					<div className='flex flex-row justify-around items-center text-white w-[70rem]'>
-						<video autoPlay muted loop className='w-[30rem] h-[30rem]'>
-							<source src='/assets/dice.mp4' type='video/mp4' />
-						</video>
 						<h3 className='text-2xl font-bold bg-slate-800 p-4 border-8 rounded-lg border-slate-800 w-72 my-10'>
-							Stakex is an innovative decentralized app (dApp) built on the Arbitrum One layer-2 blockchain, transforming the way you bet on sports.
+							Stakex is an innovative decentralized app (dApp) built on the blockchain, transforming the way you bet on sports.
 						</h3>
 					</div>
 				</section>
