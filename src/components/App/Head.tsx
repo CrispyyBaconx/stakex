@@ -17,7 +17,7 @@ const _Head = (props: HeadProps) => {
             <meta property='og:image' content='https://stakex.net/assets/brand/banner.png' />
             <meta property='og:url' content='https://stakex.net' />
             <meta property='og:type' content='website' />
-            <meta property='og:site_name' content='Stakex' />
+            <meta property='og:site_name' content='Stakex' /> {/* Top thing on Discord */}
             <meta name='twitter:title' content={props.title ? props.title : "Stakex"} />
             <meta name='twitter:description' content={props.description ? props.description : "A decentralized sports betting platform that redistributes revenue to token holders & stakers"} />
             <meta name='twitter:image' content='https://stakex.net/assets/brand/banner.png' />

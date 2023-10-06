@@ -18,7 +18,7 @@ const Landing = () => {
 
 	return (
 		<>
-			<Head title='Stakex.net' />
+			<Head title='Stakex - Home' />
 			<main className=''> {/* max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 */}
 				<section className='text-white object-contain w-full h-[50rem] bg-cover'>
 					<div className='bg-gradient-to-r from-black px-28 py-16 h-full'>
@@ -78,11 +78,10 @@ const Landing = () => {
 						<Image src={coins} alt='Coins' width={240} height={240} className='flex' />
 					</div>
 				</section>
-
-				<section className='px-8 py-16 bg-[#353945] text-white'>
+			</main>
+			<section className='px-8 py-16 bg-[#35415c] text-white'>
 					<Newsletter />
 				</section>
-			</main>
 			<Footer />
 		</>
 	)
