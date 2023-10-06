@@ -10,6 +10,9 @@ import { Newsletter, CardsSection } from '@/components/Landing';
 import { Head } from '@/components/App';
 import { useGlitchyText } from '@/hooks';
 
+// Icons 
+import { FaRegHandshake } from 'react-icons/fa';
+
 // https://stackoverflow.com/questions/59335731/how-to-create-own-embed-site-for-discord - use this to customize the link in discord
 
 const Landing = () => {
@@ -61,8 +64,9 @@ const Landing = () => {
 				</section>
 
 				<CardsSection />
-				<section className="flex flex-col items-center bg-stripes">
-					
+				<section className="flex flex-col items-center">
+					<h2 className='text-4xl text-shadow shadow-white self-start'>Why Stakex?</h2>
+					<Card title='Transparency' description='With Stakex, your bets are recorded on-chain, ensuring complete transparency and fairness. You can trust that there&apos;s no manipulation or unfair practices.' icon={ FaRegHandshake } />
 				</section>
 
 				<section className='px-24 py-16 bg-inset text-white flex flex-col items-center'>
@@ -80,10 +84,30 @@ const Landing = () => {
 				</section>
 			</main>
 			<section className='px-8 py-16 bg-[#35415c] text-white'>
-					<Newsletter />
-				</section>
+				<Newsletter />
+			</section>
 			<Footer />
 		</>
+	)
+}
+
+interface CardProps {
+	title: string;
+	description?: string;
+	icon?: any;
+}
+
+const Card = (props: CardProps) => {
+	return (
+		<div className="flex flex-col bg-[#194c7e]">
+			<div className="flex flex-row text-2xl">
+				{props.icon}
+				{props.title}
+			</div>
+			<div className="flex flex-row">
+				{props.description}
+			</div>
+		</div>
 	)
 }
 
