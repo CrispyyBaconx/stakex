@@ -12,6 +12,7 @@ import { useGlitchyText } from '@/hooks';
 
 // Icons 
 import { FaRegHandshake } from 'react-icons/fa';
+import { IconType } from 'react-icons';
 
 // https://stackoverflow.com/questions/59335731/how-to-create-own-embed-site-for-discord - use this to customize the link in discord
 
@@ -93,15 +94,15 @@ const Landing = () => {
 
 interface CardProps {
 	title: string;
-	description?: string;
-	icon?: any;
+	description: string;
+	icon: IconType;
 }
 
 const Card = (props: CardProps) => {
 	return (
 		<div className="flex flex-col bg-[#194c7e]">
 			<div className="flex flex-row text-2xl">
-				{props.icon}
+				<props.icon />
 				{props.title}
 			</div>
 			<div className="flex flex-row">
