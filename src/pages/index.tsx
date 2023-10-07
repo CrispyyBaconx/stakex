@@ -73,6 +73,8 @@ const Landing = () => {
 					<Card title='No Last Minute Cancellations' description='Once a bet is placed, the timestamp of the block is used to verify odds at time of placement - so no random cancellations' icon={ FaRegHandshake } />
 				</section>
 
+				{/* Change backgrounds, bg of site, style cards */}
+
 				<section className='px-24 py-16 text-white flex flex-col items-center'>
 					<div className='mb-16 flex'>
 						<h2 className='text-5xl flex flex-row text-shadow shadow-slate-200'>
