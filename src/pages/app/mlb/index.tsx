@@ -1,6 +1,5 @@
-import { GameCategory } from "@/components/App";
-import { Sidebar, Topbar } from "@/components/App";
-import { Head } from "@/components/App";
+import { Sidebar, Topbar, GameCategory } from "@/components/App";
+import { Head } from "@/components";
 import tennisBackground from "@/assets/FootballCard.jpg" // ! replace this with a baseball background image
 
 const Tennis = () => {

@@ -2,13 +2,16 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
-import blank from '@/assets/blank.png';
 import coins from '@/assets/coins.png';
+import logo from '@/assets/logo.svg';
 
 // Components
-import { Newsletter, CardsSection } from '@/components/Landing';
-import { Head } from '@/components/App';
+import { Newsletter, Card } from '@/components/Landing';
+import { Head } from '@/components';
 import { useGlitchyText } from '@/hooks';
+
+// Icons 
+import { FaRegHandshake } from 'react-icons/fa';
 
 // https://stackoverflow.com/questions/59335731/how-to-create-own-embed-site-for-discord - use this to customize the link in discord
 
@@ -19,14 +22,15 @@ const Landing = () => {
 	return (
 		<>
 			<Head title='Stakex - Home' />
-			<main className=''> {/* max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 */}
+			<main className='max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8'> {/*  */}
 				<section className='text-white object-contain w-full h-[50rem] bg-cover'>
 					<div className='bg-gradient-to-r from-black px-28 py-16 h-full'>
 						<div className='grid grid-cols-1 gap-16'>
 							<div className='flex w-full justify-between'>
 								<div className='flex flex-row gap-4'>
-									<Image className='w-12' src={blank} alt='Stakex Logo' />
-									<h1 className='text-4xl font-bold text-shadow shadow-slate-100' ref={titleRef}>Stakex</h1>
+									{/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+									<Image className='w-12' src={logo} alt='Stakex Logo' />
+									<h1 className='text-4xl font-bold text-shadow shadow-slate-100 self-center' ref={titleRef}>Stakex</h1>
 								</div>
 								<Link href="/app" className='tracking-wider text-xl'>
 									App  &gt;
@@ -46,7 +50,7 @@ const Landing = () => {
 						</div>
 					</div>
 				</section>
-				<section className='px-24 py-16 bg-inset text-white flex flex-col items-center'>
+				<section className='px-24 py-16 text-white flex flex-col items-center'>
 					<div className='mb-16 flex'>
 						<h2 className='text-5xl flex flex-row'>
 							Experience the Power of <span className='bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-400 text-transparent bg-clip-text block'>&nbsp;On-Chain&nbsp;</span> Betting.
@@ -54,18 +58,24 @@ const Landing = () => {
 					</div>
 
 					<div className='flex flex-row justify-around items-center text-white w-[70rem]'>
+						<Image src={coins} alt='Coins' width={240} height={240} className='flex' />
 						<h3 className='text-2xl font-bold bg-slate-800 p-4 border-8 rounded-lg border-slate-800 w-72 my-10'>
 							Stakex is an innovative decentralized app (dApp) built on the blockchain, transforming the way you bet on sports.
 						</h3>
 					</div>
 				</section>
 
-				<CardsSection />
-				<section className="flex flex-col items-center bg-stripes">
-					
+				<section className="flex flex-col items-center">
+					<h2 className='text-4xl text-shadow shadow-white self-start'>Why Stakex?</h2>
+					<Card title='Transparency' description='With Stakex, your bets are recorded on-chain, ensuring complete transparency and fairness. You can trust that there&apos;s no manipulation or unfair practices.' icon={ FaRegHandshake } />
+					<Card title='Security' description='Stakex is built on the Ethereum blockchain, meaning that your bets are secured by the Ethereum network. You can rest assured that your bets are safe and secure.' icon={ FaRegHandshake } />
+					<Card title='Frictionless Betting' description='With Stakex, you can place bets on your favorite teams and players without any unnecessary steps. No deposits, no registrations.' icon={ FaRegHandshake } />
+					<Card title='No Last Minute Cancellations' description='Once a bet is placed, the timestamp of the block is used to verify odds at time of placement - so no random cancellations' icon={ FaRegHandshake } />
 				</section>
 
-				<section className='px-24 py-16 bg-inset text-white flex flex-col items-center'>
+				{/* Change backgrounds, bg of site, style cards */}
+
+				<section className='px-24 py-16 text-white flex flex-col items-center'>
 					<div className='mb-16 flex'>
 						<h2 className='text-5xl flex flex-row text-shadow shadow-slate-200'>
 							How it Works
@@ -79,9 +89,9 @@ const Landing = () => {
 					</div>
 				</section>
 			</main>
-			<section className='px-8 py-16 bg-[#35415c] text-white'>
-					<Newsletter />
-				</section>
+			<section className='px-8 py-16 bg-[#252b3a] text-white'>
+				<Newsletter />
+			</section>
 			<Footer />
 		</>
 	)

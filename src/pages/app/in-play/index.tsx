@@ -1,7 +1,6 @@
-import { ListLoadingSkeleton } from "@/components";
+import { ListLoadingSkeleton, Head } from "@/components";
 import { api } from "@/utils/api";
 import { type Game } from '@prisma/client';
-import { Head } from "@/components/App";
 import { useRouter } from "next/router";
 
 const InPlay = () => {
