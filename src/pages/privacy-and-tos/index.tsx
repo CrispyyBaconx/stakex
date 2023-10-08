@@ -1,4 +1,4 @@
-import { Head } from "@/components/App";
+import { Head } from "@/components";
 
 const LegalPage = () => {
     return (

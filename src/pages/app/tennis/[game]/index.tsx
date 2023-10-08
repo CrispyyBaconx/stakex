@@ -1,5 +1,5 @@
 import { GamePage, Sidebar, Topbar } from "@/components/App";
-import { Head } from "@/components/App";
+import { Head } from "@/components";
 import { useRouter } from "next/router";
 import tennisBackground from "@/assets/FootballCard.jpg";
 
