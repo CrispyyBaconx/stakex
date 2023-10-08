@@ -27,9 +27,9 @@ const Landing = () => {
 					<div className='bg-gradient-to-r from-black px-28 py-16 h-full'>
 						<div className='grid grid-cols-1 gap-16'>
 							<div className='flex w-full justify-between'>
-								<div className='flex flex-row gap-4'>
+								<div className='flex flex-row gap-6'>
 									{/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-									<Image className='w-12' src={logo} alt='Stakex Logo' />
+									<Image className='w-8' src={logo} alt='Stakex Logo' />
 									<h1 className='text-4xl font-bold text-shadow shadow-slate-100 self-center' ref={titleRef}>Stakex</h1>
 								</div>
 								<Link href="/app" className='tracking-wider text-xl'>
