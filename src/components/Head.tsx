@@ -9,7 +9,7 @@ const _Head = (props: HeadProps) => {
     return (
         <Head>
             <title>{props.title ? props.title : "Stakex"}</title>
-            <link rel='icon' href='/favicon.ico' />
+            <link rel='icon' type="image/x-icon" href='/favicon.ico' />
             <link rel='preconnect' href='https://fonts.gstatic.com' />
             <link rel='preconnect' href='https://fonts.googleapis.com' />
             <meta property='og:title' content={props.title ? props.title : "Stakex"} />
