@@ -5,7 +5,7 @@ import { CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, AreaChart, A
 import { type apyHistory } from '@prisma/client';
 import { useState } from 'react';
 import { MinFooter, LoadingSpinner, ConnectButton } from '@/components';
-import { Head } from '@/components/App';
+import { Head } from '@/components';
 import { useCustomCall } from '@/hooks';
 import { poolABI, tokenABI } from '@/abis';
 import { api } from '@/utils/api';

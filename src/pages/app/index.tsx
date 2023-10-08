@@ -1,6 +1,6 @@
 import { Sidebar, Search } from "@/components/App";
 import { ConnectButton, MinFooter } from '@/components';
-import { Head } from '@/components/App';
+import { Head } from '@/components';
 import tennisImage from '@/assets/CarouselImages/tennis.png';
 import waterImage from '@/assets/CarouselImages/water.jpg';
 import Carousel from "@/components/App/Carousel";

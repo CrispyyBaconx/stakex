@@ -2,17 +2,16 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
-import blank from '@/assets/blank.png';
 import coins from '@/assets/coins.png';
+import logo from '@/assets/logo.svg';
 
 // Components
-import { Newsletter, CardsSection } from '@/components/Landing';
-import { Head } from '@/components/App';
-import { useGlitchesInText, useGlitchyText } from '@/hooks';
+import { Newsletter, Card } from '@/components/Landing';
+import { Head } from '@/components';
+import { useGlitchyText } from '@/hooks';
 
 // Icons 
 import { FaRegHandshake } from 'react-icons/fa';
-import { type IconType } from 'react-icons';
 
 // https://stackoverflow.com/questions/59335731/how-to-create-own-embed-site-for-discord - use this to customize the link in discord
 
@@ -29,8 +28,9 @@ const Landing = () => {
 						<div className='grid grid-cols-1 gap-16'>
 							<div className='flex w-full justify-between'>
 								<div className='flex flex-row gap-4'>
-									<Image className='w-12' src={blank} alt='Stakex Logo' />
-									<h1 className='text-4xl font-bold text-shadow shadow-slate-100' ref={titleRef}>Stakex</h1>
+									{/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+									<Image className='w-12' src={logo} alt='Stakex Logo' />
+									<h1 className='text-4xl font-bold text-shadow shadow-slate-100 self-center' ref={titleRef}>Stakex</h1>
 								</div>
 								<Link href="/app" className='tracking-wider text-xl'>
 									App  &gt;
@@ -94,29 +94,6 @@ const Landing = () => {
 			</section>
 			<Footer />
 		</>
-	)
-}
-
-interface CardProps {
-	title: string;
-	description: string;
-	icon: IconType;
-}
-
-const Card = (props: CardProps) => {
-	const titleRef = useRef<HTMLHeadingElement>(null);
-    useGlitchesInText(titleRef, props.title);
-
-	return (
-		<div className="flex flex-col bg-[#194c7e]">
-			<div className="flex flex-row text-2xl">
-				<props.icon />
-				<h3 className="text-2xl font-bold text-white text-shadow shadow-slate-500" ref={titleRef}>{props.title}</h3>
-			</div>
-			<div className="flex flex-row">
-				{props.description}
-			</div>
-		</div>
 	)
 }
 
