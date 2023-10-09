@@ -13,12 +13,12 @@ const Card = (props: CardProps) => {
     useGlitchesInText(titleRef, props.title);
 
 	return (
-		<div className="flex flex-col bg-[#194c7e]">
-			<div className="flex flex-row text-2xl">
-				<props.icon />
-				<h3 className="text-2xl font-bold text-white text-shadow shadow-slate-500" ref={titleRef}>{props.title}</h3>
+		<div className="flex flex-col bg-stripes border-4 border-indigo-900 p-4 gap-4 min-w-full">
+			<div className="flex flex-row text-2xl gap-4 items-center">
+				<props.icon className='ml-2 text-blue-500' />
+				<h3 className="text-3xl font-bold text-white text-shadow shadow-white" ref={titleRef}>{props.title}</h3>
 			</div>
-			<div className="flex flex-row">
+			<div className="flex flex-row text-xl">
 				{props.description}
 			</div>
 		</div>
