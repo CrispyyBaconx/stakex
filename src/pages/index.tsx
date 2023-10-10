@@ -15,8 +15,6 @@ import { FaRegHandshake } from 'react-icons/fa';
 import { BsShieldFill, BsFillLightningChargeFill } from 'react-icons/bs';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 
-// https://stackoverflow.com/questions/59335731/how-to-create-own-embed-site-for-discord - use this to customize the link in discord
-
 // add pnl cards to finished bets on the bets page
 
 const Landing = () => {
