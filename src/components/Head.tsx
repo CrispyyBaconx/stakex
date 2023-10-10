@@ -8,17 +8,17 @@ interface HeadProps {
 const _Head = (props: HeadProps) => {
     return (
         <Head>
-            <title>{props.title ? props.title : "Stakex"}</title>
+            <title>{props.title ?? "Stakex"}</title>
             <link rel='icon' type="image/x-icon" href='/favicon.ico' />
             <link rel='preconnect' href='https://fonts.gstatic.com' />
             <link rel='preconnect' href='https://fonts.googleapis.com' />
-            <meta property='og:title' content={props.title ? props.title : "Stakex"} />
+            <meta property='og:title' content={props.title ?? "Stakex"} />
             <meta property='og:description' content={props.description ? props.description : "A decentralized sports betting platform that redistributes revenue to token holders & stakers"} />
             <meta property='og:image' content='https://stakex.net/assets/brand/banner.png' />
             <meta property='og:url' content='https://stakex.net' />
             <meta property='og:type' content='website' />
             <meta property='og:site_name' content='Stakex' /> {/* Top thing on Discord */}
-            <meta name='twitter:title' content={props.title ? props.title : "Stakex"} />
+            <meta name='twitter:title' content={props.title ?? "Stakex"} />
             <meta name='twitter:description' content={props.description ? props.description : "A decentralized sports betting platform that redistributes revenue to token holders & stakers"} />
             <meta name='twitter:image' content='https://stakex.net/assets/brand/banner.png' />
             <meta name='twitter:image:alt' content='Stakex' />
