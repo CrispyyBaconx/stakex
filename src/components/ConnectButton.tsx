@@ -1,22 +1,22 @@
-import { useEthers, useEtherBalance } from "@usedapp/core";
-import { formatEther } from "ethers/lib/utils";
 import { AiOutlineWarning } from "react-icons/ai";
 import { WalletJazzicon, AccountModal } from '@/components';
 import { useState } from 'react';
+import { formatEther } from "ethers";
+import { useAccount, useBalance } from "@/hooks/net";
 
 type ConnectButtonProps = {
     display?: 'compact';
 };
 
 const ConnectButton = (props: ConnectButtonProps) => {
-    const { activateBrowserWallet, account, switchNetwork } = useEthers();
-    const etherBalance = useEtherBalance(account);
+    const { connect, account, switchNetwork } = useAccount();
+    const etherBalance = useBalance(account?.address ?? '');
 
     const [isModalOpen, setModalOpen] = useState(false);
 
-    const switchToArbitrum = () => {
+    const switchToMainnet = () => { // !
         const v = async () => {
-            await switchNetwork(42161); // Arbitrum One
+            await switchNetwork();
         }
 
         v().then(() => {
@@ -29,7 +29,7 @@ const ConnectButton = (props: ConnectButtonProps) => {
     const renderWrongNetwork = () => {
         return (
             <>
-                <button className="bg-gray-800 border-1 border-transparent hover:border-blue-400 hover:bg-gray-700 rounded-xl m-1 px-3 h-[38px] text-rose-500 flex items-center" onClick={switchToArbitrum}>
+                <button className="bg-gray-800 border-1 border-transparent hover:border-blue-400 hover:bg-gray-700 rounded-xl m-1 px-3 h-[38px] text-rose-500 flex items-center" onClick={switchToMainnet}>
                     <AiOutlineWarning className="text-rose-500 mr-2" />
                     Wrong Network
                 </button>
@@ -39,7 +39,7 @@ const ConnectButton = (props: ConnectButtonProps) => {
 
     const renderConnectButton = () => {
         return (
-            <button className="bg-gray-800 border-1 border-transparent hover:border-blue-400 hover:bg-gray-700 rounded-xl m-1 px-3 h-[38px]" onClick={activateBrowserWallet}>
+            <button className="bg-gray-800 border-1 border-transparent hover:border-blue-400 hover:bg-gray-700 rounded-xl m-1 px-3 h-[38px]" onClick={() => { connect().then().catch(console.error) }}>
                 Connect
             </button>
         );
@@ -51,15 +51,15 @@ const ConnectButton = (props: ConnectButtonProps) => {
             <div className="flex items-center bg-gray-700 rounded-xl py-0 h-[48px]">
                 <div className="px-3">
                     <p className="text-white text-md">
-                        {etherBalance && parseFloat(formatEther(etherBalance)).toFixed(3)} ETH
+                        {etherBalance.toString(10) && parseFloat(formatEther(etherBalance)).toFixed(3)} ETH
                     </p>
                 </div>
                 <button className="flex items-center bg-gray-800 border border-transparent hover:border-blue-400 hover:bg-gray-700 rounded-xl m-1 px-3 h-[38px]" onClick={() => { setModalOpen(true) }}>
                     <p className="text-white text-md font-medium mr-2">
                         {account &&
-                            `${account.slice(0, 6)}...${account.slice(
-                                account.length - 4,
-                                account.length
+                            `${account.address.slice(0, 6)}...${account.address.slice(
+                                account.address.length - 4,
+                                account.address.length
                             )
                         }`}
                     </p>
@@ -75,7 +75,7 @@ const ConnectButton = (props: ConnectButtonProps) => {
             <>
                 <button className="flex items-center bg-gray-800 border-1 border-transparent hover:border-blue-400 hover:bg-gray-700 rounded-xl m-1 px-3 h-[38px]" onClick={() => { setModalOpen(true) }}>
                     <p className="text-white text-md pr-3">
-                        {etherBalance && parseFloat(formatEther(etherBalance)).toFixed(3)} ETH
+                        {etherBalance.toString(10) && parseFloat(formatEther(etherBalance)).toFixed(3)} ETH
                     </p>
                     <WalletJazzicon />
                 </button>

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useEthers } from '@usedapp/core';
+import { useAccount } from "@/hooks/net";
 import { WalletJazzicon } from '@/components';
 import Link from 'next/link';
 
@@ -13,10 +13,10 @@ type Props = {
 }
 
 export default function AccountModal({ isOpen, onClose }: Props) {
-    const { account, deactivate } = useEthers();
+    const { account, disconnect } = useAccount();
 
     const handleDeactivateAccount = () => {
-        deactivate();
+        disconnect();
         onClose();
     }
 
@@ -58,14 +58,14 @@ export default function AccountModal({ isOpen, onClose }: Props) {
                         </div>
                         <div className="flex items-center mt-2 mb-4">
                             <WalletJazzicon />
-                            <p className="text-white text-xl font-semibold ml-2">{account && `${account.slice(0, 6)}...${account.slice(account.length - 4, account.length)}`}</p>
+                            <p className="text-white text-xl font-semibold ml-2">{account && `${account.address.slice(0, 6)}...${account.address.slice(account.address.length - 4, account.address.length)}`}</p>
                         </div>
                         <div className="flex items-center m-3">
-                            <button className="text-gray-400 text-sm hover:text-white hover:opacity-80" onClick={() => { navigator.clipboard.writeText(account).catch(e => console.log(e)) }}>
+                            <button className="text-gray-400 text-sm hover:text-white hover:opacity-80" onClick={() => { navigator.clipboard.writeText(account.address).catch(e => console.log(e)) }}>
                                 <RiFileCopyLine className="inline-block mr-1" />
                                 Copy Address
                             </button>
-                            <Link href={`https://goerli.arbiscan.io/address/${account}`} target="_blank" rel="noreferrer" className="text-sm flex items-center text-gray-400 ml-6 hover:text-white hover:underline">
+                            <Link href={`https://goerli.arbiscan.io/address/${account.address}`} target="_blank" rel="noreferrer" className="text-sm flex items-center text-gray-400 ml-6 hover:text-white hover:underline">
                                 <BiLinkExternal className="inline-block mr-1" />
                                 View on Explorer
                             </Link>
