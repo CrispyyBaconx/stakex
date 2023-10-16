@@ -72,6 +72,7 @@ export const mainRouter = createTRPCRouter({
     }),
 	getAPYHistory: publicProcedure
 	.input(z.object({
+		pool: z.string().length(42), // pool address
 		offset: z.number().int().min(0),
 		limit: z.number().int().min(1).max(100),
 	}))

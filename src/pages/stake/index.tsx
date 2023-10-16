@@ -1,15 +1,15 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEtherBalance, useEthers, useSendTransaction } from '@usedapp/core';
+import { useEtherBalance, useEthers } from '@usedapp/core';
 import { CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import { type apyHistory } from '@prisma/client';
 import { useState } from 'react';
 import { MinFooter, LoadingSpinner, ConnectButton } from '@/components';
 import { Head } from '@/components';
 import { useCustomCall } from '@/hooks';
-import { poolABI, tokenABI } from '@/abis';
+import { poolABI } from '@/abis';
 import { api } from '@/utils/api';
-
+import { Pool } from '@/components/Stake';
 import Logo from '@/assets/logo.svg';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { FAQLi } from '@/components/Stake';
@@ -23,41 +23,17 @@ const Stake = () => {
     const router = useRouter();
     const { account } = useEthers();
     const etherBalance = useEtherBalance(account);
-    const { sendTransaction } = useSendTransaction();
+    const { checkBalance } = useFetchPoolData();
     const [stake, setStake] = useState(true);
     const [isOpen, setIsOpen] = useState(false);
     const [queryAddress, setQueryAddress] = useState<string>(""); // ! maybe use a useEffect to query the address asynchonously and set a state variable to the result, using a result turnary to display the result or the default (Nothing to show.)
     const { isLoading, data: apyHistory } = api.main.getAPYHistory.useQuery(
-        { limit: 10, offset: 0 },
+        { limit: 10, offset: 0, pool: "0x0000000000000000000000000000000000000000" },
         { enabled: !stake }
     );
 
-    const [stakeAmount, setStakeAmount] = useState<number | string>("");
-    const [unstakeAmount, setUnstakeAmount] = useState<number | string>("");
-
     const poolAddress = process.env.NEXT_PUBLIC_STAKING_CONTRACT_ADDRESS;
-    const tokenAddress = process.env.NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS;
-
     const apy = useCustomCall(poolAddress, poolABI, "getAPY", []);
-    const balanceHeld = useCustomCall(tokenAddress, tokenABI, "balanceOf", [account ?? "0x0"]); // using 0x0 here to error out if account is null, will be undefined
-    const balanceStaked = useCustomCall(poolAddress, poolABI, "getStakedBalance", [account ?? "0x0"]);
-    const balanceClaimable = useCustomCall(poolAddress, poolABI, "getUserClaimableRewards", [account ?? "0x0"]);
-
-    const handleUnstakeAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if(event.target.value.includes(".") ||
-           event.target.value.includes(" ") ||
-           Number.isNaN(+event.target.value)) return;
-
-        setUnstakeAmount(event.target.value);
-    };
-
-    const handleStakeAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if(event.target.value.includes(".") || 
-           event.target.value.includes(" ") ||
-           Number.isNaN(+event.target.value)) return;
-
-        setStakeAmount(event.target.value);
-    };
 
     const handleQueryAddress = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -65,6 +41,9 @@ const Stake = () => {
         const inputValue: string = inputElement.value;
         if (ethers.utils.isAddress(inputValue) === false && inputValue !== '') return;
         setQueryAddress(inputValue);
+
+        // query the address
+        
     };
 
     const processAPYData = (data: Array<apyHistory> | undefined) => {
@@ -99,7 +78,7 @@ const Stake = () => {
                 <header className='flex p-8 w-full justify-around'>
                     <div className='flex cursor-pointer' onClick={() => { router.push('/').then().catch(console.error) }}>
                         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-                        <Image className='w-10 mr-2' src={Logo} alt='Stakex Logo' />
+                        <Image className='w-6 mr-2' src={Logo} alt='Stakex Logo' />
                         <h2 className='text-2xl flex flex-col justify-center'>Stakex</h2>
                         <p className='text-purple-600 flex pt-2'>
                             &nbsp;Beta
@@ -130,78 +109,8 @@ const Stake = () => {
                     {stake ? (
                         <div className='flex flex-col items-center'>
                             <div className='flex flex-col items-center mt-12 w-[70em] justify-around'>
-                                <div className='flex flex-row p-10 mx-8 leading-7 bg-gray-900 border-2 rounded-[20px] border-gray-800 gap-2 relative'>
-                                    {account && etherBalance ? null : (
-                                        <div className='z-50'>
-                                            <div className="absolute h-full w-full inset-0 backdrop-blur-lg rounded-[20px]" />
-                                            <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center">
-                                                <h1 className="text-2xl font-bold text-slate-400"><span className='text-slate-500'>&lt;</span> Please Connect Your Wallet <span className='text-slate-500'>&gt;</span></h1>
-                                            </div>
-                                        </div>
-                                    )}
-                                    <div className='flex flex-col gap-4 mr-8 w-48'> {/* staking */}
-                                        <p className='text-gray-400 text-2xl self-center'>Stake</p>
-                                        <label className='relative inline-flex border border-solid border-slate-500 rounded-[20px] items-stretch box-border px-3 cursor-text transition-colors duration-100 ease-in-out w-full self-center'>
-                                            <span className='flex items-center flex-shrink-0 cursor-inherit pr-4'>
-                                                {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-                                                <Image src={Logo} alt='Stakex Logo' width={24} height={24} />
-                                            </span>
-                                            <span className='font-normal text-base flex flex-grow relative py-4'>
-                                                <input className='bg-transparent shadow-none border-transparent outline-none w-full font-normal text-base leading-normal p-0 rounded-none relative top-2' disabled={false} placeholder='0.00' min={0} value={stakeAmount} onChange={handleStakeAmountChange} />
-                                                <span className='absolute left-0 top-1/2 text-base leading-tight whitespace-nowrap overflow-hidden text-ellipsis max-w-full transform origin-top translate-y-[-4px] translate-x-[-6px] scale-75 opacity-100 -mt-4 duration-100 ease-in-out'>Amount</span>
-                                            </span>
-                                            <span className='flex items-center flex-shrink-0 cursor-inherit pl-4'>
-                                                <div className='flex items-center'>
-                                                    <button className='border-2 border-blue-800 outline-none bg-transparent px-1 text-blue-300 opacity-70 rounded-lg' onClick={() => { setStakeAmount(balanceHeld ?? 0) }}>
-                                                        <p className='font-bold text-xs p-1'>MAX</p>
-                                                    </button>
-                                                </div>
-                                            </span>
-                                        </label>
-                                        <button className="relative inline-flex items-center justify-center p-0.5 w-full h-16 overflow-hidden text-sm font-medium text-gray-900 rounded-xl group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" onClick={() => { sendTransaction({ to: poolAddress, data: '0x' }).then().catch(console.error) }}>
-                                            <span className="relative flex justify-center items-center w-full h-full transition-all ease-in duration-75 bg-gray-900 rounded-xl group-hover:bg-opacity-0 text-lg">
-                                                Stake
-                                            </span>
-                                        </button>
-                                    </div>
-                                    {/* separator */}
-                                    <div className='border-r-2 border-gray-600 h-auto' />
-                                    <div className='flex flex-col gap-4 mx-8 w-48'> {/* unstaking */}
-                                        <p className='text-gray-400 text-2xl self-center'>Unstake</p>
-                                        <label className='relative inline-flex border border-solid border-slate-500 rounded-2xl items-stretch box-border px-3 cursor-text transition-colors duration-100 ease-in-out w-full self-center'>
-                                            <span className='font-normal text-base flex flex-grow relative py-4'>
-                                                <input className='bg-transparent shadow-none border-transparent outline-none w-full font-normal text-base leading-normal p-0 rounded-none relative top-2' disabled={false} placeholder='0.00' min={0} value={unstakeAmount} onChange={handleUnstakeAmountChange} />
-                                                <span className='absolute left-0 top-1/2 text-base leading-tight whitespace-nowrap overflow-hidden text-ellipsis max-w-full transform origin-top translate-y-[-4px] translate-x-[-6px] scale-75 opacity-100 -mt-4 duration-100 ease-in-out'>Amount</span>
-                                            </span>
-                                            <span className='flex items-center flex-shrink-0 cursor-inherit pl-4'>
-                                                <div className='flex items-center'>
-                                                    <button className='border-2 border-blue-800 outline-none bg-transparent px-1 text-blue-300 opacity-70 rounded-lg' onClick={() => { setUnstakeAmount(balanceStaked ?? 0) }}>
-                                                        <p className='font-bold text-xs p-1'>MAX</p>
-                                                    </button>
-                                                </div>
-                                            </span>
-                                        </label>
-                                        <button className="relative inline-flex items-center justify-center p-0.5 w-full h-16 overflow-hidden text-sm font-medium text-gray-900 rounded-xl group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" onClick={() => { sendTransaction({ to: poolAddress, data: '0x' }).then().catch(console.error) }}>
-                                            <span className="relative flex justify-center items-center w-full h-full transition-all ease-in duration-75 bg-gray-900 rounded-xl group-hover:bg-opacity-0 text-lg">
-                                                Unstake
-                                            </span>
-                                        </button>
-                                    </div>
-                                    {/* separator */}
-                                    <div className='border-r-2 border-gray-600 h-auto' />
-                                    <div className='flex flex-col gap-4 ml-8 w-48 justify-between'> {/* claim */}
-                                        <p className='text-gray-400 text-2xl self-center'>Claim</p>
-                                        <p className='text-white text-sm self-center'>Total Claimable: {balanceClaimable ?? 0.0}</p>
-                                        <div className='flex'>
-                                            <button className="relative inline-flex items-center justify-center p-0.5 w-full h-16 overflow-hidden text-sm font-medium text-gray-900 rounded-xl group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" onClick={() => { sendTransaction({ to: poolAddress, data: '0x' }).then().catch(console.error) }}>
-                                                <span className="relative flex justify-center items-center w-full h-full transition-all ease-in duration-75 bg-gray-900 rounded-xl group-hover:bg-opacity-0 text-lg">
-                                                    Claim
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div className='flex flex-row gap-4 p-4 mt-12 rounded-xl w-full bg-slate-700 justify-between'>
+                                    <Pool poolAddress={poolAddress ?? ""} account={account ?? ""} etherBalance={etherBalance?.toBigInt() ?? 0n} />
                                     <p className='text-slate-400'>FAQ</p>
                                     <button className='flex' onClick={() => setIsOpen(isOpen => !isOpen)}>
                                         {isOpen ? (

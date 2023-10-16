@@ -1,6 +1,6 @@
 import type { AppType } from 'next/app';
 import localFont from 'next/font/local';
-import { DAppProvider, type Config, Arbitrum, ArbitrumGoerli } from "@usedapp/core";
+import { DAppProvider, type Config, Mainnet, Sepolia } from "@usedapp/core";
 
 import { api } from '@/utils/api';
 
@@ -14,9 +14,10 @@ const blenderPro = localFont({
 });
 
 export const _config: Config = {
+    multicallVersion: 2 as const,
     readOnlyUrls: {
-        [Arbitrum.chainId]: "https://arb1.arbitrum.io/rpc",
-        [ArbitrumGoerli.chainId]: "https://goerli-rollup.arbitrum.io/rpc",
+        [Mainnet.chainId]: "https://eth-mainnet.g.alchemy.com/v2/Vy2RK9nukNdy1E1UVlNA_c3OX8nC9zWf",
+        [Sepolia.chainId]: "https://eth-sepolia.g.alchemy.com/v2/P7KBlG6NBLajZCuD0Kpe13qSsDd8RW22",
     }
 }
 

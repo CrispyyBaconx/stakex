@@ -14,9 +14,9 @@ const ConnectButton = (props: ConnectButtonProps) => {
 
     const [isModalOpen, setModalOpen] = useState(false);
 
-    const switchToArbitrum = () => {
+    const switchToMainnet = () => {
         const v = async () => {
-            await switchNetwork(42161); // Arbitrum One
+            await switchNetwork(1); // Mainnet
         }
 
         v().then(() => {
@@ -29,7 +29,7 @@ const ConnectButton = (props: ConnectButtonProps) => {
     const renderWrongNetwork = () => {
         return (
             <>
-                <button className="bg-gray-800 border-1 border-transparent hover:border-blue-400 hover:bg-gray-700 rounded-xl m-1 px-3 h-[38px] text-rose-500 flex items-center" onClick={switchToArbitrum}>
+                <button className="bg-gray-800 border-1 border-transparent hover:border-blue-400 hover:bg-gray-700 rounded-xl m-1 px-3 h-[38px] text-rose-500 flex items-center" onClick={switchToMainnet}>
                     <AiOutlineWarning className="text-rose-500 mr-2" />
                     Wrong Network
                 </button>
