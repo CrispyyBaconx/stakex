@@ -23,7 +23,6 @@ const Stake = () => {
     const router = useRouter();
     const { account } = useEthers();
     const etherBalance = useEtherBalance(account);
-    const { checkBalance } = useFetchPoolData();
     const [stake, setStake] = useState(true);
     const [isOpen, setIsOpen] = useState(false);
     const [queryAddress, setQueryAddress] = useState<string>(""); // ! maybe use a useEffect to query the address asynchonously and set a state variable to the result, using a result turnary to display the result or the default (Nothing to show.)
@@ -43,8 +42,12 @@ const Stake = () => {
         setQueryAddress(inputValue);
 
         // query the address
-        
+        getBalances(queryAddress);
     };
+
+    function getBalances(queryAddress: string) {
+        throw new Error('Function not implemented.' + queryAddress);
+    }
 
     const processAPYData = (data: Array<apyHistory> | undefined) => {
         // test data
@@ -109,8 +112,12 @@ const Stake = () => {
                     {stake ? (
                         <div className='flex flex-col items-center'>
                             <div className='flex flex-col items-center mt-12 w-[70em] justify-around'>
-                                <div className='flex flex-row gap-4 p-4 mt-12 rounded-xl w-full bg-slate-700 justify-between'>
+                                <div className='flex flex-col gap-8'>
                                     <Pool poolAddress={poolAddress ?? ""} account={account ?? ""} etherBalance={etherBalance?.toBigInt() ?? 0n} />
+                                    <Pool poolAddress={poolAddress ?? ""} account={account ?? ""} etherBalance={etherBalance?.toBigInt() ?? 0n} />
+                                    <Pool poolAddress={poolAddress ?? ""} account={account ?? ""} etherBalance={etherBalance?.toBigInt() ?? 0n} />
+                                </div>
+                                <div className='flex flex-row gap-4 p-4 rounded-xl w-full bg-slate-700 justify-between my-12'>
                                     <p className='text-slate-400'>FAQ</p>
                                     <button className='flex' onClick={() => setIsOpen(isOpen => !isOpen)}>
                                         {isOpen ? (

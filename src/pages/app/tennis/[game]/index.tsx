@@ -3,6 +3,14 @@ import { Head } from "@/components";
 import { useRouter } from "next/router";
 import tennisBackground from "@/assets/FootballCard.jpg";
 
+import type {
+    GetStaticPaths,
+    GetStaticProps
+} from 'next';
+
+import { api } from "@/utils/api";
+import { sha256 } from "ethers/lib/utils";
+
 const Game = () => {
     const router = useRouter();
     const category = router.pathname.split('/')[2]; // this is the category string from the url /app/(category)/[game]
@@ -15,7 +23,7 @@ const Game = () => {
 
     return (
         <>
-            <Head title={`Stakex - ${typeof game}`} />
+            <Head title={`Stakex - ${typeof Game}`} />
             <main className="flex flex-col min-h-screen bg-gray-900">
                 <div className="flex flex-row flex-1">
                     <Sidebar />
@@ -29,8 +37,41 @@ const Game = () => {
     )
 }
 
-export const getStaticProps = () {
-    const { game } = router.query; // this is the game string from the url /app/tennis/[game]
-}
+export const getStaticPaths = (() => {
+    const tennisGames = api.main.getGames.useQuery('tennis');
+    const tennisPaths = tennisGames.data?.map(game => {
+        const url = game.teamA + "-" + game.teamB + "-" + sha256(new TextEncoder().encode(game.date.toISOString())).substring(0, 10); // ! might be bugged who knows
+
+        return {
+            params: {
+                game: "/" + url,
+            }
+        }
+    }) || [];
+
+    return {
+        paths: tennisPaths,
+        fallback: false
+    }
+}) satisfies GetStaticPaths;
+
+export const getStaticProps = (({ params }) => {
+    if (!params || typeof params.slug !== 'string') {
+        return {
+            notFound: true,  // This will return a 404 page in Next.js
+        }
+    }
+
+    const { slug } = params;
+
+    // fetch the game from the database using the slug
+    const game = api.main.getGame.useQuery(1); // ! todo
+
+    return {
+        props: {
+            game
+        }
+    }
+}) satisfies GetStaticProps;
 
 export default Game;

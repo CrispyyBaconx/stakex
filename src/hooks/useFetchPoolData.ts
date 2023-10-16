@@ -35,22 +35,19 @@ const useFetchPoolData = (poolAddress: string, account: string) => {
         }
     ];
 
-    const { value, error: multicallError } = useMulticall(calls);
+    const value = useMulticall(calls);
 
     useEffect(() => {
-        if (multicallError) {
-            setError(multicallError);
-            return;
-        }
-
         if (value) {
             setBalances({
-                balanceHeld: value[0] as unknown as number,
-                balanceClaimable: value[1] as unknown as number,
-                balanceStaked: value[2] as unknown as number,
+                balanceHeld: value[0] as number,
+                balanceClaimable: value[1] as number,
+                balanceStaked: value[2] as number,
             });
+        } else {
+            setError(new Error("Multicall returned null value. Possibly a contract call error."));
         }
-    }, [value, multicallError]);
+    }, [value]);
 
     return { balances, error };
 };

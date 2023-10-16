@@ -4,9 +4,11 @@ import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import { type Game } from "@prisma/client";
 
 export const mainRouter = createTRPCRouter({
-	getGames: publicProcedure.query(async ({ ctx }) => {
+	getGames: publicProcedure
+	.input(z.string().min(1))
+	.query(async ({ ctx, input }) => {
 		const games = await ctx.prisma.game.findMany({
-			take: 100,
+			take: 100, // !
 		});
 
 		return games.map((game) => {
@@ -15,10 +17,21 @@ export const mainRouter = createTRPCRouter({
 			}
 		});
 	}),
+	getGame: publicProcedure
+	.input(z.number().min(1))
+	.query(async ({ ctx, input }) => {
+		const game = await ctx.prisma.game.findUnique({
+			where: {
+				id: input,
+			},
+		});
+
+		return game;
+	}),
 	getGamesInPlay: publicProcedure.query(async ({ ctx }) => {
 		const games = await ctx.prisma.game.findMany({
 			where: {
-				inPlay: true,
+				inPlay: true, // ! maybe look at start time and "ended" flag and compare to current time
 			},
 			take: 100,
 		});
