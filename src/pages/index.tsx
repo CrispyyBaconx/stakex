@@ -83,7 +83,7 @@ const Landing = () => {
 						<h3 className='text-2xl font-bold mb-2 bg-stripes p-4 border-8 rounded-lg border-gray-900 w-72'>
 							(filler) $SKX is the native token of the Stakex platform. It can be used to place bets, and can be earned by staking $SKX on our <Link href="/stake" className='text-indigo-600 hover:text-blue-500'>pools.</Link>
 						</h3>
-						Maybe add some graphics in a line explaining how it works ¯\_(ツ)_/¯
+						Maybe add some graphics in a line explaining how it works
 						<Image src={coins} alt='Coins' width={240} height={240} className='flex' />
 					</div>
 				</section>
