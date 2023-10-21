@@ -1,11 +1,11 @@
 import { Head } from "@/components";
 
-const LegalPage = () => {
+const Privacy = () => {
     return (
         <>
-            <Head title="Stakex - TOS" />
+            <Head title="Stakex - Privacy Policy" />
             <div>
-                <h1>Stakex Terms Of Service | Privacy Policy</h1>
+                <h1>Stakex | Privacy Policy</h1>
                 <p>
                     Lorem was a noble lad.
                 </p>
@@ -14,4 +14,4 @@ const LegalPage = () => {
     )
 }
 
-export default LegalPage;
+export default Privacy;

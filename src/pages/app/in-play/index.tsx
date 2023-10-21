@@ -1,4 +1,4 @@
-import { ListLoadingSkeleton, Head } from "@/components";
+import { Head, LoadingSpinner } from "@/components";
 import { api } from "@/utils/api";
 import { type Game } from '@prisma/client';
 import { useRouter } from "next/router";
@@ -43,7 +43,9 @@ const InPlay = () => {
                     <section className='flex flex-col items-center justify-start px-auto w-[52rem] border-2 bg-slate-900 border-gray-500 rounded-2xl mb-8'>
                         <h2 className='text-4xl font-bold text-white mx-auto mt-12 mb-10'>Games In Play</h2>
                         {isLoading ? (
-                            <ListLoadingSkeleton />
+                            <div className="mt-40">
+                                <LoadingSpinner size={36} />
+                            </div>
                         ) : gamesInPlay && gamesInPlay.length > 0 ? (
                             gamesInPlay.map((game: Game) => (
                                 <div key={game.id}>
@@ -52,7 +54,7 @@ const InPlay = () => {
                                 </div>
                             ))
                         ) : (
-                            <div className="flex flex-col items-center gap-12">
+                            <div className="flex flex-col items-center gap-12 mt-6">
                                 <div className="flex flex-col items-center gap-2">
                                     <p>No Games Are Currently In Play.</p>
                                     <p>Check Back Later!</p>
