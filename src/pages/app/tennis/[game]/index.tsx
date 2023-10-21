@@ -37,6 +37,7 @@ const Game = () => {
     )
 }
 
+/**
 export const getStaticPaths = (() => {
     const tennisGames = api.main.getGames.useQuery('tennis');
     const tennisPaths = tennisGames.data?.map(game => {
@@ -67,11 +68,8 @@ export const getStaticProps = (({ params }) => {
     // fetch the game from the database using the slug
     const game = api.main.getGame.useQuery(1); // ! todo
 
-    return {
-        props: {
-            game
-        }
-    }
+    return { props: { game } }
 }) satisfies GetStaticProps;
 
 export default Game;
+ */

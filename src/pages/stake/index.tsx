@@ -81,7 +81,7 @@ const Stake = () => {
                 <header className='flex p-8 w-full justify-around'>
                     <div className='flex cursor-pointer' onClick={() => { router.push('/').then().catch(console.error) }}>
                         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-                        <Image className='w-6 mr-2' src={Logo} alt='Stakex Logo' />
+                        <Image className='w-6 mr-6' src={Logo} alt='Stakex Logo' />
                         <h2 className='text-2xl flex flex-col justify-center'>Stakex</h2>
                         <p className='text-purple-600 flex pt-2'>
                             &nbsp;Beta
@@ -128,22 +128,22 @@ const Stake = () => {
                                     </button>
                                 </div>
                                 {isOpen && (
-                                    <ul className="flex flex-col m-8 gap-4 w-full">
+                                    <ul className="flex flex-col mb-[6rem] gap-4 w-full">
                                         <FAQLi
                                             question="What is the purpose of this project?"
-                                            answer="To woble."
+                                            answer="Blah"
                                         />
                                         <FAQLi
                                             question="Why is the purpose of this project?"
-                                            answer="To woble."
+                                            answer="Blah"
                                         />
                                         <FAQLi
                                             question="Who is the purpose of this project?"
-                                            answer="To woble."
+                                            answer="Blah"
                                         />
                                         <FAQLi
                                             question="When is the purpose of this project?"
-                                            answer="To woble."
+                                            answer="Blah"
                                         />
                                     </ul>
                                 )}

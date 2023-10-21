@@ -76,14 +76,14 @@ const Landing = () => {
 				<section className='px-24 py-16 text-white flex flex-col items-center'>
 					<div className='mb-16 flex'>
 						<h2 className='text-5xl flex flex-row text-shadow shadow-slate-200'>
-							How it Works / This isn&apos;t your average sportsbook.
+							This isn&apos;t your average sportsbook.
 						</h2>
 					</div>
 					<div className='flex flex-row justify-around items-center text-white w-[70rem]'>
 						<h3 className='text-2xl font-bold mb-2 bg-stripes p-4 border-8 rounded-lg border-gray-900 w-72'>
 							(filler) $SKX is the native token of the Stakex platform. It can be used to place bets, and can be earned by staking $SKX on our <Link href="/stake" className='text-indigo-600 hover:text-blue-500'>pools.</Link>
 						</h3>
-						Maybe add some graphics in a line explaining how it works ¯\_(ツ)_/¯
+						Maybe add some graphics in a line explaining how it works
 						<Image src={coins} alt='Coins' width={240} height={240} className='flex' />
 					</div>
 				</section>
