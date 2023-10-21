@@ -13,9 +13,6 @@ const MinFooter = () => {
                         <Link href="/privacy-and-tos" className="mr-4 hover:underline md:mr-6">Privacy Policy</Link>
                     </li>
                     <li>
-                        <Link href="/terminal" className="mr-4 hover:underline md:mr-6">Terminal</Link>
-                    </li>
-                    <li>
                         <Link href="/contact" className="hover:underline">Contact</Link>
                     </li>
                 </ul>
