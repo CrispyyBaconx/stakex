@@ -22,6 +22,7 @@ model Game {
   	sportId Int
   	sport   Sport    @relation(fields: [sportId], references: [id])
 	ended   Boolean  @default(false)
+	totalVolume Decimal
   	date    DateTime
 	name    String	
   	teamA   String

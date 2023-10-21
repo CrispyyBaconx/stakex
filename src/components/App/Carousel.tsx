@@ -80,7 +80,7 @@ const Carousel = (props: CarouselProps) => {
                     }}
                     key={index} // This key is important for the animation to work correctly.
                 >
-                    <Image className='w-full h-full max-w-3xl rounded-lg border-[3px] border-gray-700 hover:cursor-pointer' src={current.imageLink} key={index} alt='Carousel' placeholder='blur' height={350} width={800} onClick={() => { router.push(current.href).then().catch(console.error) }} />
+                    <Image className='w-full h-full max-w-3xl rounded-lg border-[3px] border-gray-700 hover:cursor-pointer' src={current.imageLink} key={index} alt='Carousel' placeholder='blur' blurDataURL='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HgAGgwJ/lK3Q6wAAAABJRU5ErkJggg==' height={350} width={800} onClick={() => { router.push(current.href).then().catch(console.error) }} />
                 </motion.div>
                 <button className="bg-slate-900 border-2 border-gray-400 text-white p-2 ml-12 m-3 rounded-full right-0 transition hover:scale-110 my-auto" onClick={next}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="flex h-6 w-6 pl-1 pt-[3px] text-gray-400" fill="none" viewBox="0 0 20 20" stroke="currentColor">
