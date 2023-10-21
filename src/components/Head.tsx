@@ -21,7 +21,7 @@ const _Head = (props: HeadProps) => {
             <meta property="og:locale" content="en_US" />
             <meta name='twitter:title' content={props.title ?? "Stakex"} />
             <meta name='twitter:description' content={props.description ?? "A decentralized sports betting platform that redistributes revenue to token holders & stakers"} />
-            <meta name='twitter:image' content='https://stakex.net/assets/brand/StakexBanner.png' />
+            <meta name='twitter:image' content='https://stakex.net/assets/brand/stakexbanner.png' />
             <meta name='twitter:image:alt' content='Stakex' />
             <meta name='twitter:image:width' content='1200' />
             <meta name='twitter:image:height' content='600' />
