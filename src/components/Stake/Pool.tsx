@@ -1,6 +1,5 @@
 import { useFetchPoolData } from "@/hooks";
 import { useSendTransaction } from "@usedapp/core";
-import Logo from "@/assets/logo.svg";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -8,9 +7,10 @@ interface PoolProps {
     poolAddress: string;
     account: string;
     etherBalance: number | bigint;
+    icon: string;
 }
 
-const Pool = ({ poolAddress, account, etherBalance }: PoolProps) => {
+const Pool = ({ poolAddress, account, etherBalance, icon }: PoolProps) => {
     const [stakeAmount, setStakeAmount] = useState<number | string>("");
     const [unstakeAmount, setUnstakeAmount] = useState<number | string>("");
     const { sendTransaction } = useSendTransaction();
@@ -49,7 +49,7 @@ const Pool = ({ poolAddress, account, etherBalance }: PoolProps) => {
                 <label className='relative inline-flex border border-solid border-slate-500 rounded-[20px] items-stretch box-border px-3 cursor-text transition-colors duration-100 ease-in-out w-full self-center'>
                     <span className='flex items-center flex-shrink-0 cursor-inherit pr-4'>
                         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-                        <Image src={Logo} alt='Stakex Logo' width={20} height={20} />
+                        <Image src={icon} alt='Stakex Logo' width={20} height={20} />
                     </span>
                     <span className='font-normal text-base flex flex-grow relative py-4'>
                         <input className='bg-transparent shadow-none border-transparent outline-none w-full font-normal text-base leading-normal p-0 rounded-none relative top-2' disabled={false} placeholder='0.00' min={0} value={stakeAmount} onChange={handleStakeAmountChange} />

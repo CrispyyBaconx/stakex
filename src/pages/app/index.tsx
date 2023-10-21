@@ -4,7 +4,7 @@ import { Head } from '@/components';
 import { api } from "@/utils/api";
 
 const App = () => {
-    const carousel = api.main.getCarouselItems.useQuery();
+    const carouselItems = api.main.getCarouselItems.useQuery();
 
     return (
         <>
@@ -23,7 +23,7 @@ const App = () => {
                         </section>
                         <main className="flex flex-col w-full">
                             <div className="flex flex-col w-10/12 items-center bg-slate-950 mt-4 rounded-xl border-2 border-gray-800 mx-auto"> {/* ! find a way to fix the margin */}
-                                {carousel.data === undefined ? <LoadingSpinner /> : <Carousel interval={40000} items={carousel.data} />}
+                                {carouselItems.data === undefined ? <LoadingSpinner /> : <Carousel interval={40000} items={carouselItems.data} />}
                             </div>
                             <div className="flex flex-col w-10/12 items-center bg-slate-950 mt-10 rounded-xl border-2 border-gray-800 mx-auto mb-12">
                                 <div className="flex p-4">

@@ -23,11 +23,7 @@ type GameFilterType = {
 
 export default createTRPCRouter({
 	getCarouselItems: publicProcedure.query(async ({ ctx }) => {
-		const items = await ctx.prisma.carousel.findFirst({
-			include: { items: true },
-		});
-
-		return items?.items || [];
+		return await ctx.prisma.carouselItem.findMany();
 	}),
 	searchGames: publicProcedure
     .input(z.object({

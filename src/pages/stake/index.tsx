@@ -2,15 +2,15 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEtherBalance, useEthers } from '@usedapp/core';
 import { CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
-import { type apyHistory } from '@prisma/client';
+import { type ApyHistory } from '@prisma/client';
 import { useState } from 'react';
 import { MinFooter, LoadingSpinner, ConnectButton } from '@/components';
 import { Head } from '@/components';
-import { useCustomCall } from '@/hooks';
-import { poolABI } from '@/abis';
 import { api } from '@/utils/api';
 import { Pool } from '@/components/Stake';
-import Logo from '@/assets/logo.svg';
+import SKXLogo from '@/assets/logo.svg';
+import ETHLogo from '@/assets/eth.svg';
+import USDCLogo from '@/assets/usdc.svg';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { FAQLi } from '@/components/Stake';
 import { ethers } from 'ethers';
@@ -31,8 +31,7 @@ const Stake = () => {
         { enabled: !stake }
     );
 
-    const poolAddress = process.env.NEXT_PUBLIC_STAKING_CONTRACT_ADDRESS;
-    const apy = useCustomCall(poolAddress, poolABI, "getAPY", []);
+    const pools = api.staking.getPools.useQuery();
 
     const handleQueryAddress = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -49,7 +48,7 @@ const Stake = () => {
         throw new Error('Function not implemented.' + queryAddress);
     }
 
-    const processAPYData = (data: Array<apyHistory> | undefined) => {
+    const processAPYData = (data: Array<ApyHistory> | undefined) => {
         // test data
         const testData = [
             { date: new Date("1/1/2021"), apy: 4.1 },
@@ -81,7 +80,7 @@ const Stake = () => {
                 <header className='flex p-8 w-full justify-around'>
                     <div className='flex cursor-pointer' onClick={() => { router.push('/').then().catch(console.error) }}>
                         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-                        <Image className='w-6 mr-6' src={Logo} alt='Stakex Logo' />
+                        <Image className='w-6 mr-6' src={SKXLogo} alt='Stakex Logo' />
                         <h2 className='text-2xl flex flex-col justify-center'>Stakex</h2>
                         <p className='text-purple-600 flex pt-2'>
                             &nbsp;Beta
@@ -93,8 +92,8 @@ const Stake = () => {
                 </header>
                 <div className='flex flex-col flex-grow items-center'>
                     <div className='flex flex-col items-center'>
-                        <h1 className='text-4xl'>Staking</h1>
-                        <p className='text-gray-400'>Earn a percent of platform revenue</p>
+                        <h1 className='text-4xl pb-4'>Staking</h1>
+                        <p className='text-gray-400 pb-2'>Earn a percent of platform revenue</p>
                     </div>
                     <div className='flex flex-row items-center bg-gray-900 border-slate-800 border-2 rounded-3xl mt-4'>
                         <a className="flex flex-1 group transition-all duration-300 ease-in-out m-1">
@@ -113,9 +112,18 @@ const Stake = () => {
                         <div className='flex flex-col items-center'>
                             <div className='flex flex-col items-center mt-12 w-[70em] justify-around'>
                                 <div className='flex flex-col gap-8'>
-                                    <Pool poolAddress={poolAddress ?? ""} account={account ?? ""} etherBalance={etherBalance?.toBigInt() ?? 0n} />
-                                    <Pool poolAddress={poolAddress ?? ""} account={account ?? ""} etherBalance={etherBalance?.toBigInt() ?? 0n} />
-                                    <Pool poolAddress={poolAddress ?? ""} account={account ?? ""} etherBalance={etherBalance?.toBigInt() ?? 0n} />
+                                    {pools.data === undefined ? 
+                                        <LoadingSpinner /> 
+                                      : 
+                                        <div className='flex flex-col gap-10'>
+                                            {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+                                            <Pool poolAddress={pools.data[0]?.address ?? ""} account={account ?? ""} etherBalance={etherBalance?.toBigInt() ?? 0n} icon={SKXLogo} />
+                                            {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+                                            <Pool poolAddress={pools.data[1]?.address ?? ""} account={account ?? ""} etherBalance={etherBalance?.toBigInt() ?? 0n} icon={ETHLogo} />
+                                            {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+                                            <Pool poolAddress={pools.data[2]?.address ?? ""} account={account ?? ""} etherBalance={etherBalance?.toBigInt() ?? 0n} icon={USDCLogo} />
+                                        </div>
+                                    }
                                 </div>
                                 <div className='flex flex-row gap-4 p-4 rounded-xl w-full bg-slate-700 justify-between my-12'>
                                     <p className='text-slate-400'>FAQ</p>
@@ -209,9 +217,9 @@ const Stake = () => {
                                     <div>
                                         <p className='text-xl'>Staking</p>
                                         <p className='flex flex-row gap-2 justify-end'>
-                                            {true ? (
+                                            {true ? ( // !
                                                 <div className='flex flex-row'>
-                                                    <span className='text-green-400'>{apy}2.34</span>%
+                                                    <span className='text-green-400'>2.34</span>%
                                                 </div>
                                             ) : (
                                                 <div className="flex flex-row items-center animate-pulse">

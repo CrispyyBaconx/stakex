@@ -65,22 +65,21 @@ model User {
 	@@index([address])
 }
 
-model Carousel {
-    id    Int            @id @default(autoincrement())  // Unique identifier for Carousel
-    items CarouselItem[]
-}
-
 model CarouselItem {
-    id       Int    @id @default(autoincrement())  // Unique identifier for CarouselItem
+    id       Int    @id @default(autoincrement())
     imageLink String
     href     String
-    carouselId Int      // To establish a relation between Carousel and CarouselItem
-    carousel  Carousel @relation(fields: [carouselId], references: [id])
 
-    @@index([carouselId])
+    @@index([id])
 }
 
-model apyHistory {
+model Pool {
+	id    Int     @id @default(autoincrement())
+	name  String  @unique
+	address String
+}
+
+model ApyHistory {
 	date   DateTime @id
 	apy    Decimal
 }

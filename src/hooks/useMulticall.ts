@@ -14,11 +14,10 @@ const useMulticall = (calls: Call[]) => {
         refresh: "everyBlock"
     });
 
-    const wellFormattedCalls = calls.map((call) => [
-        call.contract.address, 
-        call.method, 
-        call.args
-    ]);
+    const wellFormattedCalls = calls.map((call) => {
+        const data = call.contract.interface.encodeFunctionData(call.method, call.args);
+        return [call.contract.address, data];
+    });
 
     // Explicitly declare the expected type
     const result: UseCallResult = useCall(multicallAddress && {

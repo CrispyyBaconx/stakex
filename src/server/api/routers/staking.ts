@@ -23,4 +23,10 @@ export default createTRPCRouter({
 			}
 		});
 	}),
+	getPools: publicProcedure.query(async ({ ctx }) => {
+		return await ctx.prisma.pool.findMany();
+	}),
 });
+
+// https://stakex.net/assets/carousel/tennis.png
+// https://stakex.net/assets/carousel/water.jpg
