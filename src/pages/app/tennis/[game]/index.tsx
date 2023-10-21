@@ -70,6 +70,6 @@ export const getStaticProps = (({ params }) => {
 
     return { props: { game } }
 }) satisfies GetStaticProps;
+ */
 
 export default Game;
- */
