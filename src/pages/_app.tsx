@@ -1,17 +1,18 @@
 import type { AppType } from 'next/app';
-import localFont from 'next/font/local';
+//import localFont from 'next/font/local';
 import { DAppProvider, type Config, Mainnet, Sepolia } from "@usedapp/core";
 
 import { api } from '@/utils/api';
 
 import '@/styles/globals.css';
-import { ParallaxProvider } from 'react-scroll-parallax';
 
+/**
 const blenderPro = localFont({
     src: '../../public/fonts/Blender-Pro-Bold.woff2',
     variable: '--font-blender-pro',
     weight: "700",
 });
+ */
 
 export const _config: Config = {
     multicallVersion: 2 as const,
@@ -23,13 +24,11 @@ export const _config: Config = {
 
 const App: AppType = ({ Component, pageProps }) => {
     return (
-        <ParallaxProvider>
-            <DAppProvider config={ _config }>
-                <main className={`${blenderPro.variable} font-sans`}>
-                    <Component {...pageProps} />
-                </main>
-            </DAppProvider>
-        </ParallaxProvider>
+        <DAppProvider config={ _config }>
+            <main className="font-exo2">
+                <Component {...pageProps} /> 
+            </main>
+        </DAppProvider>
     );
 };
 

@@ -34,7 +34,7 @@ const Landing = () => {
 								<h1 className='text-4xl font-bold text-shadow shadow-slate-100 self-center' ref={titleRef}>Stakex</h1>
 							</div>
 							<Link href="/app" className='tracking-wider text-xl'>
-								App  &gt;
+								App →
 							</Link>
 						</div>
 						<br />
@@ -52,7 +52,7 @@ const Landing = () => {
 				</section>
 				<section className='px-24 py-16 text-white flex flex-col items-center'>
 					<div className='mb-16 flex'>
-						<h2 className='text-5xl flex flex-row'>
+						<h2 className='text-5xl flex flex-row whitespace-nowrap'>
 							Experience the Power of <span className='bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-400 text-transparent bg-clip-text block'>&nbsp;On-Chain&nbsp;</span> Betting.
 						</h2>
 					</div>

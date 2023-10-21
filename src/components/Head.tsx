@@ -12,6 +12,7 @@ const _Head = (props: HeadProps) => {
             <link rel='icon' type="image/x-icon" href='/favicon.ico' />
             <link rel='preconnect' href='https://fonts.gstatic.com' />
             <link rel='preconnect' href='https://fonts.googleapis.com' />
+            <meta property='description' content={props.description ?? "A decentralized sports betting platform that redistributes revenue to token holders & stakers"} />
             <meta property='og:title' content={props.title ?? "Stakex"} />
             <meta property='og:description' content={props.description ?? "A decentralized sports betting platform that redistributes revenue to token holders & stakers"} />
             <meta property='og:image' content='https://stakex.net/assets/brand/banner.png' />

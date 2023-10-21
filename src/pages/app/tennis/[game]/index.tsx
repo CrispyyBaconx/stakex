@@ -5,7 +5,8 @@ import tennisBackground from "@/assets/FootballCard.jpg";
 
 import type {
     GetStaticPaths,
-    GetStaticProps
+    GetStaticProps,
+    InferGetStaticPropsType
 } from 'next';
 
 import { api } from "@/utils/api";

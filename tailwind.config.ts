@@ -17,7 +17,8 @@ module.exports = {
 				accent: '#02070c',
 			},
 			fontFamily: {
-				sans: ['var(--font-blender-pro)', ...fontFamily.sans],
+				exo2: ['"Exo 2"', ...fontFamily.sans],
+				//sans: ['var(--font-blender-pro)', ...fontFamily.sans],
 			},
 			textShadow: {
 				sm: '0 1px 2px var(--tw-shadow-color)',
