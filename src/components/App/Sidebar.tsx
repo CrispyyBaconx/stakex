@@ -6,8 +6,8 @@ import { motion } from 'framer-motion';
 const Sidebar = () => {
     return (
         <div className='flex flex-col'>
-            <Link href="/" className="flex p-6 pt-8 w-48 justify-left items-center justify-end bg-gray-950">
-                <h2 className="text-white text-4xl">Stakex</h2>
+            <Link href="/" className="flex p-6 pt-8 px-8 w-48 justify-left items-center justify-end bg-gray-950">
+                <h2 className="text-white text-3xl">Stakex</h2>
                 <h5 className="p-1 text-purple-600 font-bold">Beta</h5>
             </Link>
             <aside className="h-full transition-transform -translate-x-full sm:translate-x-0">
