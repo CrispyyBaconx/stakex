@@ -4,7 +4,7 @@ import { type Game } from '@prisma/client';
 import { useRouter } from "next/router";
 
 const InPlay = () => {
-    const { isLoading, data: gamesInPlay } = api.main.getGamesInPlay.useQuery();
+    const { isLoading, data: gamesInPlay } = api.games.getGamesInPlay.useQuery();
     const router = useRouter();
 
     const getNameFromSportId = (sportId: number) => {

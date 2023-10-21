@@ -40,7 +40,7 @@ const Game = () => {
 
 /**
 export const getStaticPaths = (() => {
-    const tennisGames = api.main.getGames.useQuery('tennis');
+    const tennisGames = api.games.getGames.useQuery('tennis');
     const tennisPaths = tennisGames.data?.map(game => {
         const url = game.teamA + "-" + game.teamB + "-" + sha256(new TextEncoder().encode(game.date.toISOString())).substring(0, 10); // ! might be bugged who knows
 
@@ -67,7 +67,7 @@ export const getStaticProps = (({ params }) => {
     const { slug } = params;
 
     // fetch the game from the database using the slug
-    const game = api.main.getGame.useQuery(1); // ! todo
+    const game = api.games.getGame.useQuery(1); // ! todo
 
     return { props: { game } }
 }) satisfies GetStaticProps;

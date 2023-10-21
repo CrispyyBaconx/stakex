@@ -26,7 +26,7 @@ const Stake = () => {
     const [stake, setStake] = useState(true);
     const [isOpen, setIsOpen] = useState(false);
     const [queryAddress, setQueryAddress] = useState<string>(""); // ! maybe use a useEffect to query the address asynchonously and set a state variable to the result, using a result turnary to display the result or the default (Nothing to show.)
-    const { isLoading, data: apyHistory } = api.main.getAPYHistory.useQuery(
+    const { isLoading, data: apyHistory } = api.staking.getAPYHistory.useQuery(
         { limit: 10, offset: 0, pool: "0x0000000000000000000000000000000000000000" },
         { enabled: !stake }
     );

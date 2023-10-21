@@ -1,11 +1,14 @@
-import { Sidebar, Search } from "@/components/App";
-import { ConnectButton, MinFooter } from '@/components';
+import { Sidebar, Search, Carousel } from "@/components/App";
+import { ConnectButton, LoadingSpinner, MinFooter } from '@/components';
 import { Head } from '@/components';
-import tennisImage from '@/assets/CarouselImages/tennis.png';
-import waterImage from '@/assets/CarouselImages/water.jpg';
-import Carousel from "@/components/App/Carousel";
+import { api } from "@/utils/api";
 
-const App = () => {
+import type {
+    GetStaticProps,
+    InferGetStaticPropsType
+} from 'next';
+
+const App = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     return (
         <>
             <Head title="Stakex - App" />
@@ -23,20 +26,7 @@ const App = () => {
                         </section>
                         <main className="flex flex-col w-full">
                             <div className="flex flex-col w-10/12 items-center bg-slate-950 mt-4 rounded-xl border-2 border-gray-800 mx-auto"> {/* ! find a way to fix the margin */}
-                                <Carousel interval={40000} items={[
-                                    {
-                                        image: tennisImage,
-                                        link: '/app/tennis'
-                                    },
-                                    {
-                                        image: waterImage,
-                                        link: '/app/tennis'
-                                    },
-                                    {
-                                        image: tennisImage,
-                                        link: '/app/tennis'
-                                    }
-                                ]} />
+                                {props.carousel === undefined ? <LoadingSpinner /> : <Carousel interval={40000} items={props.carousel} />}
                             </div>
                             <div className="flex flex-col w-10/12 items-center bg-slate-950 mt-10 rounded-xl border-2 border-gray-800 mx-auto mb-12">
                                 <div className="flex p-4">
@@ -74,5 +64,16 @@ const App = () => {
         </>
     )
 }
+
+export const getStaticProps = (() => {
+    const carouselItems = api.main.getCarouselItems.useQuery();
+
+    return {
+        props: {
+            carousel: carouselItems.data
+        },
+        revalidate: 60
+    }
+}) satisfies GetStaticProps;
 
 export default App;

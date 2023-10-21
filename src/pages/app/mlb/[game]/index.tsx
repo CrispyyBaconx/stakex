@@ -5,7 +5,7 @@ type GameProps = {
 }
 
 const Game = () => {
-    //const { data: game } = api.main (get game data from server)
+    //const { data: game } = api. (get game data from server)
 
     return (
         <div>Game Page</div>
