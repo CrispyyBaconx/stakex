@@ -32,6 +32,14 @@ const _Head = (props: HeadProps) => {
             <meta name='twitter:creator' content='@StakexOfficial' />
             <meta name='twitter:domain' content='https://stakex.net' />
             <meta name='twitter:url' content='https://stakex.net' />
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD2Q1Z4XNC"></script>
+            <script> { /* ! fix this later */}
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-RD2Q1Z4XNC');
+            </script>
         </Head>
     )
 }
