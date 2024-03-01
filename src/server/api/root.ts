@@ -1,16 +1,11 @@
-import { createTRPCRouter } from "@/server/api/trpc";
-import { mainRouter, gamesRouter, stakingRouter, userRouter } from "@/server/api/routers";
+import { mainRouter, gamesRouter, stakingRouter, userRouter } from "~/server/api/routers";
+import { createTRPCRouter } from "~/server/api/trpc";
 
-/**
- * This is the primary router for your server.
- *
- * All routers added in /api/routers should be manually added here.
- */
 export const appRouter = createTRPCRouter({
 	main: mainRouter,
-	games: gamesRouter,
+	games: gamesRouter, 
 	staking: stakingRouter,
-	user: userRouter,
+	user: userRouter
 });
 
 // export type definition of API

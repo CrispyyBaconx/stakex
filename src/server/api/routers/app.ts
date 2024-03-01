@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { type Game } from "@prisma/client";
 
 type GameFilterType = {
@@ -22,9 +22,6 @@ type GameFilterType = {
 };
 
 export default createTRPCRouter({
-	getCarouselItems: publicProcedure.query(async ({ ctx }) => {
-		return await ctx.prisma.carouselItem.findMany();
-	}),
 	searchGames: publicProcedure
     .input(z.object({
         searchString: z.string().min(3), // at least 3 characters before searching
@@ -58,7 +55,7 @@ export default createTRPCRouter({
             filters.push(timeFilter);
         }
 
-        const games = await ctx.prisma.game.findMany({
+        const games = await ctx.db.game.findMany({
             where: {
                 OR: filters
             },

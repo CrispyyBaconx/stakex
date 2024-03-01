@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export default createTRPCRouter({
     getAPYHistory: publicProcedure
@@ -9,7 +9,7 @@ export default createTRPCRouter({
 		limit: z.number().int().min(1).max(100),
 	}))
 	.query(async ({ ctx, input }) => {
-		const apyHistory = await ctx.prisma.apyHistory.findMany({
+		const apyHistory = await ctx.db.apyHistory.findMany({
 			orderBy: {
 				date: "desc",
 			},
@@ -24,7 +24,7 @@ export default createTRPCRouter({
 		});
 	}),
 	getPools: publicProcedure.query(async ({ ctx }) => {
-		return await ctx.prisma.pool.findMany();
+		return await ctx.db.pool.findMany();
 	}),
 });
 

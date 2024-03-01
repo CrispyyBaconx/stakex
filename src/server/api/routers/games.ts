@@ -1,11 +1,11 @@
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export default createTRPCRouter({
     getGames: publicProcedure
 	.input(z.string().min(1))
 	.query(async ({ ctx, input }) => {
-		const games = await ctx.prisma.game.findMany({
+		const games = await ctx.db.game.findMany({
 			where: {
 				sport: {
 					name: input,
@@ -26,7 +26,7 @@ export default createTRPCRouter({
 	getGame: publicProcedure
 	.input(z.number().min(1))
 	.query(async ({ ctx, input }) => {
-		const game = await ctx.prisma.game.findUnique({
+		const game = await ctx.db.game.findUnique({
 			where: {
 				id: input,
 			},
@@ -35,7 +35,7 @@ export default createTRPCRouter({
 		return game;
 	}),
 	getGamesInPlay: publicProcedure.query(async ({ ctx }) => {
-		const games = await ctx.prisma.game.findMany({
+		const games = await ctx.db.game.findMany({
 			where: {
 				NOT: {
 					ended: true,

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export default createTRPCRouter({
     getUsersBets: publicProcedure
@@ -8,7 +8,7 @@ export default createTRPCRouter({
         offset: z.number().optional().default(0),
     }))
     .query(async ({ ctx, input }) => {
-        const bets = await ctx.prisma.bet.findMany({
+        const bets = await ctx.db.bet.findMany({
             where: {
                 user: {
                     address: input.address,
