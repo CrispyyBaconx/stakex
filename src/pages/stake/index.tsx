@@ -15,7 +15,7 @@ import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { FAQLi } from '@/components/Stake';
 import { ethers } from 'ethers';
 
-// useful links
+// useful links 
 // https://goerli.etherscan.io/address/0x6535a4e977885cba7fa99b00ee64d4e7c83fd847#readContract
 // https://goerli.etherscan.io/address/0xc1b92cd61e0acaeb4678aa2757fc21ac09555910#code
 
