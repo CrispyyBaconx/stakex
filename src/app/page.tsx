@@ -7,7 +7,6 @@ import logo from '~/assets/logo.svg';
 
 // Components
 import { Newsletter, Card } from '~/components/Landing';
-import { Head } from '~/components';
 import { useGlitchyText } from '~/hooks';
 
 // Icons 
@@ -23,8 +22,8 @@ const Landing = () => {
 
 	return (
 		<>
-			<Head title='Stakex - Home' />
-			<main className='max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8'> {/*  */}
+			{/* <Head title='Stakex - Home' /> layout handles headers */}
+			<main className='max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8'>
 				<section className='text-white object-contain w-full h-[50rem] bg-cover'>
 					<div className='grid grid-cols-1 gap-16 px-28 py-16'>
 						<div className='flex w-full justify-between'>
